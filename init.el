@@ -171,7 +171,7 @@
    :ensure t
    :demand t
    :config
-   ((add-hook 'emacs-lisp-mode-hook        #'enable-paredit-mode)
+   (add-hook 'emacs-lisp-mode-hook        #'enable-paredit-mode)
    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
    (add-hook 'ielm-mode-hook               #'enable-paredit-mode)
    ;; lisps
@@ -184,7 +184,7 @@
      (add-hook 'clojure-mode-hook          #'enable-paredit-mode))
    ;; racket
    (with-eval-after-load 'racket-mode
-     (add-hook 'racket-mode-hook           #'enable-paredit-mode))))
+     (add-hook 'racket-mode-hook           #'enable-paredit-mode)))
 
 (setq lisp-d (concat user-emacs-directory "lisp.d"))
 
