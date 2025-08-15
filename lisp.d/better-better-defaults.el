@@ -51,3 +51,5 @@
 (setq scroll-step 1)
 
 (setq pixel-scroll-precision-mode t)
+
+(global-goto-address-mode 1)
