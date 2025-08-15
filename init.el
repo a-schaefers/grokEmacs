@@ -158,7 +158,6 @@
   :ensure t
   :demand t
   :config
-  (defalias 'sh 'better-shell-for-current-dir)
   (setq explicit-bash-args '("--noediting" "-i" "-l"))
 
   (add-hook 'shell-mode-hook #'(lambda ()

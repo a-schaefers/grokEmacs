@@ -11,6 +11,7 @@
     (flymake-show-diagnostics-buffer))
 (defalias 'git 'magit)
 (defalias 'pro 'projectile-commander)
+(defalias 'sh 'better-shell-for-current-dir)
 
 (defun force-kill-this-window ()
   "Forcefully kill the buffer in the current window, terminating any running process, and close the window."
