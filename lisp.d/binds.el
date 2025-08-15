@@ -41,7 +41,6 @@
   (define-key eglot-mode-map (kbd "M-m ?") 'xref-find-references)
   (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions))
 
-;; Auto-completion bindings
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)

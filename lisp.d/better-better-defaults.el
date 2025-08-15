@@ -32,15 +32,13 @@
  ring-bell-function 'ignore)
 
 (setq backup-directory-alist
-       `((".*" . ,temporary-file-directory)))
- (setq auto-save-file-name-transforms
-       `((".*" ,temporary-file-directory t)))
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (setq delete-old-versions t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-(add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
@@ -49,21 +47,6 @@
 (setq tab-always-indent 'complete)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-
-(or (getenv "EDITOR")
-    (progn
-      (setenv "EDITOR" "emacsclient")
-      (setenv "VISUAL" (getenv "EDITOR"))))
-
-;; Set PAGER to cat, for proper viewing of man pages, etc. while in M-x shell
-(or (getenv "PAGER")
-    (setenv "PAGER" "cat"))
-
-(add-hook 'elpaca-after-init-hook #'(lambda ()
-                               (interactive)
-                               (require 'server)
-                               (or (server-running-p)
-                                   (server-start))))
 
 (setq scroll-step 1)
 
