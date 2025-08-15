@@ -2,9 +2,11 @@
 
 [how to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl)
 
-fork it - clone it - own it
+fork it - clone it - own it.
 
 `git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs`
+
+Follow this upstream project if you want, or don't. The choice is yours. Happy Hacking. o/
 
 ![init](init.gif)
 
