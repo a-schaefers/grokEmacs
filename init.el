@@ -54,6 +54,13 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
 
+(setq lisp-d (concat user-emacs-directory "lisp.d"))
+(defun lisp-user-local-hook ()
+  (when (file-directory-p lisp-d)
+    (dolist (file (directory-files lisp-d nil "^.*\.el$"))
+      (load-file (concat lisp-d "/" file)))))
+(add-hook 'elpaca-after-init-hook 'lisp-user-local-hook)
+
 (use-package vertico
   :ensure t
   :demand t
@@ -188,11 +195,13 @@
    (with-eval-after-load 'racket-mode
      (add-hook 'racket-mode-hook           #'enable-paredit-mode)))
 
-(setq lisp-d (concat user-emacs-directory "lisp.d"))
+;; (use-package evil
+;;   :ensure t
+;;   :demand t
+;;   :config (evil-mode 1))
 
-(defun lisp-user-local-hook ()
-  (when (file-directory-p lisp-d)
-    (dolist (file (directory-files lisp-d nil "^.*\.el$"))
-      (load-file (concat lisp-d "/" file)))))
-
-(add-hook 'elpaca-after-init-hook 'lisp-user-local-hook)
+;; (use-package evil-commentary
+;;   :ensure t
+;;   :demand t
+;;   :after (evil)
+;;   :config (evil-commentary-mode 1))
