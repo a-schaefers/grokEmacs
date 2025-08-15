@@ -18,7 +18,16 @@
                           ;; right
                           (format-mode-line "%m"))))))
 
-(set-face-attribute 'default nil :family "Monospace" :height 110)
+(set-face-attribute 'default nil :family "Monospace" :height 100)
+
+(setq grokemacs-default-font "Go Mono")
+
+(if (find-font (font-spec :name grokemacs-default-font))
+    (set-face-attribute 'default nil :family grokemacs-default-font :height 120)
+  ;;fallback nicely to Monospace system font
+  (progn
+    (set-face-attribute 'default nil :family "Monospace" :height 120)
+    (message (concat nano-default-font " font unavailable, falling back to Monospace"))))
 
 (blink-cursor-mode -1)
 (scroll-bar-mode -1)
