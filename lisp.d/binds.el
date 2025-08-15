@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+
 (global-set-key (kbd "C-c i") #'crux-find-user-init-file)
 
 ;; M-x cc, sh, lint, git, pro

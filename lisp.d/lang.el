@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+
 ;; Set default compile command, for make or whatever.
 (setq compile-command "make -k ")
 

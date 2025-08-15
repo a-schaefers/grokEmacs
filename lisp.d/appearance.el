@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+
 (setq inhibit-startup-screen nil)
 
 (load-theme 'modus-operandi t)

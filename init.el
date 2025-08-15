@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+
 (setq load-prefer-newer t
       gc-cons-threshold 100000000
       read-process-output-max (* 1024 1024)

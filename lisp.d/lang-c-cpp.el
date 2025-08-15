@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+
 ;; C and C++ specific overrides (A language-specific override example)
 
 (defun grokemacs-c-ts-modes ()
