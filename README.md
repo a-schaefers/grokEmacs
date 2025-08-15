@@ -14,9 +14,9 @@ I've ditched the "framework caretaker" role. This is now **pure minimal** Emacs 
 No user hand-holding, no layer abstractions, just Emacs the way I want it.
 
 In many ways, this config comes full circle.
-When I was a beginner, my Emacs looked much like this — simple and direct.
+When I was a beginner, my Emacs looked much like this - simple and direct.
 Now, with years of experience, I’ve returned to that approach with a *beginner’s mind*, applying what I’ve learned to create a stable, advanced Emacs experience while keeping the simplicity intact.
-It’s my hope that it will also help other beginners exploring Emacs along the way, and that they too might always keep the *beginner’s mind*.
+It’s my hope that it will also help other beginners exploring Emacs along the way, and that they too might always keep the beginner’s mind.
 
 It’s still geared to get programmers up and running with the best Emacs has to offer - minimal, fast, and pragmatic - and I’m keeping it online for anyone who wants to follow along.
 
