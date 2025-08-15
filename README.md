@@ -10,6 +10,8 @@ fork it - clone it - own it.
 
 ## Announcement
 
+This project does not use GitHub Issues. Instead, please submit your improvements via Pull Request.
+
 I've ditched the "framework caretaker" role. This is now **pure minimal** Emacs - one `init.el` plus a handful of `lisp.d/` snippets.
 No user hand-holding, no layer abstractions, just Emacs the way I want it.
 
