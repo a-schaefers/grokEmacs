@@ -64,3 +64,5 @@
                                    (server-start))))
 
 (setq scroll-step 1)
+
+(setq pixel-scroll-precision-mode t)
