@@ -140,7 +140,7 @@
 (use-package flymake
   :ensure t
   :demand t
-  :init
+  :config
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 
 (use-package crux
