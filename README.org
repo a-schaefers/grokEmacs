@@ -1,4 +1,6 @@
-* SPARTAN EMACS
+No longer maintained - see grokEmacs instead - https://github.com/a-schaefers/grokEmacs
+
+* SPARTAN EMACS (ARCHIVED)
 
 Finally, a simple base Emacs configuration framework
 
