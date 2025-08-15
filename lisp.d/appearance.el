@@ -18,7 +18,7 @@
                           ;; right
                           (format-mode-line "%m"))))))
 
-(set-face-attribute 'default nil :family "Go Mono" :height 110)
+(set-face-attribute 'default nil :family "Monospace" :height 120)
 
 (blink-cursor-mode -1)
 (scroll-bar-mode -1)
