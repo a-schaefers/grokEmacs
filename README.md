@@ -6,25 +6,40 @@ fork it - clone it - own it.
 
 `git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs`
 
-Follow this upstream project if you want, or don't. The choice is yours. Happy Hacking. o/
-
 ![init](init.gif)
 
+## Announcement
+
+I've ditched the "framework caretaker" role. This is now **pure minimal** Emacs - one `init.el` plus a handful of `lisp.d/` snippets.
+No user hand-holding, no layer abstractions, just Emacs the way I want it.
+
+It’s still geared to get programmers up and running with the best Emacs has to offer - minimal, fast, and pragmatic - and I’m keeping it online for anyone who wants to follow along.
+
+### Project goals
+
 - almost **no abstraction**
-- **use-package** ensure + demand everything up front
-- start in **less than .3 seconds** on an old pc
-- **elpaca**
+- **elpaca** package manager
+- **use-package** *ensure and demand everything up front — avoids many bugs, reduces config complexity, and delivers a snappy Emacs by default, at only ~0.10s startup cost*
+- start in **< 0.3 seconds** on an old PC
 - **gccemacs** native compilation
 - **eglot lsp + company** autocompletion
-- **magit+projectil**e for vc & project awareness
+- **magit+projectile** for VC & project awareness
 - **flymake** linting
 - **treesitter** everywhere
-- **vertico** minibuffer fuzzy completed
+- **vertico** minibuffer fuzzy completion
 - uncluttered modeline
 - simple theme
-- holy mode is default, while evil mode is available
+- holy mode default, evil mode optional (uncomment the lines in init.el if you want it)
+...
+- *dape (debug adapter protocol support) is planned, coming soon*
 
-This is a new project entirely, "grokEmacs" has nothing to do with the old spartan-emacs project. But to find the old spartan-emacs, see https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive
+No bullshit.
+
+No plans for IRC, Email, AI, Window Managing, or other extras - the goal is simple:
+
+> Be the best programmer's text editor in the world — using the most light-weight and best, hand-picked tools — ready to be forked, hacked on, and made one's own.
+
+This is a new project entirely, "grokEmacs" has nothing to do with the old spartan-emacs project. But to find spartan-emacs, see https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive
 
 ## License
 [Public Domain (Unlicense)](https://unlicense.org)
