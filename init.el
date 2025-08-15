@@ -193,4 +193,4 @@
     (dolist (file (directory-files lisp-d nil "^.*\.el$"))
       (load-file (concat lisp-d "/" file)))))
 
-(add-hook 'after-init-hook 'lisp-user-local-hook)
+(add-hook 'elpaca-after-init-hook 'lisp-user-local-hook)

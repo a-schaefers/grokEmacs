@@ -1,6 +1,6 @@
 ;; C and C++ specific overrides (A language-specific override example)
 
-(defun spartan-c-ts-modes ()
+(defun grokemacs-c-ts-modes ()
   ;; Use Linux kernel coding style in C and C++ (Tree-sitter modes)
   ;; https://www.kernel.org/doc/html/v4.10/process/coding-style.html
   (setq-local indent-tabs-mode t)               ; Use tabs
@@ -12,8 +12,8 @@
   (setq-local c++-ts-mode-indent-style 'linux)
   (setq-local c++-ts-mode-indent-offset 8))
 
-(add-hook 'c-ts-mode-hook #'spartan-c-ts-modes)
-(add-hook 'c++-ts-mode-hook #'spartan-c-ts-modes)
+(add-hook 'c-ts-mode-hook #'grokemacs-c-ts-modes)
+(add-hook 'c++-ts-mode-hook #'grokemacs-c-ts-modes)
 
 ;; tabs are tabs in C family langs
 (add-hook 'makefile-mode-hook (lambda ()
