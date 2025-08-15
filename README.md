@@ -19,8 +19,8 @@ It’s still geared to get programmers up and running with the best Emacs has to
 
 - almost **no abstraction**
 - **elpaca** package manager
-- **use-package** *ensure and demand everything up front — avoids many bugs, reduces config complexity, and delivers a snappy Emacs by default, at only ~0.10s startup cost*
-- start in **< 0.3 seconds** on an old PC
+- **use-package** ensure and demand everything up front (avoids many bugs, reduces config complexity, and delivers a snappy Emacs by default, at only ~0.10s startup cost)
+- start in **~0.3 seconds** on an old PC
 - **gccemacs** native compilation
 - **eglot lsp + company** autocompletion
 - **magit+projectile** for VC & project awareness
@@ -37,7 +37,7 @@ No bullshit.
 
 No plans for IRC, Email, AI, Window Managing, or other extras - the goal is simple:
 
-> Be the best programmer's text editor in the world — using the most light-weight and best, hand-picked tools — ready to be forked, hacked on, and made one's own.
+> Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
 
 This is a new project entirely, "grokEmacs" has nothing to do with the old spartan-emacs project. But to find spartan-emacs, see https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive
 
