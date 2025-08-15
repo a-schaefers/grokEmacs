@@ -23,4 +23,4 @@
 (dolist (item grokemacs-path-append)
   (add-to-list 'exec-path item t))
 
-(setenv "PATH" (string-trim-right (string-join exec-path ":") ":$"));; 'PATH' modifications
+(setenv "PATH" (string-trim-right (string-join exec-path ":") ":$"))
