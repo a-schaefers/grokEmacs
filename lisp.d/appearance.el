@@ -18,8 +18,6 @@
                           ;; right
                           (format-mode-line "%m"))))))
 
-(set-face-attribute 'default nil :family "Monospace" :height 100)
-
 (setq grokemacs-default-font "Go Mono")
 
 (if (find-font (font-spec :name grokemacs-default-font))
