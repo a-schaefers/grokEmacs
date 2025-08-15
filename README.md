@@ -6,7 +6,7 @@ fork it - clone it - own it
 
 `git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs`
 
-![init](assets/init.gif)
+![init](init.gif)
 
 - **no abstraction**
 - **use-package** ensure + demand everything up front
