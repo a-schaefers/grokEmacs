@@ -10,7 +10,7 @@ Follow this upstream project if you want, or don't. The choice is yours. Happy H
 
 ![init](init.gif)
 
-- **no abstraction**
+- almost **no abstraction**
 - **use-package** ensure + demand everything up front
 - start in **less than .3 seconds** on an old pc
 - **elpaca**
