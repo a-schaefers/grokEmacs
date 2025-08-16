@@ -40,13 +40,11 @@ It’s still geared to get programmers up and running with the best Emacs has to
 ...
 - *dape (debug adapter protocol support) is planned, coming soon*
 
-No bullshit.
-
 No plans for IRC, Email, AI, Window Managing, or other extras - the goal is simple:
 
 > Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
 
-This is a new project entirely, "grokEmacs" has nothing to do with the old spartan-emacs project. But to find spartan-emacs, see https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive
+grokEmacs is a new project, unrelated to Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
 
 ## License
 [Public Domain (Unlicense)](https://unlicense.org)
