@@ -7,7 +7,7 @@
 
 (dolist (f `(
              grok-elpaca
-             grok-theme
+             grok-theme-globals
              ,@(when (string= grok-theme-fancy "minimal") '(grok-theme-minimal))
              ,@(when (string= grok-theme-fancy "fancy") '(grok-theme-fancy))
              grok-defaults

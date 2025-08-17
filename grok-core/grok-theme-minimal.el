@@ -9,13 +9,12 @@
     (format (format " %%s %%%ds " available-width) left right)))
 
 (defun grok-minimal-modeline ()
-  (progn
-    (setq-default mode-line-format
+  (setq-default mode-line-format
                   '((:eval (simple-mode-line-render
                             ;; left
                             (format-mode-line "%* %b %l")
                             ;; right
-                            (format-mode-line "%m")))))))
+                            (format-mode-line "%m"))))))
 
 
 (and (string= grok-theme-mode "dark") (string= grok-theme-fancy "minimal")

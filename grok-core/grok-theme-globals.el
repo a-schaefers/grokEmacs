@@ -37,4 +37,4 @@
               (display-line-numbers-mode 1))))
 
 
- (provide 'grok-theme)
+ (provide 'grok-theme-globals)
