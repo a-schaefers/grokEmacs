@@ -42,6 +42,31 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 > Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
 
+## Binds
+
+Emacs uses vanilla defaults (holy mode) unless you enabled Evil during initial setup.
+Language modes may add their own bindings as needed. See `grok-core/grok-binds.el` for full details.
+
+### General
+- `M-x pro` → `projectile-commander`
+- `M-x cc` → `compile`
+- `M-x sh` → `shell`
+- `M-x git` → `magit`
+- `M-x lint` → enable `flymake` + diagnostics buffer
+- `C-c i` → open `init.el`
+
+### Eglot
+- `M-m r` → rename symbol
+- `M-m o` → organize imports
+- `M-m h` → show doc (eldoc)
+- `M-m =` → format buffer/region
+- `M-m ?` → find references
+- `M-.`   → jump to definition
+
+### Eldoc-box
+- `C-c C-h` → doc popup at point
+- `K` (Evil normal mode only) → doc popup at point
+
 ## Assumptions
 
 I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:
