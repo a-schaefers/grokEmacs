@@ -22,9 +22,9 @@ Fancy uses the doom-one theme variants and doom modeline + treemacs.
 
 ![fancy](grok-fancy.jpg)
 
-Minimal uses the built-in modus theme variants with a cleaned up modeline, while retro just goes with acme.
+While minimal uses the built-in modus theme variants with an uncluttered modeline
 
-![minimal-retro](grok-minimal-retro.jpg)
+![minimal](grok-minimal.jpg)
 
 ## Project goals
 
