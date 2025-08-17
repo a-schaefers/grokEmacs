@@ -7,9 +7,6 @@
 
 (dolist (f `(
              grok-elpaca
-             grok-theme-globals
-             ,@(when (string= grok-theme-fancy "minimal") '(grok-theme-minimal))
-             ,@(when (string= grok-theme-fancy "fancy") '(grok-theme-fancy))
              grok-defaults
              grok-environment
              grok-better-scratch
@@ -24,6 +21,9 @@
              grok-treesit
              grok-lang
              grok-lang-c-cpp
+             grok-theme-globals
+             ,@(when (string= grok-theme-fancy "minimal") '(grok-theme-minimal))
+             ,@(when (string= grok-theme-fancy "fancy") '(grok-theme-fancy))
              ))
   (require f))
 
@@ -36,3 +36,5 @@
 
 (dolist (file (directory-files grok-d nil "\\.el\\'"))
   (require (intern (file-name-base file))))
+
+(elpaca-wait)

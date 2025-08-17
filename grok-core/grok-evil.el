@@ -42,15 +42,16 @@
 
 (use-package smartparens
   ;; dep for evil-cleverparens
-  :if (bound-and-true-p grok-evil)
+  :if (bound-and-true-p grok-evil-mode)
   :ensure t
   :demand t)
 
 (use-package evil-cleverparens
+  :if (bound-and-true-p grok-evil-mode)
   ;; evil mode's cousin to paredit
-  :ensure (:wait t)
+  :ensure t
   :demand t
-  :after smartparens)
+  :after (evil smartparens))
 
 ;; for reasons unknown, these do not get registered within the use-package macro -- tried :command, :hook: :init :config everything i could think of
 ;; paredit does not have this issue. some kind of unique elpaca + use-package + evil-cleverparens issue

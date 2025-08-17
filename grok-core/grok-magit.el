@@ -3,9 +3,10 @@
 (use-package transient :ensure t :demand t)
 
 (use-package magit
-  :ensure (:wait t)
+  ;; :ensure (:wait t)
+  :ensure t
   :demand t
-  :after (transient)
+  :after transient
   :init (setq magit-repository-directories `((,grok-projects . 1))))
 
 (provide 'grok-magit)
