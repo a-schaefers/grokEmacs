@@ -15,22 +15,22 @@
 (add-to-list 'display-buffer-alist '("\\*Warnings\\*" (display-buffer-no-window) (allow-no-window . t)))
 
 ;;-----defs
-(defvar grok-projects "~/repos"
+(defvar grok-projects ""
   "Absolute path to your projects directory (used by Magit/Projectile/etc).")
 
-(defvar grok-evil nil
+(defvar grok-evil-mode nil
   "Non-nil enables Evil-mode setup during bootstrap.")
 
-(defvar grok-theme-mode "dark"
+(defvar grok-theme-mode ""
   "Theme brightness preference: \"light\" or \"dark\".")
 
-(defvar grok-theme-fancy "minimal"
-  "Theme style preference: \"fancy\" or \"minimal\" or \"retro\".")
+(defvar grok-theme-fancy ""
+  "Theme style preference: \"fancy\" or \"minimal\".")
 
-(defvar grok-font "Source Code Pro"
+(defvar grok-font ""
   "Preferred monospace font family installed on the system.")
 
-(defvar grok-font-size "12"
+(defvar grok-font-size ""
   "Preferred font size in points as a string (e.g., \"12\").")
 
 (defvar grok-alpha-background ""
@@ -38,20 +38,17 @@
 
 ;;-----interactive initial setup
 
-;; Create ~/.config/emacs/grok-opts.el if missing, then load it.
-(defvar grok-opts-file (expand-file-name "grok-opts.el" user-emacs-directory))
-
 (defvar grok-opts-file (expand-file-name "grok-opts.el" user-emacs-directory)
   "Path to the persisted Grok options file.")
 
 (defvar grok-opts-spec
   '((grok-projects        :type directory :prompt "Projects dir: " :default "~/repos")
-    (grok-evil            :type boolean   :prompt "Enable evil mode? ")
-    (grok-theme-mode      :type choice    :prompt "Theme (light/dark): " :choices (light dark) :default light)
-    (grok-theme-fancy     :type choice    :prompt "Theme (fancy/minimal/retro): " :choices (fancy minimal retro) :default minimal)
+    (grok-evil-mode            :type boolean   :prompt "Enable evil mode? ")
+    (grok-theme-mode      :type choice    :prompt "Theme (light/dark): " :choices (light dark) :default dark)
+    (grok-theme-fancy     :type choice    :prompt "Theme (fancy/minimal): " :choices (fancy minimal) :default fancy)
     (grok-alpha-background :type string   :prompt "Transparency (0–99, [enter]/100 = off): " :default "")
     (grok-font            :type string    :prompt "Font (must be on system): " :default "Source Code Pro")
-    (grok-font-size       :type string    :prompt "Font Size: " :default "12")
+    (grok-font-size       :type string    :prompt "Font Size: " :default "11")
     (grok-line-numbers    :type boolean   :prompt "Show line numbers? "))
   "Declarative prompts for Grok options. Extend by appending new entries.")
 
