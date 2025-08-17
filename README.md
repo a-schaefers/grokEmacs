@@ -38,7 +38,7 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 - **flymake** linting
 - **treesitter** everywhere as much as possible
 - **vertico** minibuffer fuzzy completion
-- *dape (debug adapter protocol support) is planned, coming soon*
+- *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
 > Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
 
