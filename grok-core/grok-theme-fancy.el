@@ -12,8 +12,8 @@
   (setq dashboard-center-content t)
   (setq dashboard-vertically-center-content t)
   (setq dashboard-startup-banner (expand-file-name "grokEmacs.txt" user-emacs-directory))
-  (setq dashboard-banner-logo-title "")
-  (setq dashboard-footer-messages '(""))
+  (setq dashboard-banner-logo-title "Emacs")
+  (setq dashboard-footer-messages '("Made with h@te for everything else"))
 
   (setq dashboard-items '((recents . 5)
                         ;; (bookmarks . 5)
@@ -180,5 +180,12 @@
   :ensure t
   :demand t
   :config (treemacs-set-scope-type 'Tabs))
+
+(defun grok-fancy-setup ()
+  (set-frame-size (selected-frame) 130 40)
+  (treemacs))
+
+(when (string= grok-theme-fancy "fancy")
+  (add-hook 'window-setup-hook #'grok-fancy-setup))
 
  (provide 'grok-theme-fancy)
