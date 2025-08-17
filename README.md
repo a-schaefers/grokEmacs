@@ -12,7 +12,7 @@ I've ditched the "framework caretaker" role.
 
 This project does not use GitHub Issues. Instead, please submit your improvements via Pull Request.
 
-grokEmacs is a new project, unrelated to Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
+grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
 
 ## Interactive Initial Setup
 
@@ -36,7 +36,7 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 - **eglot lsp + company** autocompletion
 - **magit+projectile** for VC & project awareness
 - **flymake** linting
-- **treesitter** everywhere
+- **treesitter** everywhere as much as possible
 - **vertico** minibuffer fuzzy completion
 - *dape (debug adapter protocol support) is planned, coming soon*
 
