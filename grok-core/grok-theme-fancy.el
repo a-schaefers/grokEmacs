@@ -4,9 +4,13 @@
 
 (use-package dashboard
   :if (string= grok-theme-fancy "fancy")
+  :after projectile
   :ensure t
   :demand t
   :config
+  (setq dashboard-projects-backend 'projectile
+      dashboard-projects-switch-function #'projectile-switch-project)
+
   (setq inhibit-startup-screen t)
 
   (setq dashboard-center-content t)
