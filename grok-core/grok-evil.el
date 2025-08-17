@@ -48,7 +48,7 @@
 
 (use-package evil-cleverparens
   ;; evil mode's cousin to paredit
-  :ensure t
+  :ensure (:wait t)
   :demand t
   :after smartparens)
 

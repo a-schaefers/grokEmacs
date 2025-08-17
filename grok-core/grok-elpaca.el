@@ -42,4 +42,10 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
 
+;; FIX; apparently elpaca will prefer built-in and not pull in what magit needs
+;; This can probably go away in the future versions of Emacs
+;; https://github.com/progfolio/elpaca/issues/272#issuecomment-2298727726
+(setq elpaca-ignored-dependencies
+      (delq 'transient elpaca-ignored-dependencies))
+
 (provide 'grok-elpaca)

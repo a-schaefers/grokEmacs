@@ -79,6 +79,7 @@ Language modes may add their own bindings as needed. See `grok-core/grok-binds.e
 - `M-x git` → `magit`
 - `M-x lint` → enable `flymake` + diagnostics buffer
 - `C-c i` → open `init.el`
+- `C-t` → open `treemacs` (if 'fancy')
 
 ### Eglot
 - `M-m r` → rename symbol

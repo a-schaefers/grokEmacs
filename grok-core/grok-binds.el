@@ -48,4 +48,7 @@
   (global-set-key (kbd "C-c C--") 'crux-kill-whole-line)
   (global-set-key (kbd "C-c ;") 'crux-duplicate-and-comment-current-line-or-region))
 
+(with-eval-after-load 'treemacs
+  (global-set-key (kbd "C-t") 'treemacs))
+
 (provide 'grok-binds)

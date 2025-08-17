@@ -32,12 +32,12 @@
 
 (use-package company-prescient
   :after (company prescient)
-  :ensure t
+  :ensure (:wait t)
   :demand t
   :config (company-prescient-mode 1))
 
 (use-package company
-  :ensure t
+  :ensure (:wait t)
   :demand t
   :config
   (add-hook 'prog-mode-hook 'company-mode)

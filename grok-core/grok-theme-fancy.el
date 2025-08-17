@@ -181,10 +181,4 @@
   :demand t
   :config (treemacs-set-scope-type 'Tabs))
 
-;; ;; auto pop-open on fancy
-(when (string= grok-theme-fancy "fancy")
-     (tab-bar-mode 1)
-     (add-hook 'elpaca-after-init-hook #'treemacs)
-     (set-frame-parameter nil 'fullscreen 'maximized))
-
  (provide 'grok-theme-fancy)
