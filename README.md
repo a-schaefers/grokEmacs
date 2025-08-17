@@ -44,7 +44,7 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 ## Binds
 
-Emacs uses vanilla defaults (holy mode) unless you enabled Evil during initial setup.
+Emacs vanilla defaults (holy mode) + crux, unless you enabled Evil during initial setup.
 Language modes may add their own bindings as needed. See `grok-core/grok-binds.el` for full details.
 
 ### General
@@ -67,6 +67,9 @@ Language modes may add their own bindings as needed. See `grok-core/grok-binds.e
 ### Eldoc-box
 - `C-c C-h` → doc popup at point
 - `K` (Evil normal mode only) → doc popup at point
+
+As treesit support improves, we probably will target [combobulate](https://github.com/mickeynp/combobulate) to get a sort-of of paredit-like
+experience beyond scheme/lisp language families.
 
 ## Assumptions
 
