@@ -5,8 +5,6 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(global-eldoc-mode 1)
-
 (electric-pair-mode 1)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)

@@ -17,11 +17,9 @@
              grok-vertico
              ,@(unless grok-evil-mode '(grok-holy))
              ,@(when grok-evil-mode '(grok-evil))
-             grok-eglot
-             grok-flymake
+             grok-lsp
              grok-magit
              grok-projectile
-             grok-company
              grok-terminal
              grok-treesit
              grok-lang
