@@ -1,13 +1,13 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package evil
-  :if (bound-and-true-p grok-evil)
+  :if (bound-and-true-p grok-evil-mode)
   :ensure t
   :demand t
   :config (evil-mode 1))
 
 (use-package evil-commentary
-  :if (bound-and-true-p grok-evil)
+  :if (bound-and-true-p grok-evil-mode)
   :ensure t
   :demand t
   :after (evil)

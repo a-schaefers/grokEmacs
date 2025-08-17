@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
+(use-package crux
+ :if (not (bound-and-true-p grok-evil))
+ :ensure t
+ :demand t)
+
 (use-package paredit
    :if (not (bound-and-true-p grok-evil))
    :ensure t
@@ -19,10 +24,5 @@
    ;; racket
    (with-eval-after-load 'racket-mode
      (add-hook 'racket-mode-hook           #'enable-paredit-mode)))
-
-(use-package crux
- :if (not (bound-and-true-p grok-evil))
- :ensure t
- :demand t)
 
 (provide 'grok-holy)

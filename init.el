@@ -5,16 +5,18 @@
 ;; C-u M-x grok--ensure-opts will reconfigure
 (require 'grok-bootstrap)
 
-(dolist (f '(
+(dolist (f `(
              grok-elpaca
              grok-theme
+             ,@(when (string= grok-theme-fancy "minimal") '(grok-theme-minimal))
+             ,@(when (string= grok-theme-fancy "fancy") '(grok-theme-fancy))
              grok-defaults
              grok-environment
              grok-better-scratch
              grok-binds
              grok-vertico
-             grok-holy
-             grok-evil
+             ,@(unless grok-evil-mode '(grok-holy))
+             ,@(when grok-evil-mode '(grok-evil))
              grok-eglot
              grok-flymake
              grok-magit
