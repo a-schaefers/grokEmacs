@@ -147,11 +147,12 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
 
-(use-package treemacs-evil
-  :if (string= grok-theme-fancy "fancy")
-  :after (treemacs evil)
-  :ensure t
-  :demand t)
+(with-eval-after-load 'grok-evil
+    (use-package treemacs-evil
+      :if (string= grok-theme-fancy "fancy")
+      :after (treemacs evil)
+      :ensure t
+      :demand t))
 
 (use-package treemacs-projectile
   :if (string= grok-theme-fancy "fancy")
@@ -170,20 +171,6 @@
   :after (treemacs magit)
   :ensure t
   :demand t)
-
-(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
-  :if (string= grok-theme-fancy "fancy")
-  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
-  :ensure t
-  :demand t
-  :config (treemacs-set-scope-type 'Perspectives))
-
-(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
-  :if (string= grok-theme-fancy "fancy")
-  :after (treemacs)
-  :ensure t
-  :demand t
-  :config (treemacs-set-scope-type 'Tabs))
 
 (defun grok-fancy-setup ()
   (set-frame-size (selected-frame) 130 40)
