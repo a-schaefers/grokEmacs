@@ -4,6 +4,8 @@
   :ensure t
   :demand t
   :config
+  (defalias 'sh 'better-shell-for-current-dir)
+
   (when (string= (getenv "SHELL") "/bin/bash")
     (setq explicit-bash-args '("--noediting" "-i" "-l"))
 
