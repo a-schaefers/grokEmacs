@@ -50,7 +50,8 @@ Language modes may add their own bindings as needed. See `grok-core/grok-binds.e
 ### General
 - `M-x pro` → `projectile-commander`
 - `M-x cc` → `compile`
-- `M-x sh` → `shell`
+- `M-x sh` → `shell` (a dumb shell buffer)
+- `M-x eat` → `eat` (a fully-featured terminal, no vterm dep)
 - `M-x git` → `magit`
 - `M-x lint` → enable `flymake` + diagnostics buffer
 - `C-c i` → open `init.el`
