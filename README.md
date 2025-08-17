@@ -31,7 +31,7 @@ Minimal uses the built-in modus theme variants with a cleaned up modeline, while
 - almost **no abstraction**
 - **elpaca** package manager
 - **use-package** ensure and demand everything up front (avoids bugs, reduces config complexity, and delivers a snappy Emacs by default)
-- start in <1s on an old PC
+- start in ~1s on an old PC
 - **gccemacs** native compilation
 - **eglot lsp + company** autocompletion
 - **magit+projectile** for VC & project awareness
