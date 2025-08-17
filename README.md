@@ -44,7 +44,31 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 ## Binds
 
-Emacs vanilla defaults (holy mode) + crux, unless you enabled Evil during initial setup.
+### Holy Mode (Vanilla Emacs)
+
+By default you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
+
+- **crux** — quality-of-life shortcuts (smarter line movement, duplicate, kill whole line, etc.).
+- **paredit** — structural editing for Lisp code, keeps parens balanced.
+
+### Evil Mode (Vim-style)
+
+If you enabled Evil during setup, you also get Vim-style editing plus common addons:
+
+- **evil** — core Vim emulation.
+- **evil-collection** — makes Magit, dired, and many other modes feel Vim-like.
+- **evil-commentary** — toggle comments with `gc`, like Vim’s commentary.
+- **evil-surround** — change/add/delete surrounding quotes, parens, tags.
+- **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
+- **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
+
+### Treesit to the future
+
+As treesit support improves, we probably will target [combobulate](https://github.com/mickeynp/combobulate) to get a sort-of of paredit-like
+experience beyond scheme/lisp language families.
+
+### Additional language-specific binds
+
 Language modes may add their own bindings as needed. See `grok-core/grok-binds.el` for full details.
 
 ### General
@@ -67,9 +91,6 @@ Language modes may add their own bindings as needed. See `grok-core/grok-binds.e
 ### Eldoc-box
 - `C-c C-h` → doc popup at point
 - `K` (Evil normal mode only) → doc popup at point
-
-As treesit support improves, we probably will target [combobulate](https://github.com/mickeynp/combobulate) to get a sort-of of paredit-like
-experience beyond scheme/lisp language families.
 
 ## Assumptions
 
