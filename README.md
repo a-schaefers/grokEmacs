@@ -42,5 +42,15 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 > Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
 
+## Assumptions
+
+I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:
+
+- All GUI-only assumptions must be guarded with (display-graphic-p) checks, and likewise for terminal-only code.
+
+- Clipboard handling must work out of the box, as graphical Emacs already provides, with compatibility across Xorg, Wayland, and macOS.
+
+- Themes must not look terrible in terminal mode—either by disabling global font-lock, or by using a minimal terminal-only theme that lets the terminal handle colors.
+
 ## License
 [Public Domain (Unlicense)](https://unlicense.org)
