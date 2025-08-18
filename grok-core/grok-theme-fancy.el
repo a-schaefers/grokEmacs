@@ -147,13 +147,6 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
 
-(with-eval-after-load 'grok-evil
-    (use-package treemacs-evil
-      :if (string= grok-theme-style "fancy")
-      :after (treemacs evil)
-      :ensure t
-      :demand t))
-
 (use-package treemacs-projectile
   :if (string= grok-theme-style "fancy")
   :after (treemacs projectile)
@@ -172,11 +165,4 @@
   :ensure t
   :demand t)
 
-(defun grok-fancy-setup ()
-  (set-frame-size (selected-frame) 130 40)
-  (treemacs))
-
-(when (string= grok-theme-style "fancy")
-  (add-hook 'window-setup-hook #'grok-fancy-setup))
-
- (provide 'grok-theme-fancy)
+(provide 'grok-theme-fancy)

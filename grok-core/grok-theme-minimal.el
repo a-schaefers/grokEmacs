@@ -10,24 +10,24 @@
 
 (defun grok-minimal-modeline ()
   (setq-default mode-line-format
-                  '((:eval (simple-mode-line-render
-                            ;; left
-                            (format-mode-line "%* %b %l")
-                            ;; right
-                            (format-mode-line "%m"))))))
+                '((:eval (simple-mode-line-render
+                          ;; left
+                          (format-mode-line "%* %b %l")
+                          ;; right
+                          (format-mode-line "%m"))))))
 
 
-(and (string= grok-theme-mode "dark") (string= grok-theme-fancy "minimal")
-    (progn
-      (setq inhibit-startup-screen nil)
-      (load-theme 'modus-vivendi t)
-      (grok-minimal-modeline)))
+(and (string= grok-theme-mode "dark") (string= grok-theme-style "minimal")
+     (progn
+       (setq inhibit-startup-screen nil)
+       (load-theme 'modus-vivendi t)
+       (grok-minimal-modeline)))
 
-(and (string= grok-theme-mode "light") (string= grok-theme-fancy "minimal")
-    (progn
-      (setq inhibit-startup-screen nil)
-      (load-theme 'modus-operandi t)
-      (grok-minimal-modeline)))
+(and (string= grok-theme-mode "light") (string= grok-theme-style "minimal")
+     (progn
+       (setq inhibit-startup-screen nil)
+       (load-theme 'modus-operandi t)
+       (grok-minimal-modeline)))
 
 
- (provide 'grok-theme-minimal)
+(provide 'grok-theme-minimal)

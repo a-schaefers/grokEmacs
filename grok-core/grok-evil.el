@@ -56,6 +56,12 @@
   :demand t
   :after (evil smartparens))
 
+(use-package treemacs-evil
+  :if (and (bound-and-true-p grok-evil-mode) (string= grok-theme-style "fancy"))
+  :after (treemacs evil)
+  :ensure t
+  :demand t)
+
 ;; for reasons unknown, these do not get registered within the use-package macro -- tried :command, :hook: :init :config everything i could think of
 ;; paredit does not have this issue. some kind of unique elpaca + use-package + evil-cleverparens issue
 (add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
