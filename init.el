@@ -31,7 +31,7 @@
              ))
   (require f))
 
-;; grok.el
+;; grok.d/ & grok.el
 
 (setq grokd (expand-file-name "grok.d" user-emacs-directory)
       grokel (concat grokd "/" "grok.el")
@@ -39,6 +39,8 @@
 
 (unless (file-directory-p grokd)
   (make-directory grokd))
+
+(add-to-list 'load-path grokd)
 
 (unless (file-exists-p grokel)
     (copy-file grokfile grokel))
@@ -62,10 +64,6 @@
   "Open grok-opts.el."
   (interactive)
   (find-file grok-opts-file))
-
-;; grok.d
-
-(add-to-list 'load-path grokd)
 
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
