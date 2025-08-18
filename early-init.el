@@ -1,4 +1,4 @@
-;;; init.el --- Initialization file for Emacs -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; early-init.el --- Early Initialization file for Emacs -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;;; Commentary:
 ;; Prevent package.el from interfering with Elpaca by disabling it at startup.
