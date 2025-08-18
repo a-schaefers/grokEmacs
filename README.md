@@ -64,6 +64,8 @@ If you enabled Evil during setup, you also get Vim-style editing plus common add
 - **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
 - **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
 
+There is also an example comment in `grok-core/grok-evil.el` of how you may want to start setting up a leader key.
+
 ### Treesit to the future
 
 As treesit support improves, we probably will target [combobulate](https://github.com/mickeynp/combobulate) to get a sort-of of paredit-like
