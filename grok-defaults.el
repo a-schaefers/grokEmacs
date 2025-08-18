@@ -89,7 +89,7 @@
 (setq compile-command "make -k ")
 
 (global-set-key (kbd "C-c i") 'grok-edit-init-file)
-(global-set-key (kbd "C-c o") 'grok-edit-grok-initial-setup-opts)
+(global-set-key (kbd "C-c o") 'grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
 (global-set-key (kbd "C-c g") 'grok-edit-grok-file)
 
 ;; M-x cc

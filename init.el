@@ -58,7 +58,7 @@
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
 
-;; Configure eglot autostart hooks for specified language modes.
+;; configure eglot autostart hooks for specified language modes.
 
 (dolist (pair my-eglot-autostart-langs)
     (let* ((hook (car pair))
@@ -77,6 +77,6 @@
           `(add-to-list 'eglot-server-programs
                         '(,mode . ,cmd))))))
 
-;; Block until currently queued orders are processed.
+;; block until currently queued orders are processed.
 
 (elpaca-wait)
