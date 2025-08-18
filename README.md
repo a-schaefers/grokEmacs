@@ -10,11 +10,11 @@ If you encounter an error in the bootstrap such as: `[2025-08-17 14:11:25] fatal
 
 ## Announcement
 
-I've ditched the "framework caretaker" role.
-
 This project does not use GitHub Issues. Instead, please submit your improvements via Pull Request.
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
+
+Currently under heavy development, new features being added daily
 
 ## Interactive Initial Setup
 
