@@ -46,6 +46,10 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 ## Binds
 
+- `C-c i` → `Open init.el`
+- `C-c g` → `Open grok.el`
+- `C-c o` → `Open grok-opts.el`
+
 ### Holy Mode (Vanilla Emacs)
 
 By default you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
