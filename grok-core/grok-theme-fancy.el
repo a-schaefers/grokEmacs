@@ -3,7 +3,7 @@
 ;;----- fancy theme settings
 
 (use-package dashboard
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :after projectile
   :ensure t
   :demand t
@@ -42,20 +42,20 @@
   (dashboard-setup-startup-hook))
 
 (use-package doom-themes
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :ensure t :demand t
   :config
   (load-theme (if (string= grok-theme-mode "light") 'doom-one-light 'doom-one) t)
   (global-hl-line-mode 1))
 
 (use-package doom-modeline
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :ensure t
   :demand t
   :config (doom-modeline-mode 1))
 
 (use-package treemacs
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :ensure t
   :demand t
   :init
@@ -149,25 +149,25 @@
 
 (with-eval-after-load 'grok-evil
     (use-package treemacs-evil
-      :if (string= grok-theme-fancy "fancy")
+      :if (string= grok-theme-style "fancy")
       :after (treemacs evil)
       :ensure t
       :demand t))
 
 (use-package treemacs-projectile
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :after (treemacs projectile)
   :ensure t
   :demand t)
 
 (use-package treemacs-icons-dired
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t
   :demand t)
 
 (use-package treemacs-magit
-  :if (string= grok-theme-fancy "fancy")
+  :if (string= grok-theme-style "fancy")
   :after (treemacs magit)
   :ensure t
   :demand t)
@@ -176,7 +176,7 @@
   (set-frame-size (selected-frame) 130 40)
   (treemacs))
 
-(when (string= grok-theme-fancy "fancy")
+(when (string= grok-theme-style "fancy")
   (add-hook 'window-setup-hook #'grok-fancy-setup))
 
  (provide 'grok-theme-fancy)

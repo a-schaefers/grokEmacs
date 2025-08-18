@@ -22,8 +22,8 @@
              grok-lang
              grok-lang-c-cpp
              grok-theme-globals
-             ,@(when (string= grok-theme-fancy "minimal") '(grok-theme-minimal))
-             ,@(when (string= grok-theme-fancy "fancy") '(grok-theme-fancy))
+             ,@(when (string= grok-theme-style "minimal") '(grok-theme-minimal))
+             ,@(when (string= grok-theme-style "fancy") '(grok-theme-fancy))
              ))
   (require f))
 

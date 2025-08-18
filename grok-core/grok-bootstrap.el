@@ -15,25 +15,25 @@
 (add-to-list 'display-buffer-alist '("\\*Warnings\\*" (display-buffer-no-window) (allow-no-window . t)))
 
 ;;-----defs
-(defvar grok-projects ""
+(defvar grok-projects "~/repos"
   "Absolute path to your projects directory (used by Magit/Projectile/etc).")
 
 (defvar grok-evil-mode nil
   "Non-nil enables Evil-mode setup during bootstrap.")
 
-(defvar grok-theme-mode ""
+(defvar grok-theme-mode "dark"
   "Theme brightness preference: \"light\" or \"dark\".")
 
-(defvar grok-theme-fancy ""
+(defvar grok-theme-style "fancy"
   "Theme style preference: \"fancy\" or \"minimal\".")
 
-(defvar grok-font ""
+(defvar grok-font "Source Code Pro"
   "Preferred monospace font family installed on the system.")
 
-(defvar grok-font-size ""
+(defvar grok-font-size "11"
   "Preferred font size in points as a string (e.g., \"12\").")
 
-(defvar grok-alpha-background ""
+(defvar grok-alpha-background "100"
   "Alpha transparency percent as string \"0\"–\"99\"; \"\" or \"100\" disables.")
 
 ;;-----interactive initial setup
@@ -45,7 +45,7 @@
   '((grok-projects        :type directory :prompt "Projects dir: " :default "~/repos")
     (grok-evil-mode            :type boolean   :prompt "Enable evil mode? ")
     (grok-theme-mode      :type choice    :prompt "Theme (light/dark): " :choices (light dark) :default dark)
-    (grok-theme-fancy     :type choice    :prompt "Theme (fancy/minimal): " :choices (fancy minimal) :default fancy)
+    (grok-theme-style     :type choice    :prompt "Theme (fancy/minimal): " :choices (fancy minimal) :default fancy)
     (grok-alpha-background :type string   :prompt "Transparency (0–99, [enter]/100 = off): " :default "")
     (grok-font            :type string    :prompt "Font (must be on system): " :default "Source Code Pro")
     (grok-font-size       :type string    :prompt "Font Size: " :default "11")
