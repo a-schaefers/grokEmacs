@@ -20,7 +20,7 @@
 
 (setq grok-path-append '(""))
 
-;; SET matching exec-path and 'PATH' values with inserts/appends
+;; Set matching 'exec-path' and 'PATH' values with inserts/appends
 
 (dolist (item grok-path-insert)
   (add-to-list 'exec-path item))
@@ -72,7 +72,7 @@
 ;; `General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; python friendly
+;; Python friendly
 (setq-default indent-tabs-mode nil
               fill-column 79)
 
@@ -158,7 +158,7 @@
 (add-hook 'c-ts-mode-hook #'grok-c-ts-modes)
 (add-hook 'c++-ts-mode-hook #'grok-c-ts-modes)
 
-;; tabs are tabs in C family langs
+;; Tabs are tabs in C family langs
 (add-hook 'makefile-mode-hook (lambda ()
                                 (setq-local indent-tabs-mode t)))
 
