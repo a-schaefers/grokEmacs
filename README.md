@@ -57,7 +57,7 @@ Brief summary below - See `grok.el` for full details and to make customizations
 - `C-c gi` → open `init.el`
 - `C-c gg` → open `grok.el`      (user-custom file, loads last)
 - `C-c go` → open `grok-opts.el` (initial setup file)
-- `C-c gu` → ediff `grok.el` against the latest `grok-defaults.el`
+- `C-c gu` → runs `grok-update-config-with-ediff()` to ediff `grok.el` against the latest `grok-defaults.el`
 
 ### Eglot
 - `M-m r` → rename symbol
