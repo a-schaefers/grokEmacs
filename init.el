@@ -16,9 +16,9 @@
              grok-projectile
              grok-terminal
              grok-treesit
-             grok-theme-globals
-             ,@(when (string= grok-theme-style "minimal") '(grok-theme-minimal))
-             ,@(when (string= grok-theme-style "fancy") '(grok-theme-fancy))
+             ,@(when (member grok-theme-style '("minimal" "fancy")) '(grok-theme-globals))
+             ,@(when (member grok-theme-style '("minimal")) '(grok-theme-minimal))
+             ,@(when (member grok-theme-style '("fancy")) '(grok-theme-fancy))
              ))
   (require f))
 
