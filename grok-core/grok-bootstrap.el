@@ -44,8 +44,8 @@
 (defvar grok-opts-spec
   '((grok-projects        :type directory :prompt "Projects dir: " :default "~/repos")
     (grok-evil-mode            :type boolean   :prompt "Enable evil mode? ")
+    (grok-theme-style     :type choice    :prompt "Theme (fancy/minimal/none): " :choices (fancy minimal none) :default fancy)
     (grok-theme-mode      :type choice    :prompt "Theme (light/dark): " :choices (light dark) :default dark)
-    (grok-theme-style     :type choice    :prompt "Theme (fancy/minimal): " :choices (fancy minimal) :default fancy)
     (grok-alpha-background :type string   :prompt "Transparency (0–99, [enter]/100 = off): " :default "")
     (grok-font            :type string    :prompt "Font (must be on system): " :default "Source Code Pro")
     (grok-font-size       :type string    :prompt "Font Size: " :default "11")
