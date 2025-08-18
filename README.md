@@ -56,6 +56,8 @@ Brief summary below - See `grok.el` for full details and to make customizations
 - `M-x git` → `magit`
 - `M-x lint` → enable `flymake` + diagnostics buffer
 - `C-c i` → open `init.el`
+- `C-c g` → `Open grok.el`      (user-custom file, loads last)
+- `C-c o` → `Open grok-opts.el` (Initial setup file)
 - `C-t` → open `treemacs` (if 'fancy')
 
 ### Eglot
@@ -68,10 +70,6 @@ Brief summary below - See `grok.el` for full details and to make customizations
 
 ### Eldoc-box
 - `C-c C-h` → doc popup at point
-
-- `C-c i` → `Open init.el`
-- `C-c g` → `Open grok.el`      (user-custom file, loads last)
-- `C-c o` → `Open grok-opts.el` (Initial setup file)
 
 ### Holy Mode (Vanilla Emacs)
 
