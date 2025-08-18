@@ -1,17 +1,13 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;; Local customization file (not under version control).
-;; Loaded after core config but before grok.d/.
+;; Loads last
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'ENV' / 'PATH' customization
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; 'env' modifications
-
-(require 'server)
-(or (server-running-p)
-    (server-start))
 
 (setenv "EDITOR" "emacsclient")
 (setenv "VISUAL" (getenv "EDITOR"))
@@ -75,6 +71,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; `General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Start Emacs server
+
+(require 'server)
+(or (server-running-p)
+    (server-start))
 
 ;; Set default compile command, for make or whatever.
 (setq compile-command "make -k ")
