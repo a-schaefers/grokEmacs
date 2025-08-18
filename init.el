@@ -33,6 +33,11 @@
 (or (file-exists-p grokel)
     (copy-file grokfile grokel))
 
+(defun grok-update-config-with-ediff ()
+  (interactive)
+  (ediff-files grokel
+               grokfile))
+
 ;; grok.d/**
 
 (unless (file-directory-p grokd)
