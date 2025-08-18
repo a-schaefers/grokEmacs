@@ -88,9 +88,10 @@
 ;; Set default compile command, for M-x cc
 (setq compile-command "make -k ")
 
-(global-set-key (kbd "C-c i") 'grok-edit-init-file)
-(global-set-key (kbd "C-c o") 'grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
-(global-set-key (kbd "C-c g") 'grok-edit-grok-file)
+(global-set-key (kbd "C-c gi") 'grok-edit-init-file)
+(global-set-key (kbd "C-c gg") 'grok-edit-grok-file)
+(global-set-key (kbd "C-c go") 'grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
+(global-set-key (kbd "C-c gu") 'grok-update-config-with-ediff)
 
 ;; M-x cc
 (defalias 'cc 'compile)

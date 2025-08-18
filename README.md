@@ -53,10 +53,11 @@ Brief summary below - See `grok.el` for full details and to make customizations
 - `M-x eat` → `eat` (a fully-featured terminal, no vterm dep)
 - `M-x git` → `magit`
 - `M-x lint` → enable `flymake` + diagnostics buffer
-- `C-c i` → open `init.el`
-- `C-c g` → open `grok.el`      (user-custom file, loads last)
-- `C-c o` → open `grok-opts.el` (initial setup file)
 - `C-t` → open `treemacs` (if 'fancy')
+- `C-c gi` → open `init.el`
+- `C-c gg` → open `grok.el`      (user-custom file, loads last)
+- `C-c go` → open `grok-opts.el` (initial setup file)
+- `C-c gu` → ediff `grok.el` against the latest `grok-defaults.el`
 
 ### Eglot
 - `M-m r` → rename symbol
