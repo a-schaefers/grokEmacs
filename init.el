@@ -2,7 +2,6 @@
 
 (add-to-list 'load-path (expand-file-name "grok-core" user-emacs-directory))
 
-;; C-u M-x grok--ensure-opts will reconfigure
 (require 'grok-bootstrap)
 
 (dolist (f `(
