@@ -31,9 +31,7 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 ## Project goals
 
 - almost **no abstraction**
-- **elpaca** package manager
-- **use-package** ensure and demand everything up front (avoids bugs, reduces config complexity, and delivers a snappy Emacs by default)
-- start in ~1s on an old PC
+- **elpaca** package manager + **use-package**
 - **gccemacs** native compilation
 - **eglot lsp + company** autocompletion
 - **magit+projectile** for VC & project awareness
