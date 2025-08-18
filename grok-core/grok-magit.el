@@ -5,8 +5,8 @@
 
 (use-package magit
   :ensure t
-  :commands (magit-status)
   :after transient
+  :commands (magit-status)
   :init (setq magit-repository-directories `((,grok-projects . 1))))
 
 (provide 'grok-magit)
