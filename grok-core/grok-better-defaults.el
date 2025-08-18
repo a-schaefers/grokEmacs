@@ -52,4 +52,4 @@
 
 (global-goto-address-mode 1)
 
-(provide 'grok-defaults)
+(provide 'grok-better-defaults)

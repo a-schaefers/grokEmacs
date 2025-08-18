@@ -7,7 +7,7 @@
 
 (dolist (f `(
              grok-elpaca
-             grok-defaults
+             grok-better-defaults
              grok-environment
              grok-better-scratch
              grok-binds
