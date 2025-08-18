@@ -73,18 +73,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Start Emacs server
-
 (require 'server)
 (or (server-running-p)
     (server-start))
 
-;; Set default compile command, for make or whatever.
+;; Set default compile command, for M-x cc
 (setq compile-command "make -k ")
 
 (setq-default
  indent-tabs-mode nil ; In general, prefer spaces
  fill-column 79)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'C' and 'C++' specific overrides (A language-specific override example)
