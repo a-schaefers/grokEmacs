@@ -28,7 +28,10 @@
       grokel (concat grokd "/" "grok.el")
       grokfile (concat user-emacs-directory "grok-defaults.el"))
 
-(or (file-exists-p grokel)
+(unless (file-directory-p grokd)
+  (make-directory grokd))
+
+(unless (file-exists-p grokel)
     (copy-file grokfile grokel))
 
 (defun grok-update-config-with-ediff ()
@@ -48,9 +51,6 @@
   (find-file grok-opts-file))
 
 ;; grok.d/**
-
-(unless (file-directory-p grokd)
-  (make-directory grokd))
 
 (add-to-list 'load-path grokd)
 
