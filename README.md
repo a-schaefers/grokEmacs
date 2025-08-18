@@ -100,6 +100,12 @@ experience beyond scheme/lisp language families.
 Language modes may add their own bindings as needed.
 ## Assumptions
 
+### emacs versions
+
+- Expects Emacs 30+ --with-native-compilation --with-tree-sitter ...
+
+### terminal
+
 I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:
 
 - All GUI-only assumptions must be guarded with (display-graphic-p) checks, and likewise for terminal-only code.
