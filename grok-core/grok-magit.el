@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
-(use-package transient :ensure t :demand t)
+(use-package transient
+  :ensure (transient :host github :repo "magit/transient" :depth nil :main "lisp/transient.el")
+  :demand t)
 
 (use-package magit
   ;; :ensure (:wait t)
