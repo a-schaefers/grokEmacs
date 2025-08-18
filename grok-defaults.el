@@ -88,20 +88,9 @@
 ;; Set default compile command, for M-x cc
 (setq compile-command "make -k ")
 
-(global-set-key (kbd "C-c i")
-                (lambda ()
-                  (interactive)
-                  (find-file (expand-file-name "init.el" user-emacs-directory))))
-
-(global-set-key (kbd "C-c o")
-                (lambda ()
-                  (interactive)
-                  (find-file (expand-file-name "grok-opts.el" user-emacs-directory))))
-
-(global-set-key (kbd "C-c g")
-                (lambda ()
-                  (interactive)
-                  (find-file (expand-file-name "grok.el" (concat user-emacs-directory "/grok.d")))))
+(global-set-key (kbd "C-c i") 'grok-edit-init-file)
+(global-set-key (kbd "C-c o") 'grok-edit-grok-initial-setup-opts)
+(global-set-key (kbd "C-c g") 'grok-edit-grok-file)
 
 ;; M-x cc
 (defalias 'cc 'compile)

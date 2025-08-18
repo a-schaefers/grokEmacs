@@ -34,8 +34,19 @@
 
 (defun grok-update-config-with-ediff ()
   (interactive)
-  (ediff-files grokel
-               grokfile))
+  (ediff-files grokel grokfile))
+
+(defun grok-edit-init-file ()
+  (interactive)
+  (find-file (expand-file-name "init.el" user-emacs-directory)))
+
+(defun grok-edit-grok-file ()
+  (interactive)
+  (find-file grokfile))
+
+(defun grok-edit-grok-initial-setup-opts ()
+  (interactive)
+  (find-file grok-opts-file))
 
 ;; grok.d/**
 
