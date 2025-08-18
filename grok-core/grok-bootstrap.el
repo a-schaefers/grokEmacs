@@ -44,6 +44,7 @@
 (defvar grok-opts-spec
   '((grok-projects        :type directory :prompt "Projects dir: " :default "~/repos")
     (grok-evil-mode            :type boolean   :prompt "Enable evil mode? ")
+    (grok-theme           :type boolean   :prompt "Use a preconfigured theme? (No will provide a pure-vanilla angry-fruit Emacs) ")
     (grok-theme-style     :type choice    :prompt "Theme (fancy/minimal/none): " :choices (fancy minimal none) :default fancy)
     (grok-theme-mode      :type choice    :prompt "Theme (light/dark): " :choices (light dark) :default dark)
     (grok-alpha-background :type string   :prompt "Transparency (0–99, [enter]/100 = off): " :default "")
@@ -57,7 +58,10 @@
   (interactive "P")
   (let* ((use-dialog-box nil)    ;; force minibuffer prompts
          (use-file-dialog nil)
-         (opts-file grok-opts-file))
+         (opts-file grok-opts-file)
+         ;; gating: if user says NO to grok-theme, all subsequent answers become nil
+         (seen-theme nil)
+         (skip-after-theme nil))
     (when (or force (not (file-exists-p opts-file)))
       (with-temp-file opts-file
         (insert ";;; -*- lexical-binding: t; no-byte-compile: t; -*-\n\n")
@@ -71,28 +75,34 @@
                                (plist-get plist :default)))
                  val)
             (setq val
-                  (pcase type
-                    ('directory (read-directory-name prompt
-                                                     (and fallback (expand-file-name fallback))
-                                                     nil nil))
-                    ('boolean  (y-or-n-p prompt))
-                    ('choice   (let* ((def (cond ((stringp fallback) fallback)
-                                                 ((symbolp fallback) (symbol-name fallback))
-                                                 (t nil))))
-                                 (completing-read prompt
-                                                  (mapcar #'symbol-name choices)
-                                                  nil t def)))
-                    ('string   (read-string prompt (or fallback "")))
-                    (_         (read-from-minibuffer prompt (format "%s" (or fallback ""))))))
+                  (if (and skip-after-theme seen-theme (not (eq sym 'grok-theme)))
+                      ;; After grok-theme=nil, force all remaining values to nil without prompting
+                      nil
+                    (pcase type
+                      ('directory (read-directory-name prompt
+                                                       (and fallback (expand-file-name fallback))
+                                                       nil nil))
+                      ('boolean  (y-or-n-p prompt))
+                      ('choice   (let* ((def (cond ((stringp fallback) fallback)
+                                                   ((symbolp fallback) (symbol-name fallback))
+                                                   (t nil))))
+                                   (completing-read prompt
+                                                    (mapcar #'symbol-name choices)
+                                                    nil t def)))
+                      ('string   (read-string prompt (or fallback "")))
+                      (_         (read-from-minibuffer prompt (format "%s" (or fallback "")))))))
             (prin1 `(setq ,sym ,val) (current-buffer))
             (insert "\n")
+            ;; Flip the gating switch immediately after answering grok-theme
+            (when (eq sym 'grok-theme)
+              (setq seen-theme t
+                    skip-after-theme (not val)))
             ;; Follow-up: if line numbers are enabled, ask for relative numbers.
             (when (and (eq sym 'grok-line-numbers) val)
               (let ((rel (y-or-n-p "Use relative line numbers? ")))
                 (prin1 `(setq grok-relative-line-numbers ,rel) (current-buffer))
                 (insert "\n")))))))
     (load opts-file t t)))
-
 
 (grok--ensure-opts)
 
