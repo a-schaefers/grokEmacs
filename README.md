@@ -57,7 +57,7 @@ Brief summary below - See `grok.el` for full details and to make customizations
 - `M-x lint` → enable `flymake` + diagnostics buffer
 - `C-c i` → open `init.el`
 - `C-c g` → `Open grok.el`      (user-custom file, loads last)
-- `C-c o` → `Open grok-opts.el` (Initial setup file)
+- `C-c o` → `Open grok-opts.el` (initial setup file)
 - `C-t` → open `treemacs` (if 'fancy')
 
 ### Eglot
