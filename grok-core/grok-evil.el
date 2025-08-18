@@ -3,19 +3,16 @@
 (use-package evil
   :if (bound-and-true-p grok-evil-mode)
   :ensure t
-  :demand t
+  :hook (elpaca-after-init . evil-mode)
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  :config (evil-mode 1))
-
+  (setq evil-want-keybinding nil))
 
 (use-package evil-collection
   ;; so Magit, dired, etc. feel vimmy
   :if (bound-and-true-p grok-evil-mode)
   :after evil
   :ensure t
-  :demand t
   :config
   (evil-collection-init))
 
@@ -23,15 +20,14 @@
   ;; comments
   :if (bound-and-true-p grok-evil-mode)
   :ensure t
-  :demand t
-  :after (evil)
+  :after evil
   :config (evil-commentary-mode 1))
 
 (use-package evil-surround
   ;; surround editing
   :if (bound-and-true-p grok-evil-mode)
   :ensure t
-  :demand t
+  :after evil
   :config
   (global-evil-surround-mode 1))
 
@@ -39,31 +35,25 @@
   ;; jump between pairs
   :if (bound-and-true-p grok-evil-mode)
   :ensure t
-  :demand t
+  :after evil
   :config
   (global-evil-matchit-mode 1))
 
 (use-package smartparens
   ;; dep for evil-cleverparens
   :if (bound-and-true-p grok-evil-mode)
-  :ensure t
-  :demand t)
+  :after evil
+  :ensure t)
 
 (use-package evil-cleverparens
   ;; evil mode's cousin to paredit
   :if (bound-and-true-p grok-evil-mode)
   :ensure t
-  :demand t
   :after (evil smartparens))
 
-(use-package treemacs-evil
-  :if (and (bound-and-true-p grok-evil-mode) (string= grok-theme-style "fancy"))
-  :after (treemacs evil)
-  :ensure t
-  :demand t)
-
-;; for reasons unknown, these do not get registered within the use-package macro -- tried :command, :hook: :init :config everything i could think of
-;; paredit does not have this issue. some kind of unique elpaca + use-package + evil-cleverparens issue
+;; for reasons unknown, these do not get registered within the above evil-cleverparens use-package declaration
+;; tried :command, :hook: :init :config
+;; paredit does not have this issue.
 (add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'evil-cleverparens-mode)
 (add-hook 'ielm-mode-hook               #'evil-cleverparens-mode)
@@ -75,12 +65,17 @@
 (with-eval-after-load 'racket-mode
   (add-hook 'racket-mode-hook  #'evil-cleverparens-mode))
 
+(use-package treemacs-evil
+  :if (and (bound-and-true-p grok-evil-mode) (string= grok-theme-style "fancy"))
+  :after (treemacs evil)
+  :ensure t)
+
 ;; example for vimmers who want to setup a leader on the Space bar
 
 ;; (use-package which-key
 ;;   :if (bound-and-true-p grok-evil-mode)
 ;;   :ensure t
-;;   :demand t
+;;   :after evil
 ;;   :config
 ;;   (setq which-key-idle-delay 0.0)
 ;;   (which-key-mode 1))
@@ -90,7 +85,6 @@
 ;;   :if (bound-and-true-p grok-evil-mode)
 ;;   :after evil
 ;;   :ensure t
-;;   :demand t
 ;;   :config
 ;;   ;; Global leader: SPC …
 ;;   (general-create-definer grok/leader

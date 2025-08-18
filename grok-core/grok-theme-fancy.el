@@ -4,60 +4,47 @@
 
 (use-package dashboard
   :if (string= grok-theme-style "fancy")
-  :after projectile
   :ensure t
-  :demand t
-  :config
-  (setq dashboard-projects-backend 'projectile
-      dashboard-projects-switch-function #'projectile-switch-project)
-
-  (setq inhibit-startup-screen t)
-
-  (setq dashboard-center-content t)
-  (setq dashboard-vertically-center-content t)
-  (setq dashboard-startup-banner (expand-file-name "grokEmacs.txt" user-emacs-directory))
-  (setq dashboard-banner-logo-title "Emacs")
-  (setq dashboard-footer-messages '("Made with h@te for everything else"))
-
-  (setq dashboard-items '((recents . 5)
-                        ;; (bookmarks . 5)
-                        (projects  . 5)
-                        ;; (agenda    . 5)
-                        ;; (registers . 5)
-                        ))
-
-  (setq dashboard-startupify-list '(dashboard-insert-banner
-                                  dashboard-insert-newline
-                                  dashboard-insert-banner-title
-                                  dashboard-insert-newline
-                                  dashboard-insert-navigator
-                                  dashboard-insert-newline
-                                  dashboard-insert-init-info
-                                  dashboard-insert-items
-                                  dashboard-insert-newline
-                                  dashboard-insert-footer))
-
-  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
-  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
-  (dashboard-setup-startup-hook))
+  :hook ((elpaca-after-init . dashboard-initialize)
+         (elpaca-after-init . dashboard-insert-startupify-lists)
+         (elpaca-after-init . dashboard-setup-startup-hook))
+  :init
+  (setq inhibit-startup-screen t
+        dashboard-center-content t
+        dashboard-vertically-center-content t
+        dashboard-startup-banner (expand-file-name "grokEmacs.txt" user-emacs-directory)
+        dashboard-banner-logo-title "Emacs"
+        dashboard-footer-messages '("")
+        dashboard-items '((recents . 5)
+                          (projects . 5))
+        dashboard-startupify-list '(dashboard-insert-banner
+                                    dashboard-insert-newline
+                                    dashboard-insert-banner-title
+                                    dashboard-insert-newline
+                                    dashboard-insert-navigator
+                                    dashboard-insert-newline
+                                    dashboard-insert-init-info
+                                    dashboard-insert-items
+                                    dashboard-insert-newline
+                                    dashboard-insert-footer)
+        dashboard-projects-backend 'projectile
+        dashboard-projects-switch-function #'projectile-switch-project))
 
 (use-package doom-themes
   :if (string= grok-theme-style "fancy")
-  :ensure t :demand t
-  :config
-  (load-theme (if (string= grok-theme-mode "light") 'doom-one-light 'doom-one) t)
-  (global-hl-line-mode 1))
+  :ensure t
+  :init (defun grok/apply-doom-theme () (require 'doom-themes) (load-theme (if (string= grok-theme-mode "light") 'doom-one-light 'doom-one) t) (global-hl-line-mode 1))
+  :hook (elpaca-after-init . grok/apply-doom-theme))
 
 (use-package doom-modeline
   :if (string= grok-theme-style "fancy")
   :ensure t
-  :demand t
-  :config (doom-modeline-mode 1))
+  :init (defun grok/enable-doom-modeline () (require 'doom-modeline) (doom-modeline-mode 1))
+  :hook (elpaca-after-init . grok/enable-doom-modeline))
 
 (use-package treemacs
   :if (string= grok-theme-style "fancy")
   :ensure t
-  :demand t
   :init
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
@@ -139,6 +126,8 @@
     (treemacs-hide-gitignored-files-mode nil))
   :bind
   (:map global-map
+        ("C-t"   . treemacs)
+
         ("M-0"       . treemacs-select-window)
         ("C-x t 1"   . treemacs-delete-other-windows)
         ("C-x t t"   . treemacs)
@@ -150,19 +139,16 @@
 (use-package treemacs-projectile
   :if (string= grok-theme-style "fancy")
   :after (treemacs projectile)
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package treemacs-icons-dired
   :if (string= grok-theme-style "fancy")
   :hook (dired-mode . treemacs-icons-dired-enable-once)
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (use-package treemacs-magit
   :if (string= grok-theme-style "fancy")
   :after (treemacs magit)
-  :ensure t
-  :demand t)
+  :ensure t)
 
 (provide 'grok-theme-fancy)

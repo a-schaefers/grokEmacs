@@ -1,18 +1,18 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
-(use-package prescient :ensure t :demand t)
+(use-package prescient :ensure t)
 
 (use-package vertico
   :ensure t
-  :demand t
   :bind ( :map vertico-map
           ("RET" . vertico-directory-enter)
           ("DEL" . vertico-directory-delete-char)
           ("M-DEL" . vertico-directory-delete-word))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
-  :config
+  :init
   (vertico-mode 1)
   (savehist-mode 1)
+  :config
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
                   (replace-regexp-in-string
@@ -28,9 +28,8 @@
 
 (use-package vertico-prescient
   :ensure t
-  :demand t
   :after (vertico prescient)
-  :config
+  :init
   (vertico-prescient-mode 1)
   (prescient-persist-mode 1))
 

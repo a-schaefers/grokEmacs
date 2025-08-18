@@ -42,13 +42,13 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
 
-;; For now, during early development
-(setq use-package-always-demand t)
-
 ;; FIX; apparently elpaca will prefer built-in and not pull in what magit needs
 ;; This can probably go away in the future versions of Emacs
 ;; https://github.com/progfolio/elpaca/issues/272#issuecomment-2298727726
 (setq elpaca-ignored-dependencies
       (delq 'transient elpaca-ignored-dependencies))
+
+;; (setq use-package-always-defer t)
+(setq use-package-compute-statistics t)
 
 (provide 'grok-elpaca)
