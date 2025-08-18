@@ -42,7 +42,7 @@
 
 (defun grok-edit-grok-file ()
   (interactive)
-  (find-file grokfile))
+  (find-file grokel))
 
 (defun grok-edit-grok-initial-setup-opts ()
   (interactive)
