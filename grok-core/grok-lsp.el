@@ -48,9 +48,4 @@
 
   (setq company-idle-delay 0))
 
-(use-package company-prescient
-  :ensure t
-  :after (company prescient)
-  :hook (company-mode . company-prescient-mode))
-
 (provide 'grok-lsp)
