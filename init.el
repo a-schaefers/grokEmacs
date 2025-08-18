@@ -8,7 +8,6 @@
 (dolist (f `(
              grok-elpaca
              grok-better-defaults
-             grok-environment
              grok-better-scratch
              grok-binds
              grok-vertico
@@ -19,22 +18,50 @@
              grok-projectile
              grok-terminal
              grok-treesit
-             grok-lang
-             grok-lang-c-cpp
              grok-theme-globals
              ,@(when (string= grok-theme-style "minimal") '(grok-theme-minimal))
              ,@(when (string= grok-theme-style "fancy") '(grok-theme-fancy))
              ))
   (require f))
 
-(setq grok-d (expand-file-name "grok.d" user-emacs-directory))
+;; generate grok configuration file
 
-(unless (file-directory-p grok-d)
-  (make-directory grok-d))
+(setq grokd (expand-file-name "grok.d" user-emacs-directory)
+      grokel (concat grokd "/" "grok.el")
+      grokfile (concat user-emacs-directory "grok-defaults.el"))
 
-(add-to-list 'load-path grok-d)
+(or (file-exists-p grokel)
+    (copy-file grokfile grokel))
 
-(dolist (file (directory-files grok-d nil "\\.el\\'"))
+;; grok.d/**
+
+(unless (file-directory-p grokd)
+  (make-directory grokd))
+
+(add-to-list 'load-path grokd)
+
+(dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
+
+;; Configure eglot autostart hooks for specified language modes.
+
+(dolist (pair my-eglot-autostart-langs)
+    (let* ((hook (car pair))
+           (val (cdr pair))
+           (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
+           (override (and (consp val) (eq (car val) :override)))
+           (lsp-bin (if override (cadr val) val))
+           (cmd (cond
+                 ((symbolp lsp-bin) (list (symbol-name lsp-bin)))
+                 ((listp lsp-bin) lsp-bin)
+                 (t nil))))
+      (when (and cmd (executable-find (car cmd)))
+        (add-hook hook #'eglot-ensure))
+      (when override
+        (eval-after-load 'eglot
+          `(add-to-list 'eglot-server-programs
+                        '(,mode . ,cmd))))))
+
+;; Block until currently queued orders are processed.
 
 (elpaca-wait)

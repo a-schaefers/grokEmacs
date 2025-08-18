@@ -1,10 +1,11 @@
 /*
 !.gitignore
+!LICENSE
 !README.md
+!grok-fancy.jpg
+!grok-minimal.jpg
 !early-init.el
 !init.el
 !grok-core
 !grok.d
-!LICENSE
-!grok-fancy.jpg
-!grok-minimal.jpg
+grok.d/grok.el
