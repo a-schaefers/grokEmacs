@@ -31,7 +31,7 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (when (and (boundp 'grok-line-numbers) grok-line-numbers)
-              (setq-local display-line-numbers
+              (setq-local display-line-numbers-type
                           (if (and (boundp 'grok-relative-line-numbers) grok-relative-line-numbers)
                               'relative t))
               (display-line-numbers-mode 1))))
