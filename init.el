@@ -1,4 +1,13 @@
-;;; -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; init.el --- Initialization file for Emacs -*- lexical-binding: t; no-byte-compile: t; -*-
+
+;;; Commentary:
+;; Entry point for grokEmacs: sets `load-path`, loads bootstrap, then requires core modules.
+;; Conditionally enables Holy/Evil and Minimal/Fancy themes via `grok-evil-mode` / `grok-theme-style`.
+;; Ensures ~/.config/emacs/grok.d exists, seeds grok.d/grok.el from grok-defaults.el, and provides edit/ediff helpers.
+;; Loads every *.el in grok.d, configures Eglot autostart from `my-eglot-autostart-langs` (per-mode overrides supported),
+;; then drains Elpaca’s queue with `elpaca-wait` for deterministic startup.
+
+;;; Code:
 
 (add-to-list 'load-path (expand-file-name "grok-core" user-emacs-directory))
 
@@ -22,7 +31,7 @@
              ))
   (require f))
 
-;; generate grok configuration file
+;; grok.el
 
 (setq grokd (expand-file-name "grok.d" user-emacs-directory)
       grokel (concat grokd "/" "grok.el")
@@ -35,29 +44,33 @@
     (copy-file grokfile grokel))
 
 (defun grok-update-config-with-ediff ()
+  "Ediff your grok.el against grok-defaults.el.  Useful after a 'git pull' in case of a breaking upstream change."
   (interactive)
   (ediff-files grokel grokfile))
 
 (defun grok-edit-init-file ()
+  "Open init.el."
   (interactive)
   (find-file (expand-file-name "init.el" user-emacs-directory)))
 
 (defun grok-edit-grok-file ()
+  "Open grok.el."
   (interactive)
   (find-file grokel))
 
 (defun grok-edit-grok-initial-setup-opts ()
+  "Open grok-opts.el."
   (interactive)
   (find-file grok-opts-file))
 
-;; grok.d/**
+;; grok.d
 
 (add-to-list 'load-path grokd)
 
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
 
-;; configure eglot autostart hooks for specified language modes.
+;; configure eglot per `my-eglot-autostart-langs'
 
 (dolist (pair my-eglot-autostart-langs)
     (let* ((hook (car pair))
@@ -79,3 +92,5 @@
 ;; block until currently queued orders are processed.
 
 (elpaca-wait)
+
+;;; init.el ends here
