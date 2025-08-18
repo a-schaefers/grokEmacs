@@ -95,7 +95,6 @@ Language modes may add their own bindings as needed. See `grok-core/grok-binds.e
 
 ### Eldoc-box
 - `C-c C-h` → doc popup at point
-- `K` (Evil normal mode only) → doc popup at point
 
 ## Assumptions
 
