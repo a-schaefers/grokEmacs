@@ -14,7 +14,7 @@ This project does not use GitHub Issues. Instead, please submit your improvement
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
 
-Currently under heavy development, new features being added daily
+**Currently under heavy development, new features being added daily**
 
 ## Interactive Initial Setup
 
