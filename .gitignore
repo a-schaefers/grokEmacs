@@ -6,6 +6,7 @@
 !grok-minimal.jpg
 !early-init.el
 !init.el
+!grok-defaults.el
 !grok-core
 !grok.d
 grok.d/grok.el
