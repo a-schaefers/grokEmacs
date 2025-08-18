@@ -29,10 +29,7 @@
   (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions))
 
 (with-eval-after-load 'eldoc-box
-  (global-set-key (kbd "C-c C-h") 'eldoc-box-help-at-point)
-
-  (when (boundp 'evil-normal-state-map) ; only if evil exists
-    (define-key evil-normal-state-map (kbd "K") #'eldoc-box-help-at-point)))
+  (global-set-key (kbd "C-c C-h") 'eldoc-box-help-at-point))
 
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "C-n") 'company-select-next)
