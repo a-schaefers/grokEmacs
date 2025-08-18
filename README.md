@@ -46,6 +46,29 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 ## Binds
 
+Brief summary below - See `grok.el` for full details and to make customizations
+
+### General
+- `M-x pro` → `projectile-commander`
+- `M-x cc` → `compile`
+- `M-x sh` → `shell` (a dumb shell buffer)
+- `M-x eat` → `eat` (a fully-featured terminal, no vterm dep)
+- `M-x git` → `magit`
+- `M-x lint` → enable `flymake` + diagnostics buffer
+- `C-c i` → open `init.el`
+- `C-t` → open `treemacs` (if 'fancy')
+
+### Eglot
+- `M-m r` → rename symbol
+- `M-m o` → organize imports
+- `M-m h` → show doc (eldoc)
+- `M-m =` → format buffer/region
+- `M-m ?` → find references
+- `M-.`   → jump to definition
+
+### Eldoc-box
+- `C-c C-h` → doc popup at point
+
 - `C-c i` → `Open init.el`
 - `C-c g` → `Open grok.el`      (user-custom file, loads last)
 - `C-c o` → `Open grok-opts.el` (Initial setup file)
@@ -77,29 +100,7 @@ experience beyond scheme/lisp language families.
 
 ### Additional language-specific binds
 
-Language modes may add their own bindings as needed. See `grok-core/grok-binds.el` for full details.
-
-### General
-- `M-x pro` → `projectile-commander`
-- `M-x cc` → `compile`
-- `M-x sh` → `shell` (a dumb shell buffer)
-- `M-x eat` → `eat` (a fully-featured terminal, no vterm dep)
-- `M-x git` → `magit`
-- `M-x lint` → enable `flymake` + diagnostics buffer
-- `C-c i` → open `init.el`
-- `C-t` → open `treemacs` (if 'fancy')
-
-### Eglot
-- `M-m r` → rename symbol
-- `M-m o` → organize imports
-- `M-m h` → show doc (eldoc)
-- `M-m =` → format buffer/region
-- `M-m ?` → find references
-- `M-.`   → jump to definition
-
-### Eldoc-box
-- `C-c C-h` → doc popup at point
-
+Language modes may add their own bindings as needed.
 ## Assumptions
 
 I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:

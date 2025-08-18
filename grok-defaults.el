@@ -72,17 +72,83 @@
 ;; `General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; python friendly
+(setq-default indent-tabs-mode nil
+              fill-column 79)
+
 ;; Start Emacs server
 (require 'server)
 (or (server-running-p)
     (server-start))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; `Binds'
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Set default compile command, for M-x cc
 (setq compile-command "make -k ")
 
-(setq-default
- indent-tabs-mode nil ; In general, prefer spaces
- fill-column 79)
+(global-set-key (kbd "C-c i")
+                (lambda ()
+                  (interactive)
+                  (find-file (expand-file-name "init.el" user-emacs-directory))))
+
+(global-set-key (kbd "C-c o")
+                (lambda ()
+                  (interactive)
+                  (find-file (expand-file-name "grok-opts.el" user-emacs-directory))))
+
+(global-set-key (kbd "C-c g")
+                (lambda ()
+                  (interactive)
+                  (find-file (expand-file-name "grok.el" (concat user-emacs-directory "/grok.d")))))
+
+;; M-x cc
+(defalias 'cc 'compile)
+
+;; M-x lint
+(defun lint ()
+  (interactive)
+  (flymake-mode 1)
+  (flymake-show-diagnostics-buffer))
+
+;; M-x git
+(defalias 'git 'magit)
+
+;; M-x pro
+(defalias 'pro 'projectile-commander)
+
+;; M-x sh
+(defalias 'sh 'shell)
+
+(with-eval-after-load 'eglot
+  (define-key eglot-mode-map (kbd "M-m r") 'eglot-rename)
+  (define-key eglot-mode-map (kbd "M-m o") 'eglot-code-action-organize-imports)
+  (define-key eglot-mode-map (kbd "M-m h") 'eldoc)
+  (define-key eglot-mode-map (kbd "M-m =") 'eglot-format)
+  (define-key eglot-mode-map (kbd "M-m ?") 'xref-find-references)
+  (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions))
+
+(with-eval-after-load 'eldoc-box
+    (global-set-key (kbd "C-c C-h") 'eldoc-box-help-at-point))
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-search-map (kbd "C-n") 'company-select-next)
+  (define-key company-search-map (kbd "C-p") 'company-select-previous))
+
+(with-eval-after-load 'crux
+  (global-set-key (kbd "C-<tab>") 'crux-other-window-or-switch-buffer)
+  (global-set-key (kbd "C-a") 'crux-move-beginning-of-line)
+  (global-set-key (kbd "C-o") 'crux-smart-open-line)
+  (global-set-key (kbd "C-x C-o") 'crux-other-window-or-switch-buffer)
+  (global-set-key (kbd "C-c C-l") 'crux-duplicate-current-line-or-region)
+  (global-set-key (kbd "C-c C--") 'crux-kill-whole-line)
+  (global-set-key (kbd "C-c ;") 'crux-duplicate-and-comment-current-line-or-region))
+
+(with-eval-after-load 'treemacs
+    (global-set-key (kbd "C-t") 'treemacs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'C' and 'C++' specific overrides (A language-specific override example)
