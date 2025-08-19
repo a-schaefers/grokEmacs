@@ -15,8 +15,12 @@
 
 ;; 'PATH' modifications
 
-(setq grok-path-insert '("~/bin"
-                         "~/.local/bin"))
+(setq grok-path-insert '(
+                         ;; e.g.:
+                         ;;
+                         ;; "~/bin"
+                         ;; "~/.local/bin"
+                         ))
 
 (setq grok-path-append '(""))
 
@@ -69,74 +73,114 @@
         ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 'Packages' - override core's already provided packages in this way
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; 'Overrides' - already provided by core
+
+;; (use-package magit
+;;   :ensure nil
+;;   :config ... )
+
+
+;; `Additional' - new pkgs
+
+;; (use-package foo
+;;   :ensure t
+;;   :config ... )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; `General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Python friendly
-(setq-default indent-tabs-mode nil
-              fill-column 79)
+(use-package emacs
+  :ensure nil
+  :init
+  ;; Python friendly
+  (setq-default indent-tabs-mode nil
+                fill-column 79)
 
-;; Start Emacs server
-(require 'server)
-(or (server-running-p)
-    (server-start))
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; `Binds'
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  ;; Set default compile command, for M-x cc
+  (setq compile-command "make -k ")
+
+  :bind (("C-c gi" . grok-edit-init-file)
+         ("C-c gg" . grok-edit-grok-file)
+         ("C-c go" . grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
+         ("C-c gu" . grok-update-config-with-ediff))
+
+  :config
+  ;; Start Emacs server
+  (require 'server)
+  (unless (server-running-p) (server-start))
+
+  ;; M-x cc
+  (defalias 'cc 'compile)
+
+  ;; M-x lint
+  (defun lint ()
+    (interactive)
+    (flymake-mode 1)
+    (flymake-show-diagnostics-buffer))
+
+  ;; M-x git
+  (defalias 'git 'magit)
+
+  ;; M-x pro
+  (defalias 'pro 'projectile-commander)
+
+  ;; M-x sh (eat)
+  (defalias 'sh 'eat)
+
+  ;;  To setup shell integration for GNU Bash, put the following at the end of your .bashrc:
+  ;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  ;;   source "$EAT_SHELL_INTEGRATION_DIR/bash"
+
+  ;; For Zsh, put the following in your .zshrc:
+  ;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  ;;   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; `Binds'
+;; 'language-specific' overrides
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Set default compile command, for M-x cc
-(setq compile-command "make -k ")
+;; 'C', 'C++' and 'Makefile' specific overrides (A  example)
 
-(global-set-key (kbd "C-c gi") 'grok-edit-init-file)
-(global-set-key (kbd "C-c gg") 'grok-edit-grok-file)
-(global-set-key (kbd "C-c go") 'grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
-(global-set-key (kbd "C-c gu") 'grok-update-config-with-ediff)
+(use-package c-ts-mode
+  :ensure nil
+  :preface
+  (defun grok-c-ts-style ()
+    ;; Use Linux kernel coding style in C (Tree-sitter)
+    ;; https://www.kernel.org/doc/html/v4.10/process/coding-style.html
+    (setq-local indent-tabs-mode t)       ; Use tabs
+    (setq-local tab-width 8)              ; Display width of tab
+    (setq-local c-ts-mode-indent-style 'linux)
+    (setq-local c-ts-mode-indent-offset 8))
+  :hook (c-ts-mode . grok-c-ts-style))
 
-;; M-x cc
-(defalias 'cc 'compile)
+(use-package c++-ts-mode
+  :ensure nil
+  :after c-ts-mode
+  :commands (c++-ts-mode)
+  :preface
+  (defun grok-cpp-ts-style ()
+    ;; Linux kernel-like tabs/8 for C++ (Tree-sitter)
+    (setq-local indent-tabs-mode t)
+    (setq-local tab-width 8)
+    (setq-local c++-ts-mode-indent-style 'linux)
+    (setq-local c++-ts-mode-indent-offset 8))
+  :hook (c++-ts-mode . grok-cpp-ts-style))
 
-;; M-x lint
-(defun lint () (interactive) (flymake-mode 1) (flymake-show-diagnostics-buffer))
-
-;; M-x git
-(defalias 'git 'magit)
-
-;; M-x pro
-(defalias 'pro 'projectile-commander)
-
-;; M-x sh (eat)
-(defalias 'sh 'eat)
-
-;;  To setup shell integration for GNU Bash, put the following at the end of your .bashrc:
-;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-;;   source "$EAT_SHELL_INTEGRATION_DIR/bash"
-
-;; For Zsh, put the following in your .zshrc:
-;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-;;   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 'C' and 'C++' specific overrides (A language-specific override example)
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun grok-c-ts-modes ()
-  ;; Use Linux kernel coding style in C and C++ (Tree-sitter modes)
-  ;; https://www.kernel.org/doc/html/v4.10/process/coding-style.html
-  (setq-local indent-tabs-mode t)       ; Use tabs
-  (setq-local tab-width 8)              ; Display width of tab
-  ;; C-specific
-  (setq-local c-ts-mode-indent-style 'linux)
-  (setq-local c-ts-mode-indent-offset 8)
-  ;; C++-specific
-  (setq-local c++-ts-mode-indent-style 'linux)
-  (setq-local c++-ts-mode-indent-offset 8))
-
-(add-hook 'c-ts-mode-hook #'grok-c-ts-modes)
-(add-hook 'c++-ts-mode-hook #'grok-c-ts-modes)
-
-;; Tabs are tabs in C family langs
-(add-hook 'makefile-mode-hook (lambda ()
-                                (setq-local indent-tabs-mode t)))
+(use-package makefile-mode
+  :ensure nil
+  :commands (makefile-mode)
+  :preface
+  (defun grok-makefile-tabs ()            ; Tabs are literal in Makefiles
+    (setq-local indent-tabs-mode t))
+  :hook (makefile-mode . grok-makefile-tabs))
 
 (provide 'grok)
