@@ -9,68 +9,72 @@
 
 ;; 'env' modifications
 
-(setenv "EDITOR" "emacsclient")
-(setenv "VISUAL" (getenv "EDITOR"))
-(setenv "PAGER" "cat")
+(use-package emacs
+  :ensure nil
+  :init
+  ;; 'env' modifications
+  (setenv "EDITOR" "emacsclient")
+  (setenv "VISUAL" (getenv "EDITOR"))
+  (setenv "PAGER" "cat")
 
-;; 'PATH' modifications
+  ;; 'PATH' modifications
+  (setq grok-path-insert '(
+                           ;; e.g.:
+                           ;;
+                           ;; "~/bin"
+                           ;; "~/.local/bin"
+                           ))
+  (setq grok-path-append '(""))
 
-(setq grok-path-insert '(
-                         ;; e.g.:
-                         ;;
-                         ;; "~/bin"
-                         ;; "~/.local/bin"
-                         ))
-
-(setq grok-path-append '(""))
-
-;; Set matching 'exec-path' and 'PATH' values with inserts/appends
-
-(dolist (item grok-path-insert)
-  (add-to-list 'exec-path item))
-
-(dolist (item grok-path-append)
-  (add-to-list 'exec-path item t))
-
-(setenv "PATH" (string-trim-right (string-join exec-path ":") ":$"))
+  ;; Set matching 'exec-path' and 'PATH' values with inserts/appends
+  (dolist (item grok-path-insert)
+    (add-to-list 'exec-path item))
+  (dolist (item grok-path-append)
+    (add-to-list 'exec-path item t))
+  (require 'subr-x)                         ;; string-join / string-trim-right
+  (setenv "PATH" (string-trim-right (string-join exec-path ":") ":$")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'LSP' - Modes that will autostart the corresponding server if found on PATH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq grok-eglot-autostart-langs
-      '(
-        (c-ts-mode-hook . clangd)
-        (c++-ts-mode-hook . clangd)
-        (lua-ts-mode-hook . lua-language-server)
-        (bash-ts-mode-hook . bash-language-server)
-        (python-ts-mode-hook . pylsp)
-        (go-ts-mode-hook . gopls)
-        (rust-ts-mode-hook . rust-analyzer)
-        (ruby-ts-mode-hook . solargraph)
-        (elixir-ts-mode-hook . (:override elixir-ls))
-        (html-ts-mode-hook . vscode-html-language-server)
-        (css-ts-mode-hook . vscode-css-language-server)
-        (typescript-ts-mode-hook . typescript-language-server)
-        (js-ts-mode-hook . typescript-language-server)
-        (yaml-ts-mode-hook . yaml-language-server)
-        (json-ts-mode-hook . vscode-json-languageserver)
-        (java-ts-mode-hook . jdtls)
-        (csharp-ts-mode-hook . OmniSharp)
+(use-package emacs
+  :ensure nil
+  :preface
+  (defvar grok-eglot-autostart-langs
+    '(
+      (c-ts-mode-hook        . clangd)
+      (c++-ts-mode-hook      . clangd)
+      (lua-ts-mode-hook      . lua-language-server)
+      (bash-ts-mode-hook     . bash-language-server)
+      (python-ts-mode-hook   . pylsp)
+      (go-ts-mode-hook       . gopls)
+      (rust-ts-mode-hook     . rust-analyzer)
+      (ruby-ts-mode-hook     . solargraph)
+      (elixir-ts-mode-hook   . (:override elixir-ls))
+      (html-ts-mode-hook     . vscode-html-language-server)
+      (css-ts-mode-hook      . vscode-css-language-server)
+      (typescript-ts-mode-hook . typescript-language-server)
+      (js-ts-mode-hook       . typescript-language-server)
+      (yaml-ts-mode-hook     . yaml-language-server)
+      (json-ts-mode-hook     . vscode-json-languageserver)
+      (java-ts-mode-hook     . jdtls)
+      (csharp-ts-mode-hook   . OmniSharp)
 
-        ;; (markdown-mode-hook . marksman)
-        ;; (php-mode-hook . true)          ; workaround, php lang server is not available on PATH but via required lib
-        ;; (zig-mode-hook . zigls)
-        ;; (terraform-mode-hook . terraform-ls)
-        ;; (nix-mode-hook . rnix-lsp)
-        ;; (haskell-mode-hook . haskell-language-server-wrapper)
-        ;; (ocaml-mode-hook . ocaml-lsp)
-        ;; (scala-mode-hook . metals)
-        ;; (forth-mode-hook . forth-lsp)
-        ;; (erlang-mode-hook . erlang_ls)
-        ;; (racket-mode-hook . true)       ; workaround, racket lang server is not available on PATH but via required lib
-        ;; (clojure-mode-hook . clojure-lsp)
-        ))
+      ;; (markdown-mode-hook . marksman)
+      ;; (php-mode-hook . true)          ; workaround, php lang server is not available on PATH but via required lib
+      ;; (zig-mode-hook . zigls)
+      ;; (terraform-mode-hook . terraform-ls)
+      ;; (nix-mode-hook . rnix-lsp)
+      ;; (haskell-mode-hook . haskell-language-server-wrapper)
+      ;; (ocaml-mode-hook . ocaml-lsp)
+      ;; (scala-mode-hook . metals)
+      ;; (forth-mode-hook . forth-lsp)
+      ;; (erlang-mode-hook . erlang_ls)
+      ;; (racket-mode-hook . true)       ; workaround, racket lang server is not available on PATH but via required lib
+      ;; (clojure-mode-hook . clojure-lsp)
+      )
+    "Alist of major-mode hooks -> language servers for Eglot autostart."))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'Packages' - override core's already provided packages in this way

@@ -70,22 +70,25 @@
 
 ;; configure eglot per `grok-eglot-autostart-langs'
 
-(dolist (pair grok-eglot-autostart-langs)
-    (let* ((hook (car pair))
-           (val (cdr pair))
-           (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
-           (override (and (consp val) (eq (car val) :override)))
-           (lsp-bin (if override (cadr val) val))
-           (cmd (cond
-                 ((symbolp lsp-bin) (list (symbol-name lsp-bin)))
-                 ((listp lsp-bin) lsp-bin)
-                 (t nil))))
-      (when (and cmd (executable-find (car cmd)))
-        (add-hook hook #'eglot-ensure))
-      (when override
-        (eval-after-load 'eglot
-          `(add-to-list 'eglot-server-programs
-                        '(,mode . ,cmd))))))
+(use-package emacs
+  :ensure nil
+  :init
+  (require 'subr-x)
+  (when (boundp 'grok-eglot-autostart-langs)
+    (dolist (pair grok-eglot-autostart-langs)
+      (let* ((hook (car pair))
+             (val (cdr pair))
+             (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
+             (override (and (consp val) (eq (car val) :override)))
+             (lsp-bin (if override (cadr val) val))
+             (cmd (cond ((symbolp lsp-bin) (list (symbol-name lsp-bin)))
+                        ((listp  lsp-bin) lsp-bin)
+                        (t nil))))
+        (when (and cmd (executable-find (car cmd)))
+          (add-hook hook #'eglot-ensure))
+        (when override
+          (with-eval-after-load 'eglot
+            (add-to-list 'eglot-server-programs (cons mode cmd))))))))
 
 ;; block until currently queued orders are processed.
 
