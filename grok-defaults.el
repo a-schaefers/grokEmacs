@@ -178,8 +178,6 @@
 
 (use-package c++-ts-mode
   :ensure nil
-  :after c-ts-mode
-  :commands (c++-ts-mode)
   :preface
   (defun grok-cpp-ts-style ()
     ;; Linux kernel-like tabs/8 for C++ (Tree-sitter)
@@ -191,7 +189,6 @@
 
 (use-package makefile-mode
   :ensure nil
-  :commands (makefile-mode)
   :preface
   ;; Tabs are literal in Makefiles
   (defun grok-makefile-tabs ()
