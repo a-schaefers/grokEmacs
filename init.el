@@ -4,7 +4,7 @@
 ;; Entry point for grokEmacs: sets `load-path`, loads bootstrap, then requires core modules.
 ;; Conditionally enables Holy/Evil and Minimal/Fancy themes via `grok-evil-mode` / `grok-theme-style`.
 ;; Ensures ~/.config/emacs/grok.d exists, seeds grok.d/grok.el from grok-defaults.el, and provides edit/ediff helpers.
-;; Loads every *.el in grok.d, configures Eglot autostart from `my-eglot-autostart-langs` (per-mode overrides supported),
+;; Loads every *.el in grok.d, configures Eglot autostart from `grok-eglot-autostart-langs` (per-mode overrides supported),
 ;; then drains Elpaca’s queue with `elpaca-wait` for deterministic startup.
 
 ;;; Code:
@@ -70,7 +70,7 @@
 
 ;; configure eglot per `grok-eglot-autostart-langs'
 
-(dolist (pair my-eglot-autostart-langs)
+(dolist (pair grok-eglot-autostart-langs)
     (let* ((hook (car pair))
            (val (cdr pair))
            (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))

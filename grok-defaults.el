@@ -38,7 +38,7 @@
 ;; 'LSP' - Modes that will autostart the corresponding server if found on PATH
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq my-eglot-autostart-langs
+(setq grok-eglot-autostart-langs
       '(
         (c-ts-mode-hook . clangd)
         (c++-ts-mode-hook . clangd)
