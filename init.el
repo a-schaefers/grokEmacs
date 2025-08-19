@@ -68,7 +68,7 @@
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
 
-;; configure eglot per `my-eglot-autostart-langs'
+;; configure eglot per `grok-eglot-autostart-langs'
 
 (dolist (pair my-eglot-autostart-langs)
     (let* ((hook (car pair))
