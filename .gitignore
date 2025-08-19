@@ -10,3 +10,4 @@
 !grok-core
 !grok.d
 grok.d/grok.el
+!grokEmacs.txt
