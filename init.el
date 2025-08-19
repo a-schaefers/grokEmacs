@@ -1,11 +1,22 @@
 ;;; init.el --- Initialization file for Emacs -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;;; Commentary:
-;; Entry point for grokEmacs: sets `load-path`, loads bootstrap, then requires core modules.
-;; Conditionally enables Holy/Evil and Minimal/Fancy themes via `grok-evil-mode` / `grok-theme-style`.
-;; Ensures ~/.config/emacs/grok.d exists, seeds grok.d/grok.el from grok-defaults.el, and provides edit/ediff helpers.
-;; Loads every *.el in grok.d, configures Eglot autostart from `grok-eglot-autostart-langs` (per-mode overrides supported),
-;; then drains Elpaca’s queue with `elpaca-wait` for deterministic startup.
+;;
+;; Grok Emacs goes out of its way to `provide' & `require' all .el files, avoiding load and load-file,
+;; because initially those other methods seemed to have odd behavior under Elpaca. Currently, the author is unsure.
+;;
+;; It also goes out of its way to `use-package' enclose everything throughout as much as possible, to nigh absurdity.
+;; If for nothing else, it begins to standardize a way to do configuration in a language (elisp) where there are
+;; many ways to accomplish the same end. The use-package built-in is great for this, as most Emacs users globally are already
+;; familiar with it, and we thus avoid creating yet more macros and wrappers around use-package and "framework-lockin".
+;;
+;; This file:
+;;
+;; Sets load-path, requires grok-bootstrap, and then requires grok-core modules.
+;; Conditionally enables grok-holy or grok-evil and grok-theme-minimal or grok-theme-fancy.
+;; Ensures grok.d exists, seeds grok.d/grok.el from grok-defaults.el, and provides edit/ediff helpers.
+;; Loads every *.el in grok.d, configures Eglot autostart from grok-eglot-autostart-langs,
+;; then drains Elpaca’s queue with elpaca-wait for deterministic startup.
 
 ;;; Code:
 
