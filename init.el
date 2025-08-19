@@ -33,9 +33,9 @@
 
 ;; grok.d/ & grok.el
 
-(setq grokd (expand-file-name "grok.d" user-emacs-directory)
-      grokel (concat grokd "/" "grok.el")
-      grokfile (concat user-emacs-directory "grok-defaults.el"))
+(setq grokfile (expand-file-name "grok-defaults.el" user-emacs-directory)
+      grokd    (expand-file-name "grok.d" user-emacs-directory)
+      grokel   (file-name-concat grokd "grok.el"))
 
 (unless (file-directory-p grokd)
   (make-directory grokd))
