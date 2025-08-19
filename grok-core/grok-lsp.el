@@ -6,17 +6,17 @@
 
 (use-package eglot
   :after yasnippet
+  :ensure nil ; prefer builtin
   :init
   (define-key eglot-mode-map (kbd "M-m r") 'eglot-rename)
   (define-key eglot-mode-map (kbd "M-m o") 'eglot-code-action-organize-imports)
   (define-key eglot-mode-map (kbd "M-m h") 'eldoc)
   (define-key eglot-mode-map (kbd "M-m =") 'eglot-format)
   (define-key eglot-mode-map (kbd "M-m ?") 'xref-find-references)
-  (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions)
-  :ensure t)
+  (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions))
 
 (use-package flymake
-  :ensure t
+  :ensure nil ; prefer builtin
   :config
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 
