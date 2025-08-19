@@ -90,17 +90,16 @@
     "Alist of major-mode hooks -> language servers for Eglot autostart."))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 'Packages' - override core's already provided packages in this way
+;; 'Packages'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; 'Overrides' - already provided by core
+;; 'Overrides' - hack on some already provided package by core
 
 ;; (use-package magit
 ;;   :ensure nil
 ;;   :config ... )
 
-
-;; `Additional' - new pkgs
+;; `Additional' - add some new package
 
 ;; (use-package foo
 ;;   :ensure t
@@ -117,22 +116,17 @@
   (setq-default indent-tabs-mode nil
                 fill-column 79)
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; `Binds'
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;
-
   ;; Set default compile command, for M-x cc
   (setq compile-command "make -k ")
 
+  ;; Some global binds
   :bind (("C-c gi" . grok-edit-init-file)
          ("C-c gg" . grok-edit-grok-file)
          ("C-c go" . grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
          ("C-c gu" . grok-update-config-with-ediff))
 
   :config
-  ;; Start Emacs server
-  (require 'server)
-  (unless (server-running-p) (server-start))
+  ;; Some helpful aliases
 
   ;; M-x cc
   (defalias 'cc 'compile)
@@ -159,7 +153,10 @@
   ;; For Zsh, put the following in your .zshrc:
   ;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
   ;;   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-  )
+
+  ;; Start Emacs server
+  (require 'server)
+  (unless (server-running-p) (server-start)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'language-specific' overrides
@@ -196,7 +193,8 @@
   :ensure nil
   :commands (makefile-mode)
   :preface
-  (defun grok-makefile-tabs ()            ; Tabs are literal in Makefiles
+  ;; Tabs are literal in Makefiles
+  (defun grok-makefile-tabs ()
     (setq-local indent-tabs-mode t))
   :hook (makefile-mode . grok-makefile-tabs))
 
