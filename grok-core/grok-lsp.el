@@ -7,13 +7,14 @@
 (use-package eglot
   :after yasnippet
   :ensure nil ; prefer builtin
-  :init
-  (define-key eglot-mode-map (kbd "M-m r") 'eglot-rename)
-  (define-key eglot-mode-map (kbd "M-m o") 'eglot-code-action-organize-imports)
-  (define-key eglot-mode-map (kbd "M-m h") 'eldoc)
-  (define-key eglot-mode-map (kbd "M-m =") 'eglot-format)
-  (define-key eglot-mode-map (kbd "M-m ?") 'xref-find-references)
-  (define-key eglot-mode-map (kbd "M-.")   'xref-find-definitions))
+  :bind                                  ; defers until Eglot loads
+  (:map eglot-mode-map
+        ("M-m r" . eglot-rename)
+        ("M-m o" . eglot-code-action-organize-imports)
+        ("M-m h" . eldoc)
+        ("M-m =" . eglot-format)
+        ("M-m ?" . xref-find-references)
+        ("M-."   . xref-find-definitions)))
 
 (use-package flymake
   :ensure nil ; prefer builtin
@@ -37,15 +38,17 @@
 
 (use-package company
   :ensure t
-  :init
-  (add-hook 'prog-mode-hook 'company-mode)
-  (add-hook 'html-ts-mode-hook 'company-mode) ; apparently not a prog-mode
+  :hook ((prog-mode . company-mode)
+         (html-ts-mode . company-mode))
+  :bind (:map
+         company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)
+         :map
+         company-search-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous))
   :config
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-search-map (kbd "C-n") 'company-select-next)
-  (define-key company-search-map (kbd "C-p") 'company-select-previous)
-
   (setq company-idle-delay 0))
 
 (provide 'grok-lsp)
