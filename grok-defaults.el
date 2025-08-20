@@ -61,44 +61,57 @@
 (use-package emacs
   :ensure nil
   :preface
-  ;; Eglot autostart map: major-mode hook → server command (symbol or list).
+  ;; Eglot autostart map: major-mode hook -> server command.
   (defvar grok-eglot-autostart-langs
-    '((c-ts-mode-hook          . clangd)
-      (c++-ts-mode-hook        . clangd)
-      (lua-ts-mode-hook        . lua-language-server)
-      (bash-ts-mode-hook       . bash-language-server)
-      (python-ts-mode-hook     . pylsp)
-      (go-ts-mode-hook         . gopls)
-      (rust-ts-mode-hook       . rust-analyzer)
-      (ruby-ts-mode-hook       . solargraph)
-      (elixir-ts-mode-hook     . (:override elixir-ls))
-      (html-ts-mode-hook       . vscode-html-language-server)
-      (css-ts-mode-hook        . vscode-css-language-server)
-      (typescript-ts-mode-hook . typescript-language-server)
-      (js-ts-mode-hook         . typescript-language-server)
-      (yaml-ts-mode-hook       . yaml-language-server)
-      (json-ts-mode-hook       . vscode-json-languageserver)
-      (java-ts-mode-hook       . jdtls)
-      (csharp-ts-mode-hook     . OmniSharp))
-    "Alist of major-mode hooks → language servers for Eglot autostart.")
+    '((c-ts-mode-hook          . "clangd")
+      (c++-ts-mode-hook        . "clangd")
+      (lua-ts-mode-hook        . "lua-language-server")
+      (bash-ts-mode-hook       . "bash-language-server")
+      (python-ts-mode-hook     . "pylsp")
+      (go-ts-mode-hook         . "gopls")
+      (rust-ts-mode-hook       . "rust-analyzer")
+      (ruby-ts-mode-hook       . "solargraph")
+      (elixir-ts-mode-hook     . (:override "elixir-ls"))
+      (html-ts-mode-hook       . "vscode-html-language-server")
+      (css-ts-mode-hook        . "vscode-css-language-server")
+      (typescript-ts-mode-hook . "typescript-language-server")
+      (js-ts-mode-hook         . "typescript-language-server")
+      (yaml-ts-mode-hook       . "yaml-language-server")
+      (json-ts-mode-hook       . "vscode-json-languageserver")
+      (java-ts-mode-hook       . "jdtls")
+      (csharp-ts-mode-hook     . "OmniSharp"))
+    "Alist of major-mode hooks -> language servers for Eglot autostart.")
 
   (defun grok-apply-eglot-autostart (&optional table)
-    "Register Eglot autostart hooks from TABLE (alist HOOK . SERVER)."
-    (require 'subr-x)
-    (dolist (pair (or table grok-eglot-autostart-langs))
-      (let* ((hook (car pair))
-             (val  (cdr pair))
-             (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
-             (override (and (consp val) (eq (car val) :override)))
-             (lsp-bin  (if override (cadr val) val))
-             (cmd (cond ((symbolp lsp-bin) (list (symbol-name lsp-bin)))
-                        ((listp  lsp-bin) lsp-bin)
-                        (t nil))))
-        (when (and cmd (executable-find (car cmd)))
-          (add-hook hook #'eglot-ensure))
-        (when override
-          (with-eval-after-load 'eglot
-            (add-to-list 'eglot-server-programs (cons mode cmd)))))))
+  "Register Eglot autostart hooks from TABLE (alist HOOK . SPEC)."
+  (require 'subr-x)
+  (dolist (pair (or table grok-eglot-autostart-langs))
+    (let* ((hook (car pair))
+           (spec (cdr pair))
+           (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
+           (override nil)
+           (cmd nil))
+      (cond
+       ((stringp spec)
+        (setq cmd (list spec)))
+       ((consp spec)
+        (when (eq (car spec) :override)
+          (setq override t
+                spec (cdr spec)))
+        (cond
+         ((stringp spec)
+          (setq cmd (list spec)))
+         ((and (listp spec)
+               (let ((all-strings t))
+                 (dolist (s spec)
+                   (unless (stringp s) (setq all-strings nil)))
+                 all-strings))
+          (setq cmd spec)))))
+      (when (and override cmd)
+        (with-eval-after-load 'eglot
+          (add-to-list 'eglot-server-programs (cons mode cmd))))
+      (when (and cmd (executable-find (car cmd)))
+        (add-hook hook #'eglot-ensure)))))
   :init
   (grok-apply-eglot-autostart))
 
