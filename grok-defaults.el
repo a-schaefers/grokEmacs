@@ -116,23 +116,7 @@
   (grok-apply-eglot-autostart))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 'Packages'
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; 'Overrides' - hack on some already provided package by core
-
-;; (use-package magit
-;;   :ensure nil
-;;   :config ... )
-
-;; `Additional' - add some new package
-
-;; (use-package foo
-;;   :ensure t
-;;   :config ... )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; `General'
+;; 'General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package emacs
@@ -206,6 +190,39 @@
   ;; Start Emacs server
   (require 'server)
   (unless (server-running-p) (server-start)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 'Packages'
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; 'Overrides' - hack on some already provided package by core
+
+(use-package eglot
+  :ensure nil
+  :bind (:map eglot-mode-map
+              ("M-m r" . eglot-rename)
+              ("M-m o" . eglot-code-action-organize-imports)
+              ("M-m h" . eldoc)
+              ("M-m =" . eglot-format)
+              ("M-m ?" . xref-find-references)
+              ("M-."   . xref-find-definitions)))
+
+(use-package company
+  :ensure nil
+  :bind (:map
+         company-active-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)
+         :map
+         company-search-map
+         ("C-n" . company-select-next)
+         ("C-p" . company-select-previous)))
+
+;; `Additional' - add some new package
+
+;; requires libvterm be installed on system
+;; (use-package vterm
+;;   :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'language-specific' overrides

@@ -7,14 +7,7 @@
 (use-package eglot
   :after yasnippet
   :ensure nil ; prefer builtin
-  :bind                                  ; defers until Eglot loads
-  (:map eglot-mode-map
-        ("M-m r" . eglot-rename)
-        ("M-m o" . eglot-code-action-organize-imports)
-        ("M-m h" . eldoc)
-        ("M-m =" . eglot-format)
-        ("M-m ?" . xref-find-references)
-        ("M-."   . xref-find-definitions)))
+  )
 
 (use-package flymake
   :ensure nil ; prefer builtin
