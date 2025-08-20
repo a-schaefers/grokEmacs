@@ -195,7 +195,7 @@
 ;; 'Packages'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; 'Overrides' - hack on some already provided package by core
+;; 'Overrides' - hack on some already provided package by core, just be sure to add :ensure nil
 
 (use-package eglot
   :ensure nil
@@ -220,8 +220,7 @@
 
 ;; `Additional' - add some new package
 
-;; requires libvterm be installed on system
-;; (use-package vterm
+;; (use-package vterm ; requires libvterm be installed on system
 ;;   :ensure t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
