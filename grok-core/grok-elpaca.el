@@ -49,6 +49,5 @@
       (delq 'transient elpaca-ignored-dependencies))
 
 (setq use-package-always-defer t)
-(setq use-package-compute-statistics t)
 
 (provide 'grok-elpaca)
