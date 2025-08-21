@@ -18,7 +18,7 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## Interactive Initial Setup
 
-On first launch, grokEmacs asks a few questions (projects dir, evil mode, theme (fancy/minimal), (light/dark) variants, font, font-size, line numbers, transparency etc.) and saves your answers to `~/.config/emacs/grok-opts.el`. You can re-run anytime with `C-u M-x grok--ensure-opts`. Options are just setqs, so you can edit them by hand too. To opt out of a prebaked thematic configuration and go pure angry-fruit is also an option.
+On first launch, grokEmacs asks a few questions (projects dir, evil mode, theme (fancy/minimal), (light/dark) variants, font, font-size, line numbers, transparency etc.) and saves your answers to `~/.config/emacs/grok-opts.el`. You can re-run anytime with `C-u M-x grok--ensure-opts`. Options are just setqs, so you can edit them by hand too. To opt out of a prebaked thematic configuration and go pure angry-fruit is also an option. Fancy also does a window resize / treemacs pop on startup, if you hate it just `(setq grok-window-pop-enabled nil)` 🍻.
 
 Fancy uses the doom-one theme variants, doom modeline, treemacs, and dashboard etc.
 
