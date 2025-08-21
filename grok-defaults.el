@@ -156,7 +156,8 @@
   (setq compile-command "make -k ")
 
   ;; Some global binds
-  :bind (("C-c gi" . grok-edit-init-file)
+  :bind (("C-h C-b" . grok-show-keybinds)
+         ("C-c gi" . grok-edit-init-file)
          ("C-c gg" . grok-edit-grok-file)
          ("C-c go" . grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
          ("C-c gu" . grok-update-config-with-ediff))
