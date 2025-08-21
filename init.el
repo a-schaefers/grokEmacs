@@ -51,8 +51,7 @@ grok-opts.el Example:
              ,@(when (member grok-theme-style '("minimal")) '(grok-theme-minimal))
              ,@(when (member grok-theme-style '("fancy")) '(grok-theme-fancy))
              ))
-  (when (or (not grok-core-disabled)
-            (not (memq f grok-core-disabled)))
+  (unless (memq f grok-core-disabled)
     (require f)))
 
 (dolist (file (directory-files grokd nil "\\.el\\'"))
