@@ -24,7 +24,7 @@
         "* About this *scratch* buffer
 This org-mode buffer is un-killable and persistent")
   :hook ((kill-buffer-query-functions . grok/immortal-scratch)
-         (after-init . grok/load-persistent-scratch)
+         (elpaca-after-init . grok/load-persistent-scratch)
          (kill-emacs . grok/save-persistent-scratch))
   :config
   (run-with-idle-timer 300 t #'grok/save-persistent-scratch))
