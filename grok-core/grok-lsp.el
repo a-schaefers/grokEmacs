@@ -17,11 +17,11 @@
 (use-package eldoc-box
   :ensure t
   :hook (eglot-managed-mode-hook . eldoc-box-hover-at-point-mode)
+  :init (setq eldoc-display-functions (delq #'eldoc-display-in-echo-area eldoc-display-functions))
   :config
   (setq
    eldoc-idle-delay 0.0
    eldoc-box-cleanup-interval 0.0
-   eldoc-display-functions (delq #'eldoc-display-in-echo-area eldoc-display-functions)
    eldoc-box-only-multi-line nil
    eldoc-box-max-pixel-width 640
    eldoc-box-max-pixel-height 480
@@ -31,12 +31,7 @@
   :ensure t
   :hook ((prog-mode . sideline-mode))
   :custom
-  (sideline-backends-right '(sideline-flymake))
-  (sideline-delay 0.15)
-  (sideline-truncate t)
-  (sideline-force-display-if-exceeds nil)
-  (sideline-backends-right-skip-current-line nil) ; show on current line
-  (sideline-display-backend-name nil))
+  (sideline-backends-right '(sideline-flymake)))
 
 (use-package sideline-flymake :ensure t :after sideline)
 
