@@ -17,8 +17,6 @@
 (use-package eldoc-box
   :ensure t
   :hook (eglot-managed-mode-hook . eldoc-box-hover-at-point-mode)
-  :init
-  (global-set-key (kbd "C-c C-h") 'eldoc-box-help-at-point)
   :config
   (setq
    eldoc-idle-delay 0.0

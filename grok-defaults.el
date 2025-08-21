@@ -205,7 +205,9 @@
               ("M-m h" . eldoc)
               ("M-m =" . eglot-format)
               ("M-m ?" . xref-find-references)
-              ("M-."   . xref-find-definitions)))
+              ("M-."   . xref-find-definitions)
+              ("M-m d"   . eldoc-box-help-at-point)
+              ("C-c C-h" . eldoc-box-help-at-point)))
 
 (use-package company
   :ensure nil
