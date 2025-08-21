@@ -29,6 +29,19 @@
    eldoc-box-max-pixel-height 480
    eldoc-box-fringe-use-same-bg t))
 
+(use-package sideline
+  :ensure t
+  :hook ((prog-mode . sideline-mode))
+  :custom
+  (sideline-backends-right '(sideline-flymake))
+  (sideline-delay 0.15)
+  (sideline-truncate t)
+  (sideline-force-display-if-exceeds nil)
+  (sideline-backends-right-skip-current-line nil) ; show on current line
+  (sideline-display-backend-name nil))
+
+(use-package sideline-flymake :ensure t :after sideline)
+
 (use-package company
   :ensure t
   :hook ((prog-mode . company-mode)
