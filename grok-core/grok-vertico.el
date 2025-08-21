@@ -19,13 +19,16 @@
 
 (use-package orderless
   :ensure t
-  :init
-  ;; Order: Vertico UI → Orderless filter → fall back to built-ins (basic, flex).
-  (setq orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex)
-        completion-styles '(orderless basic flex)
-        completion-category-defaults nil
-        ;; Files/TRAMP: keep basic & partial-completion first; still allow orderless/flex.
-        completion-category-overrides '((file (styles basic partial-completion orderless flex)))))
+  :custom
+  ;; Completion styles: try prefix/exact first, then fall back to Orderless.
+  ;; This makes non-LSP languages (e.g. Emacs Lisp) feel more relevant,
+  ;; but still gives you fuzzy rescue when you need it.
+  (completion-styles '(basic orderless))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion))))
+
+  ;; When Orderless runs, allow literal, regexp, and flex (fuzzy) matching.
+  (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex)))
 
 (use-package emacs
   :ensure nil
