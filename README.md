@@ -66,9 +66,7 @@ Brief summary below - See `grok.el` for full details and to make customizations
 - `M-m =` → format buffer/region
 - `M-m ?` → find references
 - `M-.`   → jump to definition
-
-### Eldoc-box
-- `C-c C-h` → doc popup at point
+- `M-m d` → doc popup at point
 
 ### Holy Mode (Vanilla Emacs)
 
