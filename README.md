@@ -40,7 +40,9 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 
 ## Binds
 
-The project aims to keep opinionated (non-default) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
+It's hard to accomodate everybody on such an opinionated subject.
+
+So the project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
 
 That said, binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
 
@@ -55,6 +57,8 @@ If you enabled Evil during setup, you get Vim binds plus common addons:
 - **evil-surround** — change/add/delete surrounding quotes, parens, tags.
 - **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
 - **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
+
+This is still a work in progress.
 
 ### Treesit to the future
 
