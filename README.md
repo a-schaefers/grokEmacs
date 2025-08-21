@@ -38,44 +38,16 @@ While minimal uses the built-in modus theme variants with an uncluttered modelin
 - **vertico** minibuffer fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
-> Be the best programmer's text editor in the world - using the most light-weight and best, hand-picked tools - ready to be forked, hacked on, and made one's own.
-
 ## Binds
 
-Brief summary below - See `grok.el` for full details and to make customizations
+The project aims to keep opinionated (non-default) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
 
-### General
-- `M-x pro` → `projectile-commander`
-- `M-x cc` → `compile`
-- `M-x sh` → `shell` (a dumb shell buffer)
-- `M-x eat` → `eat` (a fully-featured terminal, no vterm dep)
-- `M-x git` → `magit`
-- `M-x lint` → enable `flymake` + diagnostics buffer
-- `C-t` → open `treemacs` (if 'fancy')
-- `C-c gi` → open `init.el`
-- `C-c gg` → open `grok.el`      (user-custom file, loads last)
-- `C-c go` → open `grok-opts.el` (initial setup file)
-- `C-c gu` → runs `grok-update-config-with-ediff()` to ediff `grok.el` against the latest `grok-defaults.el`
-
-### Eglot
-- `M-m r` → rename symbol
-- `M-m o` → organize imports
-- `M-m h` → show doc (eldoc)
-- `M-m =` → format buffer/region
-- `M-m ?` → find references
-- `M-.`   → jump to definition
-- `M-m d` → doc popup at point
-
-### Holy Mode (Vanilla Emacs)
-
-By default you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
+That said, binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
 
 - **crux** — quality-of-life shortcuts (smarter line movement, duplicate, kill whole line, etc.).
 - **paredit** — structural editing for Lisp code, keeps parens balanced.
 
-### Evil Mode (Vim-style)
-
-If you enabled Evil during setup, you also get Vim-style editing plus common addons:
+If you enabled Evil during setup, you get Vim binds plus common addons:
 
 - **evil** — core Vim emulation.
 - **evil-collection** — makes Magit, dired, and many other modes feel Vim-like.
@@ -83,8 +55,6 @@ If you enabled Evil during setup, you also get Vim-style editing plus common add
 - **evil-surround** — change/add/delete surrounding quotes, parens, tags.
 - **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
 - **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
-
-There is also an example comment in `grok-core/grok-evil.el` of how you may want to start setting up a leader key.
 
 ### Treesit to the future
 
