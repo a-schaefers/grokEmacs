@@ -28,6 +28,13 @@
 
 (require 'grok-bootstrap)
 
+(defvar grok-core-disabled nil
+  "List of core modules to skip loading.
+
+grok-opts.el Example:
+
+  (setq grok-core-disabled '(grok-better-scratch grok-better-defaults))")
+
 (dolist (f `(
              grok-elpaca
              grok-better-defaults
@@ -44,7 +51,9 @@
              ,@(when (member grok-theme-style '("minimal")) '(grok-theme-minimal))
              ,@(when (member grok-theme-style '("fancy")) '(grok-theme-fancy))
              ))
-  (require f))
+  (when (or (not grok-core-disabled)
+            (not (memq f grok-core-disabled)))
+    (require f)))
 
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
