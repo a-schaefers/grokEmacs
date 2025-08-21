@@ -14,7 +14,7 @@
         dashboard-vertically-center-content t
         dashboard-startup-banner (expand-file-name "grokEmacs.txt" user-emacs-directory)
         dashboard-banner-logo-title "Emacs"
-        dashboard-footer-messages '("")
+        dashboard-footer-messages '("do you even grok bro")
         dashboard-items '((recents . 5)
                           (projects . 5))
         dashboard-startupify-list '(dashboard-insert-banner
@@ -28,7 +28,15 @@
                                     dashboard-insert-newline
                                     dashboard-insert-footer)
         dashboard-projects-backend 'projectile
-        dashboard-projects-switch-function #'projectile-switch-project))
+        dashboard-projects-switch-function #'projectile-switch-project)
+
+(setq dashboard-navigator-buttons
+      `(((nil "Homepage" "Go to project homepage"
+              (lambda (&rest _) (browse-url "https://github.com/a-schaefers/grokEmacs")))
+
+         (nil "Restart"  "Restart Emacs"
+              (lambda (&rest _)
+                (restart-emacs)))))))
 
 (use-package doom-themes
   :if (string= grok-theme-style "fancy")
@@ -40,7 +48,20 @@
   :if (string= grok-theme-style "fancy")
   :ensure t
   :init (defun grok/enable-doom-modeline () (require 'doom-modeline) (doom-modeline-mode 1))
-  :hook (elpaca-after-init . grok/enable-doom-modeline))
+  :hook (elpaca-after-init . grok/enable-doom-modeline)
+  :custom
+  (doom-modeline-minor-modes t) ;; use minions instead
+  (doom-modeline-height 32)
+  (doom-modeline-bar-width 4))
+
+(use-package minions :ensure t :after doom-modeline :init (minions-mode))
+
+(use-package anzu
+  :ensure t
+  :after doom-modeline
+  :init
+  (global-anzu-mode 1)
+  :custom (anzu-mode-lighter ""))
 
 (use-package treemacs
   :if (string= grok-theme-style "fancy")
@@ -49,6 +70,15 @@
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
+
+  (defun grok/treemacs-darken-background (&rest _)
+  "Darken Treemacs background relative to current theme."
+  (face-remap-add-relative
+   'default
+   `(:background ,(color-darken-name (face-background 'default nil t) 5))))
+
+  (add-hook 'treemacs-mode-hook #'grok/treemacs-darken-background)
+
   (progn
     (setq treemacs-buffer-name-function            #'treemacs-default-buffer-name
           treemacs-buffer-name-prefix              " *Treemacs-Buffer-"
@@ -150,5 +180,13 @@
   :if (string= grok-theme-style "fancy")
   :after (treemacs magit)
   :ensure t)
+
+(defun grok-fancy-setup ()
+  (set-frame-size (selected-frame) 130 40)
+  (treemacs)
+  (switch-to-buffer "*dashboard*"))
+
+(when (string= grok-theme-style "fancy")
+  (add-hook 'window-setup-hook #'grok-fancy-setup))
 
 (provide 'grok-theme-fancy)
