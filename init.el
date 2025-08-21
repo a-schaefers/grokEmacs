@@ -12,6 +12,18 @@
 
 ;;; Code:
 
+(setq grokfile (expand-file-name "grok-defaults.el" user-emacs-directory)
+      grokd    (expand-file-name "grok.d" user-emacs-directory)
+      grokel   (file-name-concat grokd "grok.el"))
+
+(unless (file-directory-p grokd)
+  (make-directory grokd))
+
+(add-to-list 'load-path grokd)
+
+(unless (file-exists-p grokel)
+    (copy-file grokfile grokel))
+
 (add-to-list 'load-path (expand-file-name "grok-core" user-emacs-directory))
 
 (require 'grok-bootstrap)
@@ -34,24 +46,8 @@
              ))
   (require f))
 
-;; grok.d/ & grok.el
-
-(setq grokfile (expand-file-name "grok-defaults.el" user-emacs-directory)
-      grokd    (expand-file-name "grok.d" user-emacs-directory)
-      grokel   (file-name-concat grokd "grok.el"))
-
-(unless (file-directory-p grokd)
-  (make-directory grokd))
-
-(add-to-list 'load-path grokd)
-
-(unless (file-exists-p grokel)
-    (copy-file grokfile grokel))
-
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
-
-;; block until currently queued orders are processed.
 
 (elpaca-wait)
 
