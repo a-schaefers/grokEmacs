@@ -33,7 +33,6 @@
 (setq grok-core-disabled '(grok-better-scratch grok-better-defaults))")
 
 (dolist (f `(
-             grok-lib
              grok-better-defaults
              grok-better-scratch
              grok-vertico
