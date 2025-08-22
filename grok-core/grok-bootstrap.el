@@ -206,12 +206,12 @@ Order:
         comp-deferred-compilation t
         package-native-compile t)
 
-  ;; don't pop up compilation warnings during native compiles / confuse the user
+  ;; don't pop-up compilation warnings during native compiles / confuse the user
   (setq native-comp-async-report-warnings-errors nil
         comp-async-report-warnings-errors nil)
   (add-to-list 'warning-suppress-types '(native-compiler))
-  (add-to-list 'display-buffer-alist
-               '("\\*Warnings\\*" (display-buffer-no-window) (allow-no-window . t)))
+  (add-to-list 'warning-suppress-types '(native-compiler))
+  (add-to-list 'display-buffer-alist '("\\*Warnings\\*" (display-buffer-no-window) (allow-no-window . t)))
 
   :config
   (grok--ensure-opts))
