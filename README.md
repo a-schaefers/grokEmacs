@@ -5,6 +5,8 @@ Thanks for understanding o/
 
 ![logo](splash.png)
 
+<sub><sup>Logo generated with ChatGPT (OpenAI)</sup></sub>
+
 # grokEmacs
 
 [how to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl)
