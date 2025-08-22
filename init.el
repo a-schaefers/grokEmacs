@@ -22,21 +22,18 @@
 (add-to-list 'load-path grokd)
 
 (unless (file-exists-p grokel)
-    (copy-file grokfile grokel))
+  (copy-file grokfile grokel))
 
 (add-to-list 'load-path (expand-file-name "grok-core" user-emacs-directory))
 
 (require 'grok-bootstrap)
 
 (defvar grok-core-disabled nil
-  "List of core modules to skip loading.
-
-grok-opts.el Example:
-
-  (setq grok-core-disabled '(grok-better-scratch grok-better-defaults))")
+  "List of core modules to skip loading. e.g. in grok-opts.el,
+(setq grok-core-disabled '(grok-better-scratch grok-better-defaults))")
 
 (dolist (f `(
-             grok-elpaca
+             grok-lib
              grok-better-defaults
              grok-better-scratch
              grok-vertico
@@ -47,9 +44,9 @@ grok-opts.el Example:
              grok-projectile
              grok-terminal
              grok-treesit
-             ,@(when (member grok-theme-style '("minimal" "fancy")) '(grok-theme-shared))
-             ,@(when (member grok-theme-style '("minimal")) '(grok-theme-minimal))
-             ,@(when (member grok-theme-style '("fancy")) '(grok-theme-fancy))
+             ,@(when (and grok-theme (member grok-theme-style '("minimal" "fancy"))) '(grok-theme-shared))
+             ,@(when (and grok-theme (member grok-theme-style '("minimal"))) '(grok-theme-minimal))
+             ,@(when (and grok-theme (member grok-theme-style '("fancy"))) '(grok-theme-fancy))
              ))
   (unless (memq f grok-core-disabled)
     (require f)))

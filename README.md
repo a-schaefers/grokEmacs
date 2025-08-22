@@ -16,13 +16,13 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## Interactive Initial Setup
 
-On first launch, grokEmacs asks a few questions (projects dir, evil mode, theme (fancy/minimal), (light/dark) variants, font, font-size, line numbers, transparency etc.) and saves your answers to `~/.config/emacs/grok-opts.el`. You can re-run anytime with `C-u M-x grok--ensure-opts`. Options are just setqs, so you can edit them by hand too. To opt out of a prebaked thematic configuration and go pure angry-fruit is also an option. Fancy also does a window resize / treemacs pop on startup, if you hate it just `(setq grok-window-pop-enabled nil)` 🍻.
+On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, theme style, font, font size, line numbers, transparency, etc.) and saves your answers to ~/.config/emacs/grok-opts.el. You can rerun the wizard anytime with C-u M-x grok--ensure-opts, or edit the file directly since it’s just a series of setqs. You can also skip the pre-baked theming entirely and stick with pure angry-fruit. In Fancy mode, grokEmacs also resizes the window and pops Treemacs on startup; if you don’t like that, disable it with (setq grok-window-pop-enabled nil) 🍻.
 
-Fancy uses the doom-one theme variants, doom modeline, treemacs, and dashboard etc.
+Fancy loads a user-chosen theme package and theme name, defaulting to doom-themes with doom-one if unsure. It also enables Doom modeline, Treemacs, Dashboard, and related extras.
 
 ![fancy](grok-fancy.jpg)
 
-While minimal uses the built-in modus theme variants with an uncluttered modeline
+Minimal lets the user pick a built-in theme, recommending modus-vivendi or modus-operandi, with a clean, uncluttered modeline.
 
 ![minimal](grok-minimal.jpg)
 

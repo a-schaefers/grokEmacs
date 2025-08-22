@@ -19,15 +19,8 @@
                             ;; right
                             (format-mode-line "%m"))))))
   :config
-  (when (and (string= grok-theme-style "minimal")
-             (string= grok-theme-mode  "dark"))
-    (setq inhibit-startup-screen nil)
-    (load-theme 'modus-vivendi t)
-    (grok-minimal-modeline))
-  (when (and (string= grok-theme-style "minimal")
-             (string= grok-theme-mode  "light"))
-    (setq inhibit-startup-screen nil)
-    (load-theme 'modus-operandi t)
-    (grok-minimal-modeline)))
+  (setq inhibit-startup-screen nil)
+  (load-theme grok-custom-built-in-theme t)
+  (grok-minimal-modeline))
 
 (provide 'grok-theme-minimal)
