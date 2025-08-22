@@ -67,6 +67,7 @@
     (add-hook 'elpaca-after-init-hook #'grok--apply-theme))))
 
 (use-package doom-modeline
+  :if (string= grok-use-modeline "doom")
   :ensure t
   :init (defun grok/enable-doom-modeline () (require 'doom-modeline) (doom-modeline-mode 1))
   :hook (elpaca-after-init . grok/enable-doom-modeline)
@@ -75,13 +76,23 @@
   (doom-modeline-height 32)
   (doom-modeline-bar-width 4))
 
+(use-package spaceline
+  :if (string= grok-use-modeline "spaceline")
+  :ensure t
+  :init
+  (defun grok/enable-spaceline ()
+    (require 'spaceline-config)
+    ;; Pick a theme — spaceline-emacs-theme or spaceline-spacemacs-theme
+    (spaceline-emacs-theme))
+  :hook (elpaca-after-init . grok/enable-spaceline)
+  :custom
+  (powerline-default-separator 'wave))  ;; e.g. 'wave, 'arrow, 'slant, 'brace, etc.
+
 (use-package minions :ensure t :after doom-modeline :init (minions-mode))
 
 (use-package anzu
   :ensure t
-  :after doom-modeline
-  :init
-  (global-anzu-mode 1)
+  :hook (elpaca-after-init . global-anzu-mode)
   :custom (anzu-mode-lighter ""))
 
 (use-package treemacs
