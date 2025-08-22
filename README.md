@@ -28,23 +28,20 @@ Minimal lets the user pick a built-in theme, recommending modus-vivendi or modus
 
 ## Project goals
 
-- almost **no abstraction**
 - **elpaca** package manager + **use-package**
 - **gccemacs** native compilation
 - **eglot lsp + company** autocompletion
 - **magit+projectile** for VC & project awareness
-- **flymake** linting
+- **flymake** linting (sideline, eldoc-box)
 - **treesitter** everywhere as much as possible
-- **vertico** minibuffer fuzzy completion
+- **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
 ## Binds
 
-It's hard to accomodate everybody on such an opinionated subject.
+The project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
 
-So the project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
-
-That said, binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
+Binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
 
 - **crux** — quality-of-life shortcuts (smarter line movement, duplicate, kill whole line, etc.).
 - **paredit** — structural editing for Lisp code, keeps parens balanced.
