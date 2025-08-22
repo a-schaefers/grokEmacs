@@ -7,17 +7,19 @@
   :preface
   (defvar grok-window-pop-enabled t
     "Fancy option only. If non-nil, enable window resize and auto treemacs pop on startup.")
-
-  ;; trying to achieve a wider visual-studio style window setup
-  (defun grok-fancy-setup ()
-    (set-frame-size (selected-frame) 135 40)
-    (treemacs)
-    (switch-to-buffer "*dashboard*"))
-
+  (defvar grok-window-pop-splash t
+    "Fancy option only. If non-nil, enable splash image.")
+  (defvar grok-window-pop-splash-timer 3
+    "Integer of time before splash auto-closes.")
   :init
   (when (and grok-window-pop-enabled
              (string= grok-theme-style "fancy"))
-    (add-hook 'window-setup-hook #'grok-fancy-setup)))
+    (add-hook 'window-setup-hook #'grok-fancy-setup)
+    (when (and
+           (display-graphic-p)
+           (bound-and-true-p grok-window-pop-splash))
+      (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-later 0.00)) 90)
+      (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-quit-later grok-window-pop-splash-timer)) 90))))
 
 (use-package dashboard
   :ensure t

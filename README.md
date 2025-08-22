@@ -3,6 +3,8 @@ Sorry about all the breakage while putting this together.
 I'm just about stable and development will chill again, soon.
 Thanks for understanding o/
 
+![logo](splash.png)
+
 # grokEmacs
 
 [how to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl)

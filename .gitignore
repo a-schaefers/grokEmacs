@@ -9,5 +9,8 @@
 !grok-defaults.el
 !grok-core
 !grok.d
+!splash.png
+!splash_smaller.png
+!splash_smaller_transparent.png
 grok.d/grok.el
 !grokEmacs.txt
