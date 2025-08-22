@@ -12,6 +12,8 @@
 
 ;;; Code:
 
+;; Setup emacs/ dir structure and generate grok.el file
+
 (setq grokfile (expand-file-name "grok-defaults.el" user-emacs-directory)
       grokd    (expand-file-name "grok.d" user-emacs-directory)
       grokel   (file-name-concat grokd "grok.el"))
@@ -19,14 +21,19 @@
 (unless (file-directory-p grokd)
   (make-directory grokd))
 
-(add-to-list 'load-path grokd)
-
 (unless (file-exists-p grokel)
   (copy-file grokfile grokel))
 
+;; Setup Load Path
+
 (add-to-list 'load-path (expand-file-name "grok-core" user-emacs-directory))
+(add-to-list 'load-path grokd)
+
+;; Bootstrap elpaca and grok configuration wizard
 
 (require 'grok-bootstrap)
+
+;; Load core modules
 
 (defvar grok-core-disabled nil
   "List of core modules to skip loading. e.g. in grok-opts.el,
@@ -50,8 +57,23 @@
   (unless (memq f grok-core-disabled)
     (require f)))
 
+;; Load all .el files in grok.d/
+
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
+
+;; Last things
+
+(use-package emacs
+  :ensure nil
+  :init
+  ;; Apply any env and PATH modifications from grok.el's `grok-env' and `grok-path-insert'/`grok-path-append'
+  (grok-apply-env-and-path)
+
+  ;; Apply eglot autostart hooks from grok.el's `grok-eglot-autostart-langs'
+  (grok-apply-eglot-autostart))
+
+;; Block until currently queued orders are processed.
 
 (elpaca-wait)
 

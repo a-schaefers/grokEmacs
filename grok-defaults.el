@@ -16,43 +16,13 @@
 (use-package emacs
   :ensure nil
   :preface
-  ;; 'env' modifications
-  (defvar grok-env
-  '((EDITOR . "emacsclient")
-    (VISUAL . "$EDITOR")
-    (PAGER  . "cat"))
-  "Alist of environment variables to set when `grok-apply-env-and-path' runs.")
+  (setq grok-env '((EDITOR . "emacsclient")
+                   (VISUAL . "$EDITOR")
+                   (PAGER  . "cat")))
 
-  ;; 'PATH' modifications
-  (defvar grok-path-insert '(
-                             ;; e.g.:
-                             ;; "~/bin"
-                             ;; "~/.local/bin"
-                             )
-    "Extra PATH entries to prepend to `exec-path' and $PATH.")
+  (setq grok-path-insert '(""))
 
-  (defvar grok-path-append '("")
-    "Extra PATH entries to append to `exec-path' and $PATH.")
-
-  (defun grok-apply-env-and-path ()
-    "Apply ENV/PATH customization."
-    (require 'subr-x)
-
-    ;; ENV
-    (dolist (pair grok-env)
-      (let* ((var (if (symbolp (car pair)) (symbol-name (car pair)) (car pair)))
-             (raw (cdr pair))
-             (val (substitute-env-vars (if (stringp raw) raw (format "%s" raw)))))
-        (setenv var val)))
-
-    ;; PATH
-    (dolist (item grok-path-insert)
-      (add-to-list 'exec-path (expand-file-name item)))
-    (dolist (item grok-path-append)
-      (add-to-list 'exec-path (expand-file-name item) t))
-    (setenv "PATH" (string-trim-right (string-join exec-path ":") ":$")))
-  :init
-  (grok-apply-env-and-path))
+  (setq grok-path-append '("")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'LSP' - Modes that will autostart the corresponding server if found on PATH
@@ -61,8 +31,7 @@
 (use-package emacs
   :ensure nil
   :preface
-  ;; Eglot autostart map: major-mode hook -> server command.
-  (defvar grok-eglot-autostart-langs
+  (setq grok-eglot-autostart-langs
     '((c-ts-mode-hook          . "clangd")
       (c++-ts-mode-hook        . "clangd")
       (lua-ts-mode-hook        . "lua-language-server")
@@ -79,74 +48,13 @@
       (yaml-ts-mode-hook       . "yaml-language-server")
       (json-ts-mode-hook       . "vscode-json-languageserver")
       (java-ts-mode-hook       . "jdtls")
-      (csharp-ts-mode-hook     . "OmniSharp"))
-    "Alist of major-mode hooks -> language servers for Eglot autostart.")
-
-  (defun grok-apply-eglot-autostart (&optional table)
-  "Register Eglot autostart hooks from TABLE (alist HOOK . SPEC)."
-  (require 'subr-x)
-  (dolist (pair (or table grok-eglot-autostart-langs))
-    (let* ((hook (car pair))
-           (spec (cdr pair))
-           (mode (intern (string-remove-suffix "-hook" (symbol-name hook))))
-           (override nil)
-           (cmd nil))
-      (cond
-       ((stringp spec)
-        (setq cmd (list spec)))
-       ((consp spec)
-        (when (eq (car spec) :override)
-          (setq override t
-                spec (cdr spec)))
-        (cond
-         ((stringp spec)
-          (setq cmd (list spec)))
-         ((and (listp spec)
-               (let ((all-strings t))
-                 (dolist (s spec)
-                   (unless (stringp s) (setq all-strings nil)))
-                 all-strings))
-          (setq cmd spec)))))
-      (when (and override cmd)
-        (with-eval-after-load 'eglot
-          (add-to-list 'eglot-server-programs (cons mode cmd))))
-      (when (and cmd (executable-find (car cmd)))
-        (add-hook hook #'eglot-ensure)))))
-  :init
-  (grok-apply-eglot-autostart))
+      (csharp-ts-mode-hook     . "OmniSharp"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'General'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package emacs
-  :ensure nil
-  :preface
-  (defun grok-update-config-with-ediff ()
-    "Ediff your grok.el against grok-defaults.el.  Useful after a 'git pull' in case of a breaking upstream change."
-    (interactive)
-    (ediff-files grokel grokfile))
-
-  (defun grok-edit-init-file ()
-    "Open init.el."
-    (interactive)
-    (find-file (expand-file-name "init.el" user-emacs-directory)))
-
-  (defun grok-edit-grok-file ()
-    "Open grok.el."
-    (interactive)
-    (find-file grokel))
-
-  (defun grok-edit-grok-initial-setup-opts ()
-    "Open grok-opts.el."
-    (interactive)
-    (find-file grok-opts-file))
-
-  (defun grok-pop-flymake-diagnostics ()
-    (interactive)
-    (flymake-mode 1)
-    (flymake-show-diagnostics-buffer))
-
   :init
   ;; Python friendly
   (setq-default indent-tabs-mode nil
