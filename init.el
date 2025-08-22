@@ -62,17 +62,6 @@
 (dolist (file (directory-files grokd nil "\\.el\\'"))
   (require (intern (file-name-base file))))
 
-;; Last things
-
-(use-package emacs
-  :ensure nil
-  :init
-  ;; Apply any env and PATH modifications from grok.el's `grok-env' and `grok-path-insert'/`grok-path-append'
-  (grok-apply-env-and-path)
-
-  ;; Apply eglot autostart hooks from grok.el's `grok-eglot-autostart-langs'
-  (grok-apply-eglot-autostart))
-
 ;; Block until currently queued orders are processed.
 
 (elpaca-wait)

@@ -22,7 +22,9 @@
 
   (setq grok-path-insert '(""))
 
-  (setq grok-path-append '("")))
+  (setq grok-path-append '(""))
+  :init
+  (grok-apply-env-and-path))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'LSP' - Modes that will autostart the corresponding server if found on PATH
@@ -62,7 +64,8 @@
           ;; (erlang-mode-hook . erlang_ls)
           ;; (racket-mode-hook . true)       ; workaround, racket lang server is not available on PATH but via required lib
           ;; (clojure-mode-hook . clojure-lsp)
-          )))
+          :init
+          (grok-apply-eglot-autostart))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'General'
