@@ -203,7 +203,12 @@ Order:
                 (prin1 `(setq grok-line-numbers ,ln) (current-buffer)) (insert "\n")
                 (when ln
                   (let ((rel (y-or-n-p "🔢➡️ Use relative line numbers? ")))
-                    (prin1 `(setq grok-relative-line-numbers ,rel) (current-buffer)) (insert "\n"))))))))
+                    (prin1 `(setq grok-relative-line-numbers ,rel) (current-buffer)) (insert "\n")))))))
+        (with-temp-buffer
+          (insert "\n\n;; additional settings\n")
+          (insert ";; (setq grok-core-disabled '())\n")
+          (insert ";; (setq grok-window-pop-enabled t)\n")
+          (append-to-file (point-min) (point-max) grok-opts-file)))
 
       (load opts-file t t)))
 

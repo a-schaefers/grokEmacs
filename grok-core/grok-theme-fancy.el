@@ -6,7 +6,7 @@
   :ensure nil
   :preface
   (defvar grok-window-pop-enabled t
-    "If non-nil, enable window resize and auto treemacs pop on startup.")
+    "Fancy option only. If non-nil, enable window resize and auto treemacs pop on startup.")
 
   ;; trying to achieve a wider visual-studio style window setup
   (defun grok-fancy-setup ()
