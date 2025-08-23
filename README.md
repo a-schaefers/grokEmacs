@@ -25,13 +25,13 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## Interactive Initial Setup
 
-On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, theme style, font, font size, line numbers, transparency, etc.) and saves your answers to ~/.config/emacs/grok-opts.el. You can rerun the wizard anytime with C-u M-x grok--ensure-opts, or edit the file directly since it’s just a series of setqs. You can also skip the pre-baked theming entirely and stick with pure angry-fruit. In Fancy mode, grokEmacs also resizes the window and pops Treemacs on startup; if you don’t like that, disable it with (setq grok-window-pop-enabled nil) 🍻.
+On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, theme style, font, font size, line numbers, transparency, etc.) and saves your answers to ~/.config/emacs/grok-opts.el. You can rerun the wizard anytime with C-u M-x grok--ensure-opts, or edit the file directly since it’s just a series of setqs. You can also skip the pre-baked theming entirely and stick with pure angry-fruit. In Fancy mode, grokEmacs also resizes the window and pops Treemacs on startup; if you don’t like that, disable it with `(setq grok-window-pop-enabled nil)` 🍻.
 
 Fancy loads a user-chosen theme package and theme name, defaulting to doom-themes with doom-one if unsure. It also enables Doom, Moody or Spacemacs modeline, Treemacs, Dashboard, and related extras.
 
 ![fancy](grok-fancy.jpg)
 
-Minimal lets the user pick a built-in theme, recommending modus-vivendi or modus-operandi, with a clean, uncluttered modeline showing only the modified state, filename, line number and major mode. But if you want the default modeline, just (setq grok-use-modeline "none") will do.
+Minimal goes through the built-in options of the theme wizard, skipping any extra theme packages and all the fancy bloat. It lets the user pick a built-in theme—recommending modus-vivendi or modus-operandi—and provides a clean, uncluttered modeline that shows only the modified state, filename, line number, and major mode. If you’d rather keep the default Emacs modeline, just set: `(setq grok-use-modeline "none")`.
 
 ![minimal](grok-minimal.jpg)
 
