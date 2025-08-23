@@ -87,12 +87,7 @@
     (spaceline-emacs-theme))
   :hook (elpaca-after-init . grok/enable-spaceline))
 
-(use-package anzu
-  :ensure t
-  :hook (elpaca-after-init . global-anzu-mode)
-  :custom
-  (anzu-cons-mode-line-p nil)
-  (anzu-mode-lighter ""))
+
 
 (use-package treemacs
   :ensure t
