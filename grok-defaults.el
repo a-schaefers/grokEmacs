@@ -48,10 +48,9 @@
           (typescript-ts-mode-hook . "typescript-language-server")
           (js-ts-mode-hook         . "typescript-language-server")
           (yaml-ts-mode-hook       . "yaml-language-server")
-          (json-ts-mode-hook       . "vscode-json-languageserver")
+          (json-ts-mode-hook       . "vscode-json-language-server")
           (java-ts-mode-hook       . "jdtls")
-          (csharp-ts-mode-hook     . "OmniSharp")
-
+          (csharp-ts-mode-hook     . "omnisharp")
 
           ;; Additional commonly used modes that do not yet have a ts mode built-in at this time
           ;;
@@ -129,6 +128,7 @@
 ;; 'Overrides' - hack on some already provided package by core, just be sure to add :ensure nil
 
 (use-package eglot
+  :if (not (memq 'eglot grok-packages-disabled))
   :ensure nil
   :bind (:map eglot-mode-map
               ("M-m r" . eglot-rename)
@@ -141,6 +141,7 @@
               ("C-c C-h" . eldoc-box-help-at-point)))
 
 (use-package company
+  :if (not (memq 'company grok-packages-disabled))
   :ensure nil
   :bind (:map
          company-active-map
@@ -152,6 +153,8 @@
          ("C-p" . company-select-previous)))
 
 (use-package treemacs
+  :if (and (not (memq 'treemacs grok-packages-disabled))
+           (string= grok-theme-style "fancy"))
   :ensure nil
   :bind (:map global-map
               ("C-t"       . treemacs)))
