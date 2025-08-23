@@ -85,12 +85,13 @@
   (setq compile-command "make -k ")
 
   ;; Some global binds
-  :bind (("C-h C-b" . grok-show-keybinds)
-         ("C-c gi" . grok-edit-init-file)
-         ("C-c gg" . grok-edit-grok-file)
-         ("C-c go" . grok-edit-grok-initial-setup-opts) ; or just C-u M-x grok--ensure-opts
-         ("C-c gu" . grok-update-config-with-ediff))
 
+  :bind (:map global-map
+              ("C-h C-b" . grok-show-keybinds)
+              ("C-c gi"  . grok-edit-init-file)
+              ("C-c gg"  . grok-edit-grok-file)
+              ("C-c go"  . grok-edit-grok-initial-setup-opts)
+              ("C-c gu"  . grok-update-config-with-ediff))
   :config
   ;; Some helpful aliases
 
@@ -149,6 +150,11 @@
          company-search-map
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous)))
+
+(use-package treemacs
+  :ensure nil
+  :bind (:map global-map
+              ("C-t"       . treemacs)))
 
 ;; `Additional' - add some new package
 
