@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package projectile
+  :if (not (memq 'projectile grok-packages-disabled))
   :ensure t
   :defer t
   :init

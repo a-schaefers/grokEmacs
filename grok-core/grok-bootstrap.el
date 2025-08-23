@@ -216,6 +216,7 @@ Order:
         (with-temp-buffer
           (insert "\n\n;; additional settings\n")
           (insert ";; (setq grok-core-disabled '())\n")
+          (insert ";; (setq grok-packages-disabled '())\n")
           (insert ";; (setq grok-window-pop-enabled t)\n")
           (insert ";; (setq grok-window-pop-splash t)\n")
           (insert ";; (setq grok-window-pop-splash-timer 3)\n")
@@ -682,7 +683,10 @@ remains visible until the user presses any key/click."
   ;; trying to achieve a wider visual-studio style window setup
   (defun grok-fancy-setup ()
     (set-frame-size (selected-frame) 135 40)
-    (treemacs)
-    (switch-to-buffer "*dashboard*")))
+    (when (and (not (memq 'treemacs grok-packages-disabled))
+               (fboundp 'treemacs))
+      (treemacs))
+    (when (get-buffer "*dashboard*")
+      (switch-to-buffer "*dashboard*"))))
 
 (provide 'grok-bootstrap)

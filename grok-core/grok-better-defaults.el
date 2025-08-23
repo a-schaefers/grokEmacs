@@ -20,8 +20,8 @@
                 vc-follow-symlinks t
                 ring-bell-function 'ignore
                 tab-always-indent 'complete
-                scroll-step 1
-                pixel-scroll-precision-mode t)
+                scroll-step 1)
+  (pixel-scroll-precision-mode 1)
   (setq backup-directory-alist `((".*" . ,temporary-file-directory))
         auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
         delete-old-versions t)

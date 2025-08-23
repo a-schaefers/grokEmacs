@@ -3,6 +3,7 @@
 ;;----- fancy theme settings
 
 (use-package emacs
+  :if (not (memq 'theme-fancy-grok-config grok-packages-disabled))
   :ensure nil
   :init
   (when (and grok-window-pop-enabled
@@ -15,6 +16,7 @@
       (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-quit-later grok-window-pop-splash-timer)) 90))))
 
 (use-package dashboard
+  :if (not (memq 'dashboard grok-packages-disabled))
   :ensure t
   :hook ((elpaca-after-init . dashboard-initialize)
          (elpaca-after-init . dashboard-insert-startupify-lists)
@@ -52,17 +54,19 @@
                 (lambda (&rest _)
                   (restart-emacs)))))))
 
-(grok--use-pkg-programmatic
-  (grok-custom-theme-pkg
-   :init
-   ((defun grok--apply-theme ()
-      (require grok-custom-theme-pkg)
-      (load-theme grok-custom-theme t)
-      (global-hl-line-mode 1))
-    (add-hook 'elpaca-after-init-hook #'grok--apply-theme))))
+(when (not (memq 'theme-fancy-grok-config grok-packages-disabled))
+  (grok--use-pkg-programmatic
+    (grok-custom-theme-pkg
+     :init
+     ((defun grok--apply-theme ()
+        (require grok-custom-theme-pkg)
+        (load-theme grok-custom-theme t)
+        (global-hl-line-mode 1))
+      (add-hook 'elpaca-after-init-hook #'grok--apply-theme)))))
 
 (use-package doom-modeline
-  :if (string= grok-use-modeline "doom")
+  :if (and (string= grok-use-modeline "doom")
+           (not (memq 'doom-modeline grok-packages-disabled)))
   :ensure t
   :init (defun grok/enable-doom-modeline () (doom-modeline-mode 1))
   :hook (elpaca-after-init . grok/enable-doom-modeline)
@@ -72,7 +76,8 @@
   (doom-modeline-bar-width 4))
 
 (use-package spaceline
-  :if (string= grok-use-modeline "spaceline")
+  :if (and (string= grok-use-modeline "spaceline")
+           (not (memq 'spaceline grok-packages-disabled)))
   :ensure t
   :init
   (defun grok/enable-spaceline ()
@@ -82,7 +87,8 @@
   :hook (elpaca-after-init . grok/enable-spaceline))
 
 (use-package moody
-  :if (string= grok-use-modeline "moody")
+  :if (and (string= grok-use-modeline "moody")
+           (not (memq 'moody grok-packages-disabled)))
   :ensure t
   :init
   (moody-replace-mode-line-front-space)
@@ -91,11 +97,12 @@
 
 ;; uncluttered minor modes across various modelines
 (use-package minions
-  :after doom-modeline
+  :if (not (memq 'minions grok-packages-disabled))
   :ensure t
   :hook (elpaca-after-init . minions-mode))
 
 (use-package treemacs
+  :if (not (memq 'treemacs grok-packages-disabled))
   :ensure t
   :init
   (with-eval-after-load 'winum
@@ -104,6 +111,7 @@
 
   (defun grok/treemacs-darken-background (&rest _)
     "Darken Treemacs background relative to current theme."
+    (require 'color)
     (face-remap-add-relative
      'default
      `(:background ,(color-darken-name (face-background 'default nil t) 5))))
@@ -196,14 +204,17 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-projectile
+  :if (not (memq 'treemacs-projectile grok-packages-disabled))
   :after (treemacs projectile)
   :ensure t)
 
 (use-package treemacs-icons-dired
+  :if (not (memq 'treemacs-icons-dired grok-packages-disabled))
   :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 
 (use-package treemacs-magit
+  :if (not (memq 'treemacs-magit grok-packages-disabled))
   :after (treemacs magit)
   :ensure t)
 

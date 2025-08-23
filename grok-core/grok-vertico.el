@@ -1,10 +1,12 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package vertico
+  :if (not (memq 'vertico grok-packages-disabled))
   :ensure t
   :init (vertico-mode 1))
 
 (use-package vertico-directory
+  :if (not (memq 'vertico-directory grok-packages-disabled))
   :after vertico
   :ensure nil
   :bind (:map vertico-map
@@ -14,10 +16,12 @@
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package savehist
+  :if (not (memq 'savehist grok-packages-disabled))
   :ensure nil
   :init (savehist-mode 1))
 
 (use-package orderless
+  :if (not (memq 'orderless grok-packages-disabled))
   :ensure t
   :custom
   ;; Completion styles: try prefix/exact first, then fall back to Orderless.
@@ -31,6 +35,7 @@
   (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex)))
 
 (use-package emacs
+  :if (not (memq 'vertico-grok-config grok-packages-disabled))
   :ensure nil
   :init
   (context-menu-mode 1)

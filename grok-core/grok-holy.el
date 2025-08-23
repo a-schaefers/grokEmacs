@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package crux
-  :if (not (bound-and-true-p grok-evil))
+  :if (not (memq 'crux grok-packages-disabled))
   :ensure t
   :bind (("C-g"     . crux-keyboard-quit-dwim)
          ("C-<tab>" . crux-other-window-or-switch-buffer)
@@ -13,7 +13,7 @@
          ("C-c C-;" . crux-duplicate-and-comment-current-line-or-region)))
 
 (use-package paredit
-   :if (not (bound-and-true-p grok-evil))
+   :if (not (memq 'paredit grok-packages-disabled))
    :ensure t
    :init
    (add-hook 'emacs-lisp-mode-hook        #'enable-paredit-mode)

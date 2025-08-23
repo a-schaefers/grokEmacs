@@ -3,6 +3,7 @@
 ;;----- shared theme settings
 
 (use-package emacs
+  :if (not (memq 'theme-shared-grok-config grok-packages-disabled))
   :ensure nil
   :preface
   (defun grok--font-size->height (&optional s)

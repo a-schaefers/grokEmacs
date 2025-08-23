@@ -3,6 +3,7 @@
 ;;----- minimal theme settings
 
 (use-package emacs
+  :if (not (memq 'theme-minimal-grok-config grok-packages-disabled))
   :ensure nil
   :preface
   (defun simple-mode-line-render (left right)

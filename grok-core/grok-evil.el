@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package evil
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil grok-packages-disabled))
   :ensure t
   :hook (elpaca-after-init . evil-mode)
   :init
@@ -10,7 +10,7 @@
 
 (use-package evil-collection
   ;; so Magit, dired, etc. feel vimmy
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil-collection grok-packages-disabled))
   :after evil
   :ensure t
   :config
@@ -18,14 +18,14 @@
 
 (use-package evil-commentary
   ;; comments
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil-commentary grok-packages-disabled))
   :ensure t
   :after evil
   :config (evil-commentary-mode 1))
 
 (use-package evil-surround
   ;; surround editing
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil-surround grok-packages-disabled))
   :ensure t
   :after evil
   :config
@@ -33,7 +33,7 @@
 
 (use-package evil-matchit
   ;; jump between pairs
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil-matchit grok-packages-disabled))
   :ensure t
   :after evil
   :config
@@ -41,34 +41,37 @@
 
 (use-package smartparens
   ;; dep for evil-cleverparens
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'smartparens grok-packages-disabled))
   :after evil
   :ensure t)
 
 (use-package evil-cleverparens
   ;; evil mode's cousin to paredit
-  :if (bound-and-true-p grok-evil-mode)
+  :if (not (memq 'evil-cleverparens grok-packages-disabled))
   :ensure t
   :after (evil smartparens))
 
 ;; for reasons unknown, these do not get registered within the above evil-cleverparens use-package declaration
 ;; tried :command, :hook: :init :config
 ;; paredit does not have this issue.
-(add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'evil-cleverparens-mode)
-(add-hook 'ielm-mode-hook               #'evil-cleverparens-mode)
-(add-hook 'lisp-interaction-mode-hook   #'evil-cleverparens-mode)
-(add-hook 'lisp-mode-hook               #'evil-cleverparens-mode)
-(add-hook 'scheme-mode-hook             #'evil-cleverparens-mode)
-(with-eval-after-load 'clojure-mode
-  (add-hook 'clojure-mode-hook #'evil-cleverparens-mode))
-(with-eval-after-load 'racket-mode
-  (add-hook 'racket-mode-hook  #'evil-cleverparens-mode))
+(when (not (memq 'evil-cleverparens grok-packages-disabled))
+  (add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'evil-cleverparens-mode)
+  (add-hook 'ielm-mode-hook               #'evil-cleverparens-mode)
+  (add-hook 'lisp-interaction-mode-hook   #'evil-cleverparens-mode)
+  (add-hook 'lisp-mode-hook               #'evil-cleverparens-mode)
+  (add-hook 'scheme-mode-hook             #'evil-cleverparens-mode)
+  (with-eval-after-load 'clojure-mode
+    (add-hook 'clojure-mode-hook #'evil-cleverparens-mode))
+  (with-eval-after-load 'racket-mode
+    (add-hook 'racket-mode-hook  #'evil-cleverparens-mode)))
 
 (use-package treemacs-evil
-  :if (and (bound-and-true-p grok-evil-mode) (string= grok-theme-style "fancy"))
-  :after (treemacs evil)
-  :ensure t)
+   :if (and (bound-and-true-p grok-evil-mode)
+            (string= grok-theme-style "fancy")
+            (not (memq 'treemacs-evil grok-packages-disabled)))
+   :after (treemacs evil)
+   :ensure t)
 
 ;; example for vimmers who want to setup a leader on the Space bar
 

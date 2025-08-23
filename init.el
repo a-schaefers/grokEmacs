@@ -35,9 +35,11 @@
 
 ;; Load core modules
 
-(defvar grok-core-disabled nil
-  "List of core modules to skip loading. e.g. in grok-opts.el,
-(setq grok-core-disabled '(grok-better-scratch grok-better-defaults))")
+(defvar grok-core-disabled '()
+  "List of core modules to skip loading.")
+
+(defvar grok-packages-disabled '()
+  "List of specific packages to skip loading.")
 
 (dolist (f `(
              grok-better-defaults
