@@ -52,6 +52,9 @@
           (java-ts-mode-hook       . "jdtls")
           (csharp-ts-mode-hook     . "OmniSharp")
 
+
+          ;; Additional commonly used modes that do not yet have a ts mode built-in at this time
+          ;;
           ;; (markdown-mode-hook . marksman)
           ;; (php-mode-hook . true)          ; workaround, php lang server is not available on PATH but via required lib
           ;; (zig-mode-hook . zigls)
@@ -64,8 +67,9 @@
           ;; (erlang-mode-hook . erlang_ls)
           ;; (racket-mode-hook . true)       ; workaround, racket lang server is not available on PATH but via required lib
           ;; (clojure-mode-hook . clojure-lsp)
+          ))
           :init
-          (grok-apply-eglot-autostart))))
+          (grok-apply-eglot-autostart))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'General'

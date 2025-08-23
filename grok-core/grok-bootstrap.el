@@ -517,7 +517,6 @@ Scans only `grokel` (or ~/.emacs.d/grok.el) for :bind."
             (insert (propertize "ALL LSP servers available on PATH:\n"
                                 'face 'success))   ;; green-ish, theme-safe
             (grok-insert-eglot-server-programs 'eglot-server-programs))
-          ;; (insert (propertize "🧙 Grok Wizardry\n" 'face 'success))
           (goto-char (point-min))
           (special-mode)
           (setq-local header-line-format (propertize "🧙 Grok Diagnostics 🐊✨" 'face 'success)))
