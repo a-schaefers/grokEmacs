@@ -64,12 +64,18 @@
 (use-package doom-modeline
   :if (string= grok-use-modeline "doom")
   :ensure t
-  :init (defun grok/enable-doom-modeline () (require 'doom-modeline) (doom-modeline-mode 1))
+  :init (defun grok/enable-doom-modeline () (doom-modeline-mode 1))
   :hook (elpaca-after-init . grok/enable-doom-modeline)
   :custom
   (doom-modeline-minor-modes t) ;; use minions instead
   (doom-modeline-height 32)
   (doom-modeline-bar-width 4))
+
+(use-package minions
+  :if (string= grok-use-modeline "doom") ; this add-on seems incompatible with spaceline, does nothing
+  :after doom-modeline
+  :ensure t
+  :hook (elpaca-after-init . minions-mode))
 
 (use-package spaceline
   :if (string= grok-use-modeline "spaceline")
@@ -77,18 +83,16 @@
   :init
   (defun grok/enable-spaceline ()
     (require 'spaceline-config)
-    ;; Pick a theme — spaceline-emacs-theme or spaceline-spacemacs-theme
+    (spaceline-toggle-minor-modes-on)
     (spaceline-emacs-theme))
-  :hook (elpaca-after-init . grok/enable-spaceline)
-  :custom
-  (powerline-default-separator 'wave))  ;; e.g. 'wave, 'arrow, 'slant, 'brace, etc.
-
-(use-package minions :ensure t :after doom-modeline :init (minions-mode))
+  :hook (elpaca-after-init . grok/enable-spaceline))
 
 (use-package anzu
   :ensure t
   :hook (elpaca-after-init . global-anzu-mode)
-  :custom (anzu-mode-lighter ""))
+  :custom
+  (anzu-cons-mode-line-p nil)
+  (anzu-mode-lighter ""))
 
 (use-package treemacs
   :ensure t
