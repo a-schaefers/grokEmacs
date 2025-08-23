@@ -4,13 +4,6 @@
 
 (use-package emacs
   :ensure nil
-  :preface
-  (defvar grok-window-pop-enabled t
-    "Fancy option only. If non-nil, enable window resize and auto treemacs pop on startup.")
-  (defvar grok-window-pop-splash t
-    "Fancy option only. If non-nil, enable splash image.")
-  (defvar grok-window-pop-splash-timer 3
-    "Integer of time before splash auto-closes.")
   :init
   (when (and grok-window-pop-enabled
              (string= grok-theme-style "fancy"))

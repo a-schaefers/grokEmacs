@@ -103,9 +103,17 @@
   (defvar grok-relative-line-numbers nil
     "Non-nil enables relative line numbers when line numbers are on.")
 
-  ;; ----- interactive initial setup (writes ~/.emacs.d/grok-opts.el)
   (defvar grok-opts-file (expand-file-name "grok-opts.el" user-emacs-directory)
     "Path to the persisted Grok options file.")
+
+  (defvar grok-window-pop-enabled t
+    "Fancy option only. If non-nil, enable window resize and auto treemacs pop on startup.")
+
+  (defvar grok-window-pop-splash t
+    "Fancy option only. If non-nil, enable splash image.")
+
+  (defvar grok-window-pop-splash-timer 3
+    "Integer of time before splash auto-closes.")
 
   (defun grok--ensure-opts (&optional force)
     "Ensure `grok-opts-file` exists; with FORCE recreate via minibuffer prompts; then load it.
