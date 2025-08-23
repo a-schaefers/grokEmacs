@@ -5,7 +5,7 @@
   :defer t
   :init
   (setq projectile-project-search-path `((,grok-projects . 1)))
-  :hook (emacs-startup . projectile-mode)
+  :hook (elpaca-after-init . projectile-mode)
   :config
   (projectile-discover-projects-in-search-path)
   (projectile-save-known-projects))
