@@ -71,12 +71,6 @@
   (doom-modeline-height 32)
   (doom-modeline-bar-width 4))
 
-(use-package minions
-  :if (string= grok-use-modeline "doom") ; this add-on seems incompatible with spaceline, does nothing
-  :after doom-modeline
-  :ensure t
-  :hook (elpaca-after-init . minions-mode))
-
 (use-package spaceline
   :if (string= grok-use-modeline "spaceline")
   :ensure t
@@ -87,7 +81,19 @@
     (spaceline-emacs-theme))
   :hook (elpaca-after-init . grok/enable-spaceline))
 
+(use-package moody
+  :if (string= grok-use-modeline "moody")
+  :ensure t
+  :init
+  (moody-replace-mode-line-front-space)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
 
+;; uncluttered minor modes across various modelines
+(use-package minions
+  :after doom-modeline
+  :ensure t
+  :hook (elpaca-after-init . minions-mode))
 
 (use-package treemacs
   :ensure t

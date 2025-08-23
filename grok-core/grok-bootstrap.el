@@ -83,7 +83,7 @@
     "Minimal style: built-in theme symbol (e.g., 'modus-operandi).")
 
   (defvar grok-use-modeline "doom"
-    "Modeline style: may be one of \"doom\" or \"spaceline\", or \"none\"")
+    "Modeline style: may be one of \"doom\" or \"spaceline\", \"moody\" or \"none\"")
 
   ;; 5) Alpha background (string: \"0\"–\"99\"; \"\" or \"100\" disables).
   (defvar grok-alpha-background "100"
@@ -187,8 +187,8 @@ Order:
                     (prin1 `(setq grok-custom-theme ',th) (current-buffer)) (insert "\n")
                     ;; NEW: modeline style (only for fancy)
                     (let* ((defml (or (and (boundp 'grok-use-modeline) grok-use-modeline) "doom"))
-                           (ml (completing-read "⌘ Modeline (doom|spaceline|none): "
-                                                '("doom" "spaceline" "none") nil t defml)))
+                           (ml (completing-read "⌘ Modeline (doom|spaceline|moody|none): "
+                                                '("doom" "spaceline" "moody" "none") nil t defml)))
                       (prin1 `(setq grok-use-modeline ,ml) (current-buffer)) (insert "\n")))))
 
               ;; 5) Alpha background
