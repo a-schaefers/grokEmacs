@@ -31,7 +31,7 @@ Fancy loads a user-chosen theme package and theme name, defaulting to doom-theme
 
 ![fancy](grok-fancy.jpg)
 
-Minimal lets the user pick a built-in theme, recommending modus-vivendi or modus-operandi, with a clean, uncluttered modeline.
+Minimal lets the user pick a built-in theme, recommending modus-vivendi or modus-operandi, with a clean, uncluttered modeline showing only the modified state, filename, line number and major mode. But if you want the default modeline, just (setq grok-use-modeline "none") will do.
 
 ![minimal](grok-minimal.jpg)
 
