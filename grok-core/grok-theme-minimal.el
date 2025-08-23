@@ -21,6 +21,8 @@
   :config
   (setq inhibit-startup-screen nil)
   (load-theme grok-custom-built-in-theme t)
-  (grok-minimal-modeline))
+
+  (when (string= grok-use-modeline "minimal") ; none skips this and sets default
+      (grok-minimal-modeline)))
 
 (provide 'grok-theme-minimal)

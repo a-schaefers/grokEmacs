@@ -162,6 +162,7 @@ Order:
                 (if (string= style "minimal")
                     (progn
                       (prin1 `(setq grok-custom-theme-pkg nil) (current-buffer)) (insert "\n")
+                      (prin1 `(setq grok-use-modeline "minimal") (current-buffer)) (insert "\n")
                       (let* ((def (if (and (boundp 'grok-custom-built-in-theme)
                                            (symbolp grok-custom-built-in-theme))
                                       (symbol-name grok-custom-built-in-theme)
