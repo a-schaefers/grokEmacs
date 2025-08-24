@@ -153,6 +153,25 @@ tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
 
 Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
 
+```elisp
+(setq grok-projects "~/repos/")
+(setq grok-evil-mode nil)
+(setq grok-theme t)
+(setq grok-theme-style "minimal")
+(setq grok-custom-theme-pkg nil)
+(setq grok-use-modeline "minimal")
+(setq grok-custom-built-in-theme 'modus-operandi)
+(setq grok-alpha-background "")
+(setq grok-font "Go Mono")
+(setq grok-font-size "11")
+(setq grok-line-numbers nil)
+(setq grok-line-numbers nil)
+(setq grok-relative-line-numbers nil)
+;; additional settings
+;; (setq grok-core-disabled '())
+;; (setq grok-packages-disabled '())
+```
+
 ![minimal](grok-minimal.jpg)
 
 #### Disable module files entirely
