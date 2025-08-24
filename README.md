@@ -1,4 +1,4 @@
-# grokEmacs Philosophy
+# About grokEmacs
 
 <img src="splash.png" alt="logo" width="300" align="left" style="margin-right:16px; margin-bottom:8px;">
 
