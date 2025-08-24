@@ -1,12 +1,10 @@
 # grokEmacs
 
-[How to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl)
-
 ![logo](splash.png)
 
 <sub><sup>Logo generated with ChatGPT (OpenAI)</sup></sub>
 
-`git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs`
+`git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs` and if you're new, maybe checkout my [how to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) series.
 
 If you encounter an error in the bootstrap such as: `[2025-08-17 14:11:25] fatal: destination path '/home/$USER/.config/emacs/elpaca/repos/treemacs' already exists and is not an empty directory.` It probably is the result of a partial clone + network timeout, leaving repos/treemacs/ half-baked; the re-clone then balked because the dir existed. In this case the solution is `M-x elpaca-delete RET treemacs` and then restarting Emacs to finish the bootstrap process.
 
@@ -48,6 +46,8 @@ On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, 
 - **treesitter** everywhere as much as possible
 - **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
+
+---
 
 ## Keybinds
 
