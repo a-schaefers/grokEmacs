@@ -195,8 +195,8 @@ Maybe you like most of `grok-core/grok-evil.el`, but you’d prefer to handle
 #### Add your own overrides
 
 Your **personal sandbox** is `grok.d/`.
-By default, it contains a generated `grok.el` with sane defaults, loaded *last*.
-That’s the best place to add hacks, keybinds, or tweaks.
+By default, it contains a generated `grok.el`, loaded last. This is where the final configuration of packages happens. grokEmacs funnels common customization points here so you can quickly tune your setup without touching the core. The file includes examples for environment and PATH tweaks, LSP server settings, general defaults, adding new packages, overriding core packages, and language-specific mode adjustments.
+So that’s the best place to add hacks, keybinds, or tweaks.
 You can also drop additional `.el` files into `grok.d/` - they’ll be picked up automatically.
 
 ## 📝 Local Customization (`grok.el`)
