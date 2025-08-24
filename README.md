@@ -147,28 +147,89 @@ tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
 
 ![fancy](screen3.jpg)
 
-#### Disable some module file from loading
+### 📦 Minimal Mode
 
-So you looked at init.el and grok-core, and decided you don't want grok-better-defaults and grok-better-scratch to load at all? Just append in grok-opts.el,
+Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
+
+![minimal](grok-minimal.jpg)
+
+#### Disable module files entirely
+
+Suppose you looked through `init.el` and `grok-core/`, and decided you don’t want
+`grok-better-defaults` or `grok-better-scratch` to load at all. Just add this to `grok-opts.el`:
 
 ```elisp
 (setq grok-core-disabled '(grok-better-defaults grok-better-scratch))
 ```
 
-#### Disable some specific packages from loading
+#### Disable specific packages
 
-So you looked at grok-core/grok-evil.el and you like most of it, but you would rather leave which-key and general.el configuration to yourself,
+Maybe you like most of `grok-core/grok-evil.el`, but you’d prefer to handle
+`which-key` and `general.el` yourself. In that case, disable just those packages:
 
 ```elisp
 (setq grok-packages-disabled '(which-key general))
 ```
 
-Then you might for example create new files in grok.d, or just add the configuration you want to grok.d/grok.el.
+#### Add your own overrides
 
-### 📦 Minimal Mode
+Your **personal sandbox** is `grok.d/`.
+By default, it contains a generated `grok.el` with sane defaults, loaded *last*.
+That’s the best place to add hacks, keybinds, or tweaks.
+You can also drop additional `.el` files into `grok.d/` - they’ll be picked up automatically.
 
-Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
-![minimal](grok-minimal.jpg)
+## 📝 Local Customization (`grok.el`)
+
+After the initial setup, grokEmacs creates a file called **`grok.el`** in your config directory.
+This file is **yours to edit** - it’s `.gitignore`d so updates to grokEmacs won’t overwrite it.
+If you delete it, a fresh copy will be regenerated on the next restart.
+
+Whenever you pull new versions of grokEmacs, it’s recommended to compare your `grok.el` against
+`grok-defaults.el` using the built-in diff helper:
+
+```
+C-c gu   (grok-update-config-with-ediff)
+```
+
+Run this after a `git pull` to ensure nothing important has changed or broken.
+
+### 🔧 What `grok.el` does
+
+- **ENV / PATH customization**
+  Set environment variables (`EDITOR`, `VISUAL`, `PAGER`) and prepend/append to your `PATH`.
+  Useful if you want Emacs to launch tools like compilers or shells from custom locations.
+
+- **Language Servers (LSP / Eglot)**
+  Defines `grok-eglot-autostart-langs`, a mapping of modes to language server binaries.
+  When those binaries are found on your PATH, grokEmacs will auto-start Eglot for that language.
+  Example: `python-ts-mode` → `pylsp`, `go-ts-mode` → `gopls`.
+
+- **General Defaults**
+  - Tabs disabled globally, fill-column set to 79 (Python style).
+  - Default compile command: `make -k`.
+  - Some optional global keybinds:
+    - `C-h C-b` → Show Grok keybinds
+    - `C-c gi` → Edit init.el
+    - `C-c gg` → Edit grok.el
+    - `C-c go` → Edit setup options (`grok-opts.el`)
+    - `C-c gu` → Compare config with defaults (ediff)
+  - Starts an Emacs server automatically.
+
+- **Package Overrides**
+  - `eglot` gets remapped keys on `M-m` (rename, imports, format, etc.).
+  - `company` completion uses `C-n` / `C-p` for navigation.
+  - Optional extras (like `vterm`) can be enabled by uncommenting.
+
+- **Language-specific styles**
+  - `c-ts-mode` and `c++-ts-mode`: Linux kernel tab/indent rules.
+  - `makefile-mode`: Tabs enforced (since Makefiles require them).
+
+### ✅ Best Practices
+
+- Keep your personal tweaks here - grokEmacs core modules won’t touch this file.
+- Use it for small overrides, keybinds, or enabling extra packages.
+- For larger or experimental changes, consider using separate files under `grok.d/`.
+- After updating grokEmacs (`git pull`), always run `C-c gu` to check for differences and avoid surprises.
 
 ## Keybinds
 
