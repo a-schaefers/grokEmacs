@@ -18,9 +18,9 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## ✨ Interactive Initial Setup Wizard 🧙
 
-The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Your answers are written to `~/.config/emacs/grok-opts.el` (a simple file of `setq`s you can edit later.)
+The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Your answers are written to `~/.config/emacs/grok-opts.el`
 
-You can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind about something.
+> ⚡ Tip: If you want to hack things directly, just open `~/.config/emacs/grok-opts.el` after running the wizard. Or you can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind about something.
 
 ### 🪄 What you’ll be asked
 
@@ -72,15 +72,9 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 
 ### 📦 Minimal Mode
 
-Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline.
-
-```elisp
-(setq grok-use-modeline "none")
-```
+Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`
 
 ![minimal](grok-minimal.jpg)
-
-⚡ Tip: If you want to hack things directly, just open `~/.config/emacs/grok-opts.el` after running the wizard.
 
 ## Project goals
 
