@@ -1,10 +1,10 @@
 # grokEmacs
 
-<table>
+<table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="160" align="center">
-  <img src="splash.png" alt="logo" width="140"/><br/>
-  <sub>Logo generated with ChatGPT (OpenAI)</sub>
+<td width="320" align="center">
+  <img src="splash.png" alt="logo" width="300"/><br/>
+  <sub><sup>Logo generated with ChatGPT (OpenAI)</sup></sub>
 </td>
 <td>
 
