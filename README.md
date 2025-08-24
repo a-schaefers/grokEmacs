@@ -1,8 +1,18 @@
 # grokEmacs
 
-![logo](splash.png)
+<table>
+<tr>
+<td width="160" align="center">
+  <img src="splash.png" alt="logo" width="140"/><br/>
+  <sub>Logo generated with ChatGPT (OpenAI)</sub>
+</td>
+<td>
 
-<sub><sup>Logo generated with ChatGPT (OpenAI)</sup></sub>
+grokEmacs began nearly a decade ago as a highly opinionated personal setup, but has since evolved into a batteries-included configuration that mostly respects package defaults. Inspired by Doom Emacs and Spacemacs - both excellent projects with large communities and rich ecosystems - it takes a different approach: keeping a smaller, easier-to-grasp codebase, favoring built-in features and lightweight packages where possible. The goal is to bring everything together in one place and showcase the best that Emacs has to offer in a highly configurable and user-respecting way.
+
+</td>
+</tr>
+</table>
 
 ## Features
 
