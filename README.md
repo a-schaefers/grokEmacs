@@ -70,8 +70,6 @@ The prompts appear one by one in the minibuffer:
    > “Do you want line numbers?”
    If yes, you’ll also be asked whether you prefer absolute or relative.
 
----
-
 ### 🎩 Fancy Mode
 
 With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your selected theme, and wires up extras:
@@ -80,9 +78,17 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 - Custom modeline (Doom/Spaceline/Moody)
 - Window auto-resizing + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash t)`)
 
-![fancy](grok-fancy.jpg)
+doom-themes, doom-one:
 
----
+![fancy](screen1.jpg)
+
+spacemacs-theme, spacemacs-dark:
+
+![fancy](screen2.jpg)
+
+tao-theme, tao-yang:
+
+![fancy](screen3.jpg)
 
 ### 📦 Minimal Mode
 
@@ -123,6 +129,7 @@ experience beyond scheme/lisp language families.
 ### Additional language-specific binds
 
 Language modes may add their own bindings as needed.
+
 ## Assumptions
 
 ### emacs versions
