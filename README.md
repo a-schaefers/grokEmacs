@@ -6,8 +6,6 @@ grokEmacs began nearly a decade ago as a highly opinionated personal setup, but 
 
 This project is intentionally small enough to be maintained by one person. But it isn’t just a one-man show - as soon as you clone it, it’s your project too. Fork it. Hack it. Make it your own. The design is simple enough to outlive its original author and flexible enough to keep evolving in the hands of whoever picks it up next.
 
-<br clear="left">
-
 ## Features
 
 - **Setup wizard** to look-good out of the box
