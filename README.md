@@ -103,7 +103,7 @@ doom-themes, doom-one, doom-modeline, splash:
 (setq grok-core-disabled '())
 (setq grok-packages-disabled '())
 (setq grok-window-pop-enabled t)
-(setq grok-window-pop-splash t)
+(setq grok-window-pop-splash nil)
 ```
 
 ![fancy](screen1.jpg)
@@ -126,7 +126,7 @@ spacemacs-theme, spacemacs-dark, spaceline `grok-opts.el`:
 (setq grok-core-disabled '())
 (setq grok-packages-disabled '())
 (setq grok-window-pop-enabled t)
-(setq grok-window-pop-splash t)
+(setq grok-window-pop-splash nil)
 ```
 
 ![fancy](screen2.jpg)
