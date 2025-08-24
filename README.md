@@ -78,6 +78,8 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 - Custom modeline (Doom/Spaceline/Moody)
 - Window auto-resizing + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash t)`)
 
+**The following examples are just what the wizard writes into grok-opts.el, you don't have to do it manually.**
+
 doom-themes, doom-one, doom-modeline, splash:
 
 ```elisp
@@ -197,7 +199,7 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 
 - **ENV / PATH customization**
   Set environment variables (`EDITOR`, `VISUAL`, `PAGER`) and prepend/append to your `PATH`.
-  Useful if you want Emacs to launch tools like compilers or shells from custom locations.
+  This is just an alternative, Emacs-way to modify your environment and PATH instead of the typical `.bash_profile` or `.bashrc` type of stuff.
 
 - **Language Servers (LSP / Eglot)**
   Defines `grok-eglot-autostart-langs`, a mapping of modes to language server binaries.
@@ -220,15 +222,15 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
   - `company` completion uses `C-n` / `C-p` for navigation.
   - Optional extras (like `vterm`) can be enabled by uncommenting.
 
-- **Language-specific styles**
-  - `c-ts-mode` and `c++-ts-mode`: Linux kernel tab/indent rules.
+- **Language-specific override examples**
+  - `c-ts-mode` and `c++-ts-mode`: use Linux kernel tab/indent rules.
   - `makefile-mode`: Tabs enforced (since Makefiles require them).
 
 ### ✅ Best Practices
 
 - Keep your personal tweaks here - grokEmacs core modules won’t touch this file.
 - Use it for small overrides, keybinds, or enabling extra packages.
-- For larger or experimental changes, consider using separate files under `grok.d/`.
+- For larger or experimental changes, consider using separate files under `grok.d/` and keeping them in version control. *(Note: only `grok.el` is gitignored by default — everything else in `grok.d/` is tracked if you want it to be.)*
 - After updating grokEmacs (`git pull`), always run `C-c gu` to check for differences and avoid surprises.
 
 ## Keybinds
@@ -277,7 +279,7 @@ Language modes may add their own bindings as needed.
 
 ### terminal
 
-I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:
+This configuration is optimized for GUI Emacs. If a hardcore `emacs -nw` user wants to improve that experience, I will gladly merge a PR, provided it meets these conditions:
 
 - All GUI-only assumptions must be guarded with (display-graphic-p) checks, and likewise for terminal-only code.
 - Clipboard handling must work out of the box, as graphical Emacs already provides, with compatibility across Xorg, Wayland, and macOS.
