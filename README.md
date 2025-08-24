@@ -241,7 +241,6 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
   - Tabs disabled globally, fill-column set to 79 (Python style).
   - Default compile command: `make -k`.
   - Some optional global keybinds:
-    - `C-h C-b` → Show Grok keybinds
     - `C-c gi` → Edit init.el
     - `C-c gg` → Edit grok.el
     - `C-c go` → Edit setup options (`grok-opts.el`)
