@@ -48,7 +48,7 @@ Minimal goes through the built-in options of the theme wizard, skipping any extr
 
 ## Binds
 
-The project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization. M-x `grok-show-binds` will show what those are.
+The project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization.
 
 Binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
 
@@ -64,7 +64,7 @@ If you enabled Evil during setup, you get Vim binds plus common addons:
 - **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
 - **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
 
-This is still a work in progress.
+A discoverable binding system on Space (evil) and M-m (holy) is currently in the works.
 
 ### Treesit to the future
 
