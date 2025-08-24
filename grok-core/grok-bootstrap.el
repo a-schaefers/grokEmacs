@@ -488,15 +488,6 @@ OFFSET: (DX . DY) pixels"
   ;; Schedule -> slight delay so init noise won't auto-dismiss it.
   (defun grok-splash-overlay-later (&optional delay)
     (run-at-time (or delay 0.25) nil
-                 (lambda () (grok-splash-overlay nil 'window-center '(0 . -20)))))
-
-  ;; trying to achieve a wider visual-studio style window setup
-  (defun grok-fancy-setup ()
-    (set-frame-size (selected-frame) 135 40)
-    (when (and (not (memq 'treemacs grok-packages-disabled))
-               (fboundp 'treemacs))
-      (treemacs))
-    (when (get-buffer "*dashboard*")
-      (switch-to-buffer "*dashboard*"))))
+                 (lambda () (grok-splash-overlay nil 'window-center '(0 . -20))))))
 
 (provide 'grok-bootstrap)

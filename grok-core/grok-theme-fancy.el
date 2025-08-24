@@ -4,6 +4,15 @@
 
 (use-package emacs
   :if (not (memq 'theme-fancy-grok-config grok-packages-disabled))
+  :preface
+  (defun grok-fancy-setup ()
+    ;; trying to achieve a wider visual-studio style window setup
+    (set-frame-size (selected-frame) 135 40)
+    (when (and (not (memq 'treemacs grok-packages-disabled))
+               (fboundp 'treemacs))
+      (treemacs))
+    (when (get-buffer "*dashboard*")
+      (switch-to-buffer "*dashboard*")))
   :ensure nil
   :init
   (when (and grok-window-pop-enabled
