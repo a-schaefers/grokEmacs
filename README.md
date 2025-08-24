@@ -167,8 +167,7 @@ Then you might for example create new files in grok.d, or just add the configura
 
 ### 📦 Minimal Mode
 
-Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`
-ppppp
+Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
 ![minimal](grok-minimal.jpg)
 
 ## Keybinds
