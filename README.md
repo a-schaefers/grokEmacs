@@ -4,7 +4,7 @@
 
 grokEmacs takes inspiration from Doom and Spacemacs but keeps the focus on simplicity, with a small codebase of customizable config files. Many "starter kits” are criticized for hiding how Emacs works, but grokEmacs is designed to easily unravel and expose Emacs to the user.
 
-It avoids complex abstractions, leaning on `use-package` rather than custom macros or excessive layering. This keeps the setup portable, familiar, and free of framework lock-in, while staying easy to read and hack. The dashboard also resurfaces Emacs' learning tools: the Tutorial, Tour, Manual, and Elisp Intro are all on the dashboard. As part of the same philosophy, the author also created a [Vanilla Emacs hacking playlist](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) to highlight the fundamentals.
+It avoids complex abstractions, leaning on `use-package` rather than custom macros or complex layering. This keeps the setup portable, familiar, and free of framework lock-in, while staying easy to read and hack. The dashboard also resurfaces Emacs' learning tools: the Tutorial, Tour, Manual, and Elisp Intro are all on the dashboard. As part of the same philosophy, the author also created a [Vanilla Emacs hacking playlist](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) to highlight the fundamentals.
 
 grokEmacs isn't meant to be the perfect config for everyone. It favors simplicity over elegance and defaults over heavy customization - lacking polish by design, because it's meant to be polished by the user. It's just an Emacs config to fork, clone, hack, and own.
 
