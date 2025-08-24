@@ -2,11 +2,11 @@
 
 <img src="splash.png" alt="logo" width="200" align="left" style="margin-right:16px; margin-bottom:8px;">
 
-grokEmacs takes inspiration from Doom and Spacemacs but keeps the focus on simplicity, with a small codebase of customizable config files. When you clone it, you’re still just using Emacs—not a new framework. Many “starter kits” are criticized for hiding Emacs itself; grokEmacs is designed to do the opposite.
+grokEmacs takes inspiration from Doom and Spacemacs but keeps the focus on simplicity, with a small codebase of customizable config files. Many "starter kits” are criticized for hiding how Emacs works, but grokEmacs is designed to easily unravel and expose Emacs to the user.
 
-It avoids excess abstraction, leaning on `use-package` rather than custom macros or new layers. This keeps the setup portable, familiar, and free of framework lock-in, while staying easy to read and hack. The dashboard also brings Emacs’ own learning tools—the Tutorial, Tour, Manual, and Elisp Intro—back to the surface. As part of the same philosophy, the author also created a [Vanilla Emacs hacking playlist](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) to highlight the core skills every user should know.
+It avoids complex abstractions, leaning on `use-package` rather than custom macros or excessive layering. This keeps the setup portable, familiar, and free of framework lock-in, while staying easy to read and hack. The dashboard also resurfaces Emacs' learning tools-the Tutorial, Tour, Manual, and Elisp Intro. As part of the same philosophy, the author also created a [Vanilla Emacs hacking playlist](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) to highlight the fundamentals.
 
-grokEmacs isn’t meant to be the perfect config for everyone. It tries hard to be simple—something you can clone, modify, and craft into your own.
+grokEmacs isn't meant to be the perfect config for everyone. It favors simplicity over elegance and defaults over heavy customization - lacking polish by design, because it's meant to be polished by you. It's just an Emacs config to fork, clone, hack, and own.
 
 ## Features
 
@@ -38,25 +38,25 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## ✨ Interactive Initial Setup Wizard 🧙
 
-The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Your answers are written to `~/.config/emacs/grok-opts.el`
+The very first time you launch **grokEmacs**, you'll be greeted by a short wizard. Your answers are written to `~/.config/emacs/grok-opts.el`
 
 > ⚡ Tip: If you want to hack things directly, just open `~/.config/emacs/grok-opts.el` after running the wizard. Or you can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind about something.
 
-### 🪄 What you’ll be asked
+### 🪄 What you'll be asked
 
 The prompts appear one by one in the minibuffer:
 
 1. **📂 Projects Directory**
-   > “Where do you keep your code?”
+   > "Where do you keep your code?”
    Enter the folder path (default: `~/repos`). Projectile & Magit will look here.
 
 2. **😈 Evil Mode or 😇 Holy Mode**
-   > “Do you want Vim-style keys?”
+   > "Do you want Vim-style keys?”
    Choose Evil if you live in Vim-land, or stick with Emacs defaults.
 
 3. **🧙 Theme Setup**
-   > “Do you want to customize the look, or keep it vanilla?”
-   - **Skip** → You get pure “angry fruit salad” Emacs defaults.
+   > "Do you want to customize the look, or keep it vanilla?”
+   - **Skip** → You get pure "angry fruit salad” Emacs defaults.
    - **Continue** → Pick *fancy* or *minimal* styling.
 
 4. **🎨 Fancy vs Minimal**
@@ -64,17 +64,17 @@ The prompts appear one by one in the minibuffer:
    - **Minimal** → Stick to built-in themes like `modus-operandi` or `modus-vivendi`. A clean modeline shows just the essentials (modified, file, line, mode).
 
 5. **🪟 Transparency**
-   > “Want to see through your editor?”
+   > "Want to see through your editor?”
    Type a number `0–99` (lower = more see-through). Leave blank or `100` for solid.
 
 6. **🔤 Font & 📏 Size**
-   > “What font do you like? And how big should it be?”
-   Defaults to *Source Code Pro* and *11* if you’re not picky.
+   > "What font do you like? And how big should it be?”
+   Defaults to *Source Code Pro* and *11* if you're not picky.
    It will fallback to Monospace if the font is not found on your system.
 
 7. **🔢 Line Numbers**
-   > “Do you want line numbers?”
-   If yes, you’ll also be asked whether you prefer absolute or relative.
+   > "Do you want line numbers?”
+   If yes, you'll also be asked whether you prefer absolute or relative.
 
 ### 🎩 Fancy Mode
 
@@ -156,7 +156,7 @@ tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
 
 ### 📦 Minimal Mode
 
-Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
+Minimal mode skips the extra fancy bloat and gives you just enough polish. You'll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`.
 
 ```elisp
 (setq grok-projects "~/repos/")
@@ -180,7 +180,7 @@ Minimal mode skips the extra fancy bloat and gives you just enough polish. You�
 
 #### Disable module files entirely
 
-Suppose you looked through `init.el` and `grok-core/`, and decided you don’t want
+Suppose you looked through `init.el` and `grok-core/`, and decided you don't want
 `grok-better-defaults` or `grok-better-scratch` to load at all. Just add this to `grok-opts.el`:
 
 ```elisp
@@ -189,7 +189,7 @@ Suppose you looked through `init.el` and `grok-core/`, and decided you don’t w
 
 #### Disable specific packages
 
-Maybe you like most of `grok-core/grok-evil.el`, but you’d prefer to handle
+Maybe you like most of `grok-core/grok-evil.el`, but you'd prefer to handle
 `which-key` and `general.el` yourself. In that case, disable just those packages:
 
 ```elisp
@@ -200,16 +200,16 @@ Maybe you like most of `grok-core/grok-evil.el`, but you’d prefer to handle
 
 Your **personal sandbox** is `grok.d/`.
 By default, it contains a generated `grok.el`, loaded last. This is where the final configuration of packages happens. grokEmacs funnels common customization points here so you can quickly tune your setup without touching the core. **The file includes examples for environment and PATH tweaks, LSP server settings, general defaults, adding new packages, overriding core packages, and language-specific mode adjustments.**
-So that’s the best place to add hacks, keybinds, or tweaks.
-You can also drop additional `.el` files into `grok.d/` - they’ll be picked up automatically.
+So that's the best place to add hacks, keybinds, or tweaks.
+You can also drop additional `.el` files into `grok.d/` - they'll be picked up automatically.
 
 ## 📝 Local Customization (`grok.el`)
 
 After the initial setup, grokEmacs creates a file called **`grok.el`** in the `grok.d` directory.
-This file is **yours to edit** - it’s `.gitignore`d so updates to grokEmacs won’t overwrite it.
+This file is **yours to edit** - it's `.gitignore`d so updates to grokEmacs won't overwrite it.
 If you delete it, a fresh copy will be regenerated on the next restart.
 
-Whenever you pull new versions of grokEmacs, it’s recommended to compare your `grok.el` against
+Whenever you pull new versions of grokEmacs, it's recommended to compare your `grok.el` against
 `grok-defaults.el` using the built-in diff helper:
 
 ```
@@ -250,9 +250,9 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 
 ### ✅ Best Practices
 
-- Keep your personal tweaks here - grokEmacs core modules won’t touch this file.
+- Keep your personal tweaks here - grokEmacs core modules won't touch this file.
 - Use it for small overrides, keybinds, or enabling extra packages.
-- For larger or experimental changes, consider using separate files under `grok.d/` and keeping them in version control. *(Note: only `grok.el` is gitignored by default — everything else in `grok.d/` is tracked if you want it to be.)*
+- For larger or experimental changes, consider using separate files under `grok.d/` and keeping them in version control. *(Note: only `grok.el` is gitignored by default - everything else in `grok.d/` is tracked if you want it to be.)*
 - After updating grokEmacs (`git pull`), always run `C-c gu` to check for differences and avoid surprises.
 
 ## Keybinds
@@ -273,7 +273,7 @@ In **Holy mode** you keep Emacs' first-class defaults, plus a few helpers and a 
 
 ### Evil Mode (Vim style)
 
-If you enabled Evil during setup, you get Vim’s modal editing plus a leader system:
+If you enabled Evil during setup, you get Vim's modal editing plus a leader system:
 
 - **Evil defaults** - normal/insert/visual modes and Vim-style motions.
 - **SPACE leader** - powered by `which-key` + `general.el`. Press **Space** to explore menus.
