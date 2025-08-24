@@ -1,10 +1,16 @@
-# grokEmacs
+# grokEmacs Philosophy
 
 <img src="splash.png" alt="logo" width="300" align="left" style="margin-right:16px; margin-bottom:8px;">
 
 grokEmacs began nearly a decade ago as a highly opinionated personal setup. It later became Spartan Emacs, and has now been rewritten as grokEmacs. Over time it has grown into a batteries-included configuration that mostly respects package defaults. Inspired by Doom Emacs and Spacemacs - both excellent projects with large communities and rich ecosystems - grokEmacs takes a different approach: keeping a smaller, easier-to-grasp codebase and favoring built-in features and lightweight packages where possible. The goal is to bring everything together in one place and showcase the best that Emacs has to offer in a highly configurable and user-respecting way.
 
 This project is intentionally small enough to be maintained by one person. But it isn’t just a one-man show - as soon as you clone it, it’s your project too. Fork it. Hack it. Own it. The design is simple enough to outlive its original author and flexible enough to keep evolving in the hands of whoever picks it up next.
+
+One common criticism of Emacs "starter kits" or "distros" is that they can take away the opportunity for users to really learn Emacs on a deeper level. grokEmacs is designed with that in mind: it keeps the codebase small, favors package defaults, and pushes most customizations into clearly marked places like grok.el, so you can both use it productively and understand how it works.
+
+To go further, the author has created a [Vanilla Emacs hacking playlist on YouTube](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl), aimed at teaching the Emacs transcendentals - the core skills every user needs, whether they end up using Evil or vanilla keys, Spacemacs, Doom, grokEmacs, or their own custom setup.
+
+The grokEmacs dashboard makes a point of re-surfacing the built-in Emacs learning tools, with quick buttons to launch the Tutorial, Tour, Manual, and Elisp Intro, so users always have direct access to Emacs itself.
 
 ## Features
 
