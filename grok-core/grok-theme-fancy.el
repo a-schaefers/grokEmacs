@@ -39,17 +39,25 @@
                                     dashboard-insert-items
                                     dashboard-insert-newline
                                     dashboard-insert-footer)
-        dashboard-projects-backend 'projectile
-        ;; dashboard-projects-switch-function #'projectile-switch-project
-        )
+        dashboard-projects-backend 'projectile)
 
   (setq dashboard-navigator-buttons
         `(((nil "Homepage" "Go to project homepage"
                 (lambda (&rest _) (browse-url "https://github.com/a-schaefers/grokEmacs")))
 
-           (nil "Restart"  "Restart Emacs"
+           (nil "Tutorial"  "Official Intertactive Emacs Tutorial"
                 (lambda (&rest _)
-                  (restart-emacs)))))))
+                  (help-with-tutorial)))
+
+           (nil "Tour" "Go to the official Emacs guided tour"
+                (lambda (&rest _) (browse-url "https://www.gnu.org/software/emacs/tour/")))
+
+           (nil "Manual"  "Official Emacs Manual"
+                (lambda (&rest _)
+                  (info-emacs-manual)))
+
+           (nil "Elisp Intro" "Go to the official elisp intro page"
+                (lambda (&rest _) (browse-url "https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html")))))))
 
 (when (not (memq 'theme-fancy-grok-config grok-packages-disabled))
   (grok--use-pkg-programmatic
