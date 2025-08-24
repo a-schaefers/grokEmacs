@@ -12,8 +12,7 @@
     (when (and
            (display-graphic-p)
            (bound-and-true-p grok-window-pop-splash))
-      (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-later 0.00)) 90)
-      (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-quit-later grok-window-pop-splash-timer)) 90))))
+      (add-hook 'window-setup-hook (lambda () (grok-splash-overlay-later 0.00)) 90))))
 
 (use-package dashboard
   :if (not (memq 'dashboard grok-packages-disabled))
@@ -46,9 +45,6 @@
   (setq dashboard-navigator-buttons
         `(((nil "Homepage" "Go to project homepage"
                 (lambda (&rest _) (browse-url "https://github.com/a-schaefers/grokEmacs")))
-
-           (nil "grok.el Info" "Show Keybinds"
-                (lambda (&rest _) (grok-show-keybinds)))
 
            (nil "Restart"  "Restart Emacs"
                 (lambda (&rest _)
