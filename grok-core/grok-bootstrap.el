@@ -501,7 +501,6 @@ OFFSET: (DX . DY) pixels"
                (fboundp 'treemacs))
       (treemacs))
     (when (get-buffer "*dashboard*")
-      (switch-to-buffer "*dashboard*")
-      (delete-window))))
+      (switch-to-buffer "*dashboard*"))))
 
 (provide 'grok-bootstrap)
