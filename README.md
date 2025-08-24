@@ -259,7 +259,7 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 
 ### Holy Mode (Emacs style)
 
-In **Holy mode** you keep Emacs’ world-class defaults, plus a few helpers and a leader system:
+In **Holy mode** you keep Emacs' first-class defaults, plus a few helpers and a leader system:
 
 - **Emacs defaults** - all the standard `C-x ...` / `M-x ...` bindings.
 - **M-m leader** - powered by `which-key` + `general.el`. Press **M-m** to explore menus.
