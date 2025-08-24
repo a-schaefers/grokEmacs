@@ -4,6 +4,20 @@
 
 <sub><sup>Logo generated with ChatGPT (OpenAI)</sup></sub>
 
+## Features
+
+- **Setup wizard** to look-good out of the box
+- **Optional evil-mode** and supportive packages, with Space bound as a discoverable leader key
+- **Simple module system** that you can completely override
+- **elpaca** package manager + **use-package**
+- **gccemacs** native compilation
+- **eglot lsp + company** autocompletion
+- **magit+projectile** for VC & project awareness
+- **flymake** linting (sideline, eldoc-box)
+- **treesitter** everywhere as much as possible
+- **vertico** fuzzy completion
+- *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
+
 ## Quick Start
 
 `git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs` and if you're new, maybe checkout my [how to grok Emacs](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) series.
@@ -75,17 +89,6 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`
 
 ![minimal](grok-minimal.jpg)
-
-## Project goals
-
-- **elpaca** package manager + **use-package**
-- **gccemacs** native compilation
-- **eglot lsp + company** autocompletion
-- **magit+projectile** for VC & project awareness
-- **flymake** linting (sideline, eldoc-box)
-- **treesitter** everywhere as much as possible
-- **vertico** fuzzy completion
-- *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
 ## Keybinds
 
