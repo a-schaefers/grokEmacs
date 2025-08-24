@@ -131,14 +131,16 @@
   :if (not (memq 'eglot grok-packages-disabled))
   :ensure nil
   :bind (:map eglot-mode-map
+              ("M-."   . xref-find-definitions)
+              ("M-m ."   . xref-find-definitions)
+
+              ("M-?" . xref-find-references)
+              ("M-m ?" . xref-find-references)
+
               ("M-m r" . eglot-rename)
               ("M-m o" . eglot-code-action-organize-imports)
-              ("M-m h" . eldoc)
-              ("M-m =" . eglot-format)
-              ("M-m ?" . xref-find-references)
-              ("M-."   . xref-find-definitions)
-              ("M-m d"   . eldoc-box-help-at-point)
-              ("C-c C-h" . eldoc-box-help-at-point)))
+              ("M-m h" . eldoc-box-help-at-point)
+              ("M-m =" . eglot-format)))
 
 (use-package company
   :if (not (memq 'company grok-packages-disabled))
@@ -151,13 +153,6 @@
          company-search-map
          ("C-n" . company-select-next)
          ("C-p" . company-select-previous)))
-
-(use-package treemacs
-  :if (and (not (memq 'treemacs grok-packages-disabled))
-           (string= grok-theme-style "fancy"))
-  :ensure nil
-  :bind (:map global-map
-              ("C-t"       . treemacs)))
 
 ;; `Additional' - add some new package
 
