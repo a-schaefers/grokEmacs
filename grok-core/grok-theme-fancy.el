@@ -40,7 +40,8 @@
                                     dashboard-insert-newline
                                     dashboard-insert-footer)
         dashboard-projects-backend 'projectile
-        dashboard-projects-switch-function #'projectile-switch-project)
+        ;; dashboard-projects-switch-function #'projectile-switch-project
+        )
 
   (setq dashboard-navigator-buttons
         `(((nil "Homepage" "Go to project homepage"
