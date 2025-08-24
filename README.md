@@ -18,25 +18,17 @@ This project does not use GitHub Issues. Instead, please submit your improvement
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
 
----
-
 ## Interactive Initial Setup
 
 On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, theme style, font, font size, line numbers, transparency, etc.) and saves your answers to `~/.config/emacs/grok-opts.el`. You can rerun the wizard anytime with C-u M-x grok--ensure-opts, or edit the file directly since it’s just a series of setqs. You can also skip the pre-baked theming entirely and stick with pure angry-fruit. In Fancy mode, grokEmacs also resizes the window and pops Treemacs on startup; if you don’t like that, disable it with `(setq grok-window-pop-enabled nil)` in grok-opts 🍻.
-
----
 
 **Fancy** loads a user-chosen theme package and theme name, defaulting to doom-themes with doom-one if unsure. It also enables Doom, Moody or Spacemacs modeline, Treemacs, Dashboard, and related extras.
 
 ![fancy](grok-fancy.jpg)
 
----
-
 **Minimal** goes through the built-in options of the theme wizard, skipping any extra theme packages and all the fancy bloat. It lets the user pick a built-in theme—recommending modus-vivendi or modus-operandi—and provides a clean, uncluttered modeline that shows only the modified state, filename, line number, and major mode. If you’d rather keep the default Emacs modeline, just set `(setq grok-use-modeline "none")` in grok-opts.
 
 ![minimal](grok-minimal.jpg)
-
----
 
 ## Project goals
 
@@ -49,8 +41,6 @@ On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, 
 - **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
----
-
 ## Keybinds
 
 ### Holy Mode (Emacs style)
@@ -62,8 +52,6 @@ In **Holy mode** you keep Emacs’ world-class defaults, plus a few helpers and 
 - **Language extras** - when editing code, **M-m** includes `eglot` bindings.
 - **crux** - smarter line movement, duplicate lines, kill whole line, etc.
 - **paredit** - structural Lisp editing, keeps parentheses balanced.
-
----
 
 ### Evil Mode (Vim style)
 
@@ -78,27 +66,19 @@ If you enabled Evil during setup, you get Vim’s modal editing plus a leader sy
 - **evil-matchit** - jump between matching pairs (if/else, HTML tags, etc.).
 - **evil-cleverparens** - Lisp structural editing, Vim-style (like paredit).
 
----
-
 ### Treesit to the future
 
 As treesit support improves, we probably will target [combobulate](https://github.com/mickeynp/combobulate) to get a sort-of of paredit-like
 experience beyond scheme/lisp language families.
-
----
 
 ### Additional language-specific binds
 
 Language modes may add their own bindings as needed.
 ## Assumptions
 
----
-
 ### emacs versions
 
 - Expects Emacs 30+ --with-native-compilation --with-tree-sitter ...
-
----
 
 ### terminal
 
@@ -107,8 +87,6 @@ I do not care about Terminal Emacs. If a hardcore `emacs -nw` user wants to impr
 - All GUI-only assumptions must be guarded with (display-graphic-p) checks, and likewise for terminal-only code.
 - Clipboard handling must work out of the box, as graphical Emacs already provides, with compatibility across Xorg, Wayland, and macOS.
 - Themes must not look terrible in terminal mode - either by disabling global font-lock, or by using a minimal terminal-only theme that lets the terminal handle colors.
-
----
 
 ## License
 [Public Domain (Unlicense)](https://unlicense.org)
