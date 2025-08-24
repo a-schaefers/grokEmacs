@@ -1,6 +1,6 @@
 # About grokEmacs
 
-<img src="splash.png" alt="logo" width="200" align="left" style="margin-right:16px; margin-bottom:8px;">
+<img src="splash.png" alt="logo" width="150" align="left" style="margin-right:16px; margin-bottom:8px;">
 
 grokEmacs takes inspiration from Doom and Spacemacs but keeps the focus on simplicity, with a small codebase of customizable config files. Many "starter kits” are criticized for hiding how Emacs works, but grokEmacs is designed to easily unravel and expose Emacs to the user.
 
