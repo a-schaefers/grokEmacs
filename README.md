@@ -18,11 +18,9 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## ✨ Interactive Initial Setup Wizard 🧙
 
-The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Think of it as Emacs asking you a handful of “first date” questions — nothing heavy, just enough to get comfortable. Your answers are written to `~/.config/emacs/grok-opts.el` (a simple file of `setq`s you can edit later).
+The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Your answers are written to `~/.config/emacs/grok-opts.el` (a simple file of `setq`s you can edit later.)
 
-You can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind.
-
----
+You can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind about something.
 
 ### 🪄 What you’ll be asked
 
@@ -38,7 +36,7 @@ The prompts appear one by one in the minibuffer:
 
 3. **🧙 Theme Setup**
    > “Do you want to customize the look, or keep it vanilla?”
-   - **Skip** → You get pure “angry fruit salad” Emacs.
+   - **Skip** → You get pure “angry fruit salad” Emacs defaults.
    - **Continue** → Pick *fancy* or *minimal* styling.
 
 4. **🎨 Fancy vs Minimal**
@@ -47,11 +45,12 @@ The prompts appear one by one in the minibuffer:
 
 5. **🪟 Transparency**
    > “Want to see through your editor?”
-   Type a number `0–99` (lighter = more see-through). Leave blank or `100` for solid.
+   Type a number `0–99` (lower = more see-through). Leave blank or `100` for solid.
 
 6. **🔤 Font & 📏 Size**
    > “What font do you like? And how big should it be?”
-   Defaults to *Source Code Pro 11* if you’re not picky.
+   Defaults to *Source Code Pro* and *11* if you’re not picky.
+   It will fallback to Monospace if the font is not found on your system.
 
 7. **🔢 Line Numbers**
    > “Do you want line numbers?”
@@ -65,7 +64,7 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 - Dashboard on startup
 - Treemacs sidebar
 - Custom modeline (Doom/Spaceline/Moody)
-- Window auto-resizing + splash (toggle with `(setq grok-window-pop-enabled nil)`)
+- Window auto-resizing + splash (toggle with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash t)`)
 
 ![fancy](grok-fancy.jpg)
 
