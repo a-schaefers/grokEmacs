@@ -80,20 +80,95 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 
 doom-themes, doom-one, doom-modeline, splash:
 
+```elisp
+(setq grok-projects "~/repos/")
+(setq grok-evil-mode nil)
+(setq grok-theme t)
+(setq grok-theme-style "fancy")
+(setq grok-custom-theme-pkg 'doom-themes)
+(setq grok-custom-theme 'doom-one)
+(setq grok-use-modeline "doom")
+(setq grok-alpha-background "100")
+(setq grok-font "Go Mono")
+(setq grok-font-size "11")
+(setq grok-line-numbers t)
+(setq grok-relative-line-numbers nil)
+(setq grok-core-disabled '())
+(setq grok-packages-disabled '())
+(setq grok-window-pop-enabled t)
+(setq grok-window-pop-splash t)
+```
+
 ![fancy](screen1.jpg)
 
-spacemacs-theme, spacemacs-dark, spaceline:
+spacemacs-theme, spacemacs-dark, spaceline `grok-opts.el`:
+
+```elisp
+(setq grok-projects "~/repos/")
+(setq grok-evil-mode nil)
+(setq grok-theme t)
+(setq grok-theme-style "fancy")
+(setq grok-custom-theme-pkg 'spacemacs-theme)
+(setq grok-custom-theme 'spacemacs-dark)
+(setq grok-use-modeline "spaceline")
+(setq grok-alpha-background "97")
+(setq grok-font "Go Mono")
+(setq grok-font-size "11")
+(setq grok-line-numbers t)
+(setq grok-relative-line-numbers nil)
+(setq grok-core-disabled '())
+(setq grok-packages-disabled '())
+(setq grok-window-pop-enabled t)
+(setq grok-window-pop-splash t)
+```
 
 ![fancy](screen2.jpg)
 
-tao-theme, tao-yang, moody:
+tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
+
+```elisp
+(setq grok-projects "~/repos/")
+(setq grok-evil-mode nil)
+(setq grok-theme t)
+(setq grok-theme-style "fancy")
+(setq grok-custom-theme-pkg 'tao-theme)
+(setq grok-custom-theme 'tao-yang)
+(setq grok-use-modeline "moody")
+(setq grok-alpha-background "100")
+(setq grok-font "Go Mono")
+(setq grok-font-size "11")
+(setq grok-line-numbers t)
+(setq grok-relative-line-numbers nil)
+(setq grok-core-disabled '())
+(setq grok-packages-disabled '())
+(setq grok-window-pop-enabled t)
+(setq grok-window-pop-splash nil)
+```
 
 ![fancy](screen3.jpg)
+
+#### Disable some module file from loading
+
+So you looked at init.el and grok-core, and decided you don't want grok-better-defaults and grok-better-scratch to load at all? Just append in grok-opts.el,
+
+```elisp
+(setq grok-core-disabled '(grok-better-defaults grok-better-scratch))
+```
+
+#### Disable some specific packages from loading
+
+So you looked at grok-core/grok-evil.el and you like most of it, but you would rather leave which-key and general.el configuration to yourself,
+
+```elisp
+(setq grok-packages-disabled '(which-key general))
+```
+
+Then you might for example create new files in grok.d, or just add the configuration you want to grok.d/grok.el.
 
 ### 📦 Minimal Mode
 
 Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline. If you want the vanilla modeline, though, just set `(setq grok-use-modeline "none")`
-
+ppppp
 ![minimal](grok-minimal.jpg)
 
 ## Keybinds
