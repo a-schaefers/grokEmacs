@@ -200,7 +200,7 @@ You can also drop additional `.el` files into `grok.d/` - they’ll be picked up
 
 ## 📝 Local Customization (`grok.el`)
 
-After the initial setup, grokEmacs creates a file called **`grok.el`** in your config directory.
+After the initial setup, grokEmacs creates a file called **`grok.el`** in the `grok.d` directory.
 This file is **yours to edit** - it’s `.gitignore`d so updates to grokEmacs won’t overwrite it.
 If you delete it, a fresh copy will be regenerated on the next restart.
 
