@@ -172,6 +172,10 @@ Minimal mode skips the extra fancy bloat and gives you just enough polish. Youâ€
 
 ## Keybinds
 
+![discoverable](discoverable.jpg)
+
+Space leader / M-m (holy) discoverable menu shown above.
+
 ### Holy Mode (Emacs style)
 
 In **Holy mode** you keep Emacsâ€™ world-class defaults, plus a few helpers and a leader system:
