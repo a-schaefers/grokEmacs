@@ -41,7 +41,7 @@ The prompts appear one by one in the minibuffer:
 
 4. **🎨 Fancy vs Minimal**
    - **Fancy** → Install a theme package (default: `doom-themes`), pick a theme (default: `doom-one`), and choose a modeline style (`doom`, `spaceline`, `moody`, or none).
-   - **Minimal** → Stick to built-in themes like `modus-operandi` or `modus-vivendi`. A clean modeline shows just the essentials (file, line, mode).
+   - **Minimal** → Stick to built-in themes like `modus-operandi` or `modus-vivendi`. A clean modeline shows just the essentials (modified, file, line, mode).
 
 5. **🪟 Transparency**
    > “Want to see through your editor?”
