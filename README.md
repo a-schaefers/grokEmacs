@@ -6,7 +6,9 @@ grokEmacs began nearly a decade ago as a highly opinionated personal setup. It l
 
 This project is intentionally small enough to be maintained by one person. But it isn’t just a one-man show - as soon as you clone it, it’s your project too. Fork it. Hack it. Own it. The design is simple enough to outlive its original author and flexible enough to keep evolving in the hands of whoever picks it up next.
 
-One common criticism of Emacs "starter kits" or "distros" is that they can take away the opportunity for users to really learn Emacs on a deeper level. grokEmacs is designed with that in mind: it keeps the codebase small, favors package defaults, and pushes most customizations into clearly marked places like grok.el, so you can both use it productively and understand how it works.
+One common criticism of Emacs “starter kits” or “distros” is that they can take away the opportunity for users to really learn Emacs on a deeper level. grokEmacs is designed with that in mind: it keeps the codebase small, favors package defaults, and pushes most customizations into clearly marked places like grok.el, so you can both use it productively and understand how it works.
+
+It also avoids excess abstraction, favoring simplicity > elegance. Rather than adding yet more custom macros or wrapping configuration in new layers, grokEmacs leans on use-package consistently - sometimes to a near absurd degree - because it is a standard most Emacs users already know. This helps keep the configuration portable and familiar, while avoiding "framework lock-in."
 
 To go further, the author has created a [Vanilla Emacs hacking playlist on YouTube](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl), aimed at teaching the Emacs transcendentals - the core skills every user needs, whether they end up using Evil or vanilla keys, Spacemacs, Doom, grokEmacs, or their own custom setup.
 
