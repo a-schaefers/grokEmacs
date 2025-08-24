@@ -46,25 +46,34 @@ Minimal goes through the built-in options of the theme wizard, skipping any extr
 - **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
-## Binds
+## Keybinds
 
-The project aims to keep opinionated (or commonly customized) binds limited to grok.el for easy customization.
+### Holy Mode (Emacs style)
 
-Binds are basically defaults, you get Emacs’ vanilla keybindings, which is already first-class, plus a couple helpers:
+In **Holy mode** you keep Emacs’ world-class defaults, plus a few helpers and a leader system:
 
-- **crux** — quality-of-life shortcuts (smarter line movement, duplicate, kill whole line, etc.).
-- **paredit** — structural editing for Lisp code, keeps parens balanced.
+- **Emacs defaults** - all the standard `C-x ...` / `M-x ...` bindings.
+- **M-m leader** - powered by `which-key` + `general.el`. Press **M-m** to explore menus.
+- **Language extras** - when editing code, **M-m** includes `eglot` bindings.
+- **crux** - smarter line movement, duplicate lines, kill whole line, etc.
+- **paredit** - structural Lisp editing, keeps parentheses balanced.
 
-If you enabled Evil during setup, you get Vim binds plus common addons:
+---
 
-- **evil** — core Vim emulation.
-- **evil-collection** — makes Magit, dired, and many other modes feel Vim-like.
-- **evil-commentary** — toggle comments with `gc`, like Vim’s commentary.
-- **evil-surround** — change/add/delete surrounding quotes, parens, tags.
-- **evil-matchit** — jump between matching pairs (if/else, HTML tags, etc.).
-- **evil-cleverparens** — Lisp structural editing, Vim-style (similar to paredit).
+### Evil Mode (Vim style)
 
-A discoverable binding system on Space (evil) and M-m (holy) is currently in the works.
+If you enabled Evil during setup, you get Vim’s modal editing plus a leader system:
+
+- **Evil defaults** - normal/insert/visual modes and Vim-style motions.
+- **SPACE leader** - powered by `which-key` + `general.el`. Press **Space** to explore menus.
+- **Language extras** - when editing code, **M-m** is available for `eglot` bindings.
+- **evil-collection** - makes Magit, Dired, and other modes feel natural in Vim.
+- **evil-commentary** - toggle comments with `gc`.
+- **evil-surround** - add/change/delete surrounding quotes, parens, tags.
+- **evil-matchit** - jump between matching pairs (if/else, HTML tags, etc.).
+- **evil-cleverparens** - Lisp structural editing, Vim-style (like paredit).
+
+---
 
 ### Treesit to the future
 

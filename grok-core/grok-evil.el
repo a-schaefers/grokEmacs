@@ -67,65 +67,85 @@
     (add-hook 'racket-mode-hook  #'evil-cleverparens-mode)))
 
 (use-package treemacs-evil
-   :if (and (bound-and-true-p grok-evil-mode)
-            (string= grok-theme-style "fancy")
-            (not (memq 'treemacs-evil grok-packages-disabled)))
-   :after (treemacs evil)
-   :ensure t)
+  :if (and (bound-and-true-p grok-evil-mode)
+           (string= grok-theme-style "fancy")
+           (not (memq 'treemacs-evil grok-packages-disabled)))
+  :after (treemacs evil)
+  :ensure t)
 
-;; example for vimmers who want to setup a leader on the Space bar
+;; Space leader key
 
-;; (use-package which-key
-;;   :if (bound-and-true-p grok-evil-mode)
-;;   :ensure t
-;;   :after evil
-;;   :config
-;;   (setq which-key-idle-delay 0.0)
-;;   (which-key-mode 1))
+(use-package which-key
+  :if (not (memq 'which-key grok-packages-disabled))
+  :ensure t
+  :after evil
+  :init
+  (setq which-key-idle-delay 0.0)
+  (which-key-mode 1))
 
-;; ;; Leaders (global SPC, local SPC m …)
-;; (use-package general
-;;   :if (bound-and-true-p grok-evil-mode)
-;;   :after evil
-;;   :ensure t
-;;   :config
-;;   ;; Global leader: SPC …
-;;   (general-create-definer grok/leader
-;;                           :states '(normal visual motion)
-;;                           :prefix "SPC"
-;;                           :global-prefix "C-SPC")
+;; Leaders (global SPC, local SPC m)
+(use-package general
+  :if (not (memq 'general grok-packages-disabled))
+  :after evil
+  :ensure t
+  :init
+  ;; Global leader: SPC
+  (general-create-definer grok/leader
+    :states '(normal visual motion)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
 
-;;   ;; Local/holy leader: SPC m … (per-mode menus)
-;;   (general-create-definer grok/local-leader
-;;                           :states '(normal visual motion)
-;;                           :prefix "SPC m"
-;;                           :global-prefix "C-SPC m")
+  ;; Global SPC bindings
+  (grok/leader
+    ;; files
+    "f"  '(:ignore t :which-key "files")
+    "ff" '(find-file             :which-key "find file")
+    "fd" '(dired                 :which-key "dired")
+    "fe" '(ediff-files           :which-key "ediff files")
+    "fs" '(save-buffer           :which-key "save file")
+    "fr" '(grok/recentf-vertico  :which-key "recent files")
 
-;;   ;; ----- Global SPC bindings -----
-;;   (grok/leader
-;;    ;; files
-;;    "f"  '(:ignore t :which-key "files")
-;;    "ff" '(find-file            :which-key "find file")    ;; C-x C-f
-;;    "fd" '(dired                :which-key "dired")        ;; C-x d
-;;    "fs" '(save-buffer          :which-key "save file")    ;; C-x C-s
-;;    "fr" '(recentf-open-files   :which-key "recent files")
+    ;; projectile
+    "p"  '(:ignore t :which-key "projectile")
+    "pp" '(projectile-commander      :which-key "commander")
+    "pf" '(projectile-find-file      :which-key "find file")
+    "pg" '(projectile-grep           :which-key "grep")
+    "ps" '(projectile-switch-project :which-key "switch project")
 
-;;    ;; buffers
-;;    "b"  '(:ignore t :which-key "buffers")
-;;    "bb" '(switch-to-buffer     :which-key "switch buffer") ;; C-x b
-;;    "bk" '(kill-buffer          :which-key "kill buffer")   ;; C-x k
+    ;; shells
+    "s"   '(:ignore t :which-key "shells")
+    "ss"  '(shell      :which-key "shell")
+    "sa"  '(ansi-term  :which-key "ansi-term")
+    "se"  '(eshell     :which-key "eshell")
 
-;;    ;; windows
-;;    "w"  '(:ignore t :which-key "windows")
-;;    "ww" '(other-window   :which-key "other window")        ;; C-x o
-;;    "wv" '(split-window-right   :which-key "vsplit")        ;; C-x 3
-;;    "ws" '(split-window-below   :which-key "hsplit")        ;; C-x 2
-;;    "wd" '(delete-window        :which-key "del window")    ;; C-x 0
-;;    "wo" '(delete-other-windows :which-key "only window")   ;; C-x 1
+    ;; buffers
+    "b"  '(:ignore t :which-key "buffers")
+    "bb" '(switch-to-buffer :which-key "switch buffer")
+    "bk" '(kill-buffer      :which-key "kill buffer")
 
-;;    "g" '(magit-status         :which-key "magit")
-;;    "t" '(treemacs             :which-key "treemacs")
-;;    "p" '(projectile-commander         :which-key "projectile")
-;;    "d" '(eldoc-box-help-at-point :which-key "eldoc at point")))
+    ;; windows
+    "w"  '(:ignore t :which-key "windows")
+    "ww" '(other-window        :which-key "other window")
+    "wv" '(split-window-right  :which-key "vsplit")
+    "ws" '(split-window-below  :which-key "hsplit")
+    "wd" '(delete-window       :which-key "del window")
+    "wo" '(delete-other-windows :which-key "only window")
+
+    ;; top-level leaves
+    "g" '(magit-status            :which-key "magit")
+    "x" '(save-buffers-kill-emacs :which-key "quit emacs"))
+
+  ;; Conditional leaves
+  (when (require 'treemacs nil 'noerror)
+    (grok/leader "t" '(treemacs :which-key "treemacs")))
+
+  (when (executable-find "rg")
+    (grok/leader "pr" '(projectile-ripgrep :which-key "ripgrep")))
+
+  (when (require 'eat nil 'noerror)
+    (grok/leader "s RET" '(eat :which-key "eat")))
+
+  (when (require 'vterm nil 'noerror)
+    (grok/leader "sv" '(vterm :which-key "vterm"))))
 
 (provide 'grok-evil)
