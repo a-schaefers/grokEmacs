@@ -1,16 +1,12 @@
 # About grokEmacs
 
-<img src="splash_smaller_transparent.png" alt="logo" width="300" align="left" style="margin-right:16px; margin-bottom:8px;">
+<img src="splash.png" alt="logo" width="200" align="left" style="margin-right:16px; margin-bottom:8px;">
 
-Inspired by Doom Emacs and Spacemacs - both excellent projects with large communities and rich ecosystems - grokEmacs takes a different approach: keeping a smaller, codebase with less abstraction and favoring built-in features, lightweight tools and package defaults.
+grokEmacs takes inspiration from Doom and Spacemacs but keeps the focus on simplicity, with a small codebase of customizable config files. When you clone it, you’re still just using Emacs—not a new framework. Many “starter kits” are criticized for hiding Emacs itself; grokEmacs is designed to do the opposite.
 
-One common criticism of Emacs “starter kits” or “distros” is that they can take away the opportunity for users to really learn Emacs on a deeper level. grokEmacs is designed with that in mind: it tries to push most customizations into clearly marked places like grok.el, so you can both use it productively and understand how it works.
+It avoids excess abstraction, leaning on `use-package` rather than custom macros or new layers. This keeps the setup portable, familiar, and free of framework lock-in, while staying easy to read and hack. The dashboard also brings Emacs’ own learning tools—the Tutorial, Tour, Manual, and Elisp Intro—back to the surface. As part of the same philosophy, the author also created a [Vanilla Emacs hacking playlist](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl) to highlight the core skills every user should know.
 
-It also avoids excess abstraction, favoring simplicity > elegance. Rather than adding yet more custom macros or wrapping configuration in new layers, grokEmacs leans on use-package obsessively. This helps keep the configuration portable and familiar, while avoiding "framework lock-in."
-
-To go further, the author has created a [Vanilla Emacs hacking playlist on YouTube](https://www.youtube.com/playlist?list=PLFf4Ibrb-mjTcoaVv6orVtH93K47GPrwl), aimed at teaching the Emacs transcendentals - the core skills every user needs, whether they end up using Evil or vanilla keys, Spacemacs, Doom, grokEmacs, or their own custom setup.
-
-The grokEmacs dashboard also makes a point of re-surfacing the built-in Emacs learning tools, with quick buttons to launch the Tutorial, Tour, Manual, and Elisp Intro, so users always have direct access to Emacs itself.
+grokEmacs isn’t meant to be the perfect config for everyone. It tries hard to be simple—something you can clone, modify, and craft into your own.
 
 ## Features
 
