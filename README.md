@@ -16,17 +16,72 @@ This project does not use GitHub Issues. Instead, please submit your improvement
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
 
-## Interactive Initial Setup
+## ✨ Interactive Initial Setup Wizard 🧙
 
-On first launch, grokEmacs asks a few setup questions (projects dir, Evil mode, theme style, font, font size, line numbers, transparency, etc.) and saves your answers to `~/.config/emacs/grok-opts.el`. You can rerun the wizard anytime with C-u M-x grok--ensure-opts, or edit the file directly since it’s just a series of setqs. You can also skip the pre-baked theming entirely and stick with pure angry-fruit. In Fancy mode, grokEmacs also resizes the window and pops Treemacs on startup; if you don’t like that, disable it with `(setq grok-window-pop-enabled nil)` in grok-opts 🍻.
+The very first time you launch **grokEmacs**, you’ll be greeted by a short wizard. Think of it as Emacs asking you a handful of “first date” questions — nothing heavy, just enough to get comfortable. Your answers are written to `~/.config/emacs/grok-opts.el` (a simple file of `setq`s you can edit later).
 
-**Fancy** loads a user-chosen theme package and theme name, defaulting to doom-themes with doom-one if unsure. It also enables Doom, Moody or Spacemacs modeline, Treemacs, Dashboard, and related extras.
+You can always restart the wizard with `C-u M-x grok--ensure-opts` if you change your mind.
+
+---
+
+### 🪄 What you’ll be asked
+
+The prompts appear one by one in the minibuffer:
+
+1. **📂 Projects Directory**
+   > “Where do you keep your code?”
+   Enter the folder path (default: `~/repos`). Projectile & Magit will look here.
+
+2. **😈 Evil Mode or 😇 Holy Mode**
+   > “Do you want Vim-style keys?”
+   Choose Evil if you live in Vim-land, or stick with Emacs defaults.
+
+3. **🧙 Theme Setup**
+   > “Do you want to customize the look, or keep it vanilla?”
+   - **Skip** → You get pure “angry fruit salad” Emacs.
+   - **Continue** → Pick *fancy* or *minimal* styling.
+
+4. **🎨 Fancy vs Minimal**
+   - **Fancy** → Install a theme package (default: `doom-themes`), pick a theme (default: `doom-one`), and choose a modeline style (`doom`, `spaceline`, `moody`, or none).
+   - **Minimal** → Stick to built-in themes like `modus-operandi` or `modus-vivendi`. A clean modeline shows just the essentials (file, line, mode).
+
+5. **🪟 Transparency**
+   > “Want to see through your editor?”
+   Type a number `0–99` (lighter = more see-through). Leave blank or `100` for solid.
+
+6. **🔤 Font & 📏 Size**
+   > “What font do you like? And how big should it be?”
+   Defaults to *Source Code Pro 11* if you’re not picky.
+
+7. **🔢 Line Numbers**
+   > “Do you want line numbers?”
+   If yes, you’ll also be asked whether you prefer absolute or relative.
+
+---
+
+### 🎩 Fancy Mode
+
+With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your selected theme, and wires up extras:
+- Dashboard on startup
+- Treemacs sidebar
+- Custom modeline (Doom/Spaceline/Moody)
+- Window auto-resizing + splash (toggle with `(setq grok-window-pop-enabled nil)`)
 
 ![fancy](grok-fancy.jpg)
 
-**Minimal** goes through the built-in options of the theme wizard, skipping any extra theme packages and all the fancy bloat. It lets the user pick a built-in theme—recommending modus-vivendi or modus-operandi—and provides a clean, uncluttered modeline that shows only the modified state, filename, line number, and major mode. If you’d rather keep the default Emacs modeline, just set `(setq grok-use-modeline "none")` in grok-opts.
+---
+
+### 📦 Minimal Mode
+
+Minimal mode skips the extra fancy bloat and gives you just enough polish. You’ll pick one of the built-in themes (recommended: `modus-operandi` or `modus-vivendi`), and get a lightweight modeline.
+
+```elisp
+(setq grok-use-modeline "none")
+```
 
 ![minimal](grok-minimal.jpg)
+
+⚡ Tip: If you want to hack things directly, just open `~/.config/emacs/grok-opts.el` after running the wizard.
 
 ## Project goals
 
