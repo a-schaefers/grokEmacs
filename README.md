@@ -174,7 +174,7 @@ Minimal mode skips the extra fancy bloat and gives you just enough polish. Youâ€
 
 ![discoverable](discoverable.jpg)
 
-Space leader / M-m (holy) discoverable menu shown above.
+**Space** leader (evil) / **M-m** (holy) discoverable menu shown above.
 
 ### Holy Mode (Emacs style)
 

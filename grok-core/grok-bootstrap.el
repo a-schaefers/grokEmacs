@@ -219,7 +219,6 @@ Order:
           (insert ";; (setq grok-packages-disabled '())\n")
           (insert ";; (setq grok-window-pop-enabled t)\n")
           (insert ";; (setq grok-window-pop-splash t)\n")
-          (insert ";; (setq grok-window-pop-splash-timer 3)\n")
           (append-to-file (point-min) (point-max) grok-opts-file)))
 
       (load opts-file t t)))
