@@ -76,7 +76,7 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 - Dashboard on startup
 - Treemacs sidebar
 - Custom modeline (Doom/Spaceline/Moody)
-- Window auto-resizing + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash t)`)
+- Window auto-resizing + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash nil)`)
 
 **The following examples are just what the wizard writes into grok-opts.el, you don't have to do it manually.**
 
