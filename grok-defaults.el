@@ -92,31 +92,6 @@
               ("C-c go"  . grok-edit-grok-initial-setup-opts)
               ("C-c gu"  . grok-update-config-with-ediff))
   :config
-  ;; Some helpful aliases
-
-  ;; M-x cc
-  (defalias 'cc 'compile)
-
-  ;; M-x lint
-  (defalias 'lint 'grok-pop-flymake-diagnostics)
-
-  ;; M-x git
-  (defalias 'git 'magit)
-
-  ;; M-x pro
-  (defalias 'pro 'projectile-commander)
-
-  ;; M-x sh (eat)
-  (defalias 'sh 'eat)
-
-  ;;  To setup shell integration for GNU Bash, put the following at the end of your .bashrc:
-  ;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  ;;   source "$EAT_SHELL_INTEGRATION_DIR/bash"
-
-  ;; For Zsh, put the following in your .zshrc:
-  ;; [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  ;;   source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-
   ;; Start Emacs server
   (require 'server)
   (unless (server-running-p) (server-start)))
