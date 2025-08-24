@@ -165,7 +165,6 @@ Minimal mode skips the extra fancy bloat and gives you just enough polish. Youâ€
 (setq grok-font "Go Mono")
 (setq grok-font-size "11")
 (setq grok-line-numbers nil)
-(setq grok-line-numbers nil)
 (setq grok-relative-line-numbers nil)
 ;; additional settings
 ;; (setq grok-core-disabled '())
