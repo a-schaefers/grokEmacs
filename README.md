@@ -78,15 +78,15 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 - Custom modeline (Doom/Spaceline/Moody)
 - Window auto-resizing + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash t)`)
 
-doom-themes, doom-one:
+doom-themes, doom-one, doom-modeline, splash:
 
 ![fancy](screen1.jpg)
 
-spacemacs-theme, spacemacs-dark:
+spacemacs-theme, spacemacs-dark, spaceline:
 
 ![fancy](screen2.jpg)
 
-tao-theme, tao-yang:
+tao-theme, tao-yang, moody:
 
 ![fancy](screen3.jpg)
 
