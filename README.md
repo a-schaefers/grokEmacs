@@ -8,6 +8,8 @@ It avoids complex abstractions, leaning on `use-package` rather than custom macr
 
 grokEmacs isn't meant to be the perfect config for everyone. It favors simplicity over elegance and defaults over heavy customization - lacking polish by design, because it's meant to be polished by the user. It's just an Emacs config to fork, clone, hack, and own.
 
+---
+
 ## Features
 
 - **Setup wizard** to look-good out of the box
@@ -22,6 +24,8 @@ grokEmacs isn't meant to be the perfect config for everyone. It favors simplicit
 - **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
+---
+
 ## Quick Start
 
 ![bootstrap](bootstrap.gif)
@@ -30,11 +34,15 @@ grokEmacs isn't meant to be the perfect config for everyone. It favors simplicit
 
 If you encounter an error in the bootstrap such as: `[2025-08-17 14:11:25] fatal: destination path '/home/$USER/.config/emacs/elpaca/repos/treemacs' already exists and is not an empty directory.` It probably is the result of a partial clone + network timeout, leaving repos/treemacs/ half-baked; the re-clone then balked because the dir existed. In this case the solution is `M-x elpaca-delete RET treemacs` and then restarting Emacs to finish the bootstrap process.
 
+---
+
 ## Announcement
 
 This project does not use GitHub Issues. Instead, please submit your improvements via Pull Request.
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
+
+---
 
 ## ✨ Interactive Initial Setup Wizard 🧙
 
@@ -203,6 +211,8 @@ By default, it contains a generated `grok.el`, loaded last. This is where the fi
 So that's the best place to add hacks, keybinds, or tweaks.
 You can also drop additional `.el` files into `grok.d/` - they'll be picked up automatically.
 
+---
+
 ## 📝 Local Customization (`grok.el`)
 
 After the initial setup, grokEmacs creates a file called **`grok.el`** in the `grok.d` directory.
@@ -255,6 +265,8 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 - For larger or experimental changes, consider using separate files under `grok.d/` and keeping them in version control. *(Note: only `grok.el` is gitignored by default - everything else in `grok.d/` is tracked if you want it to be.)*
 - After updating grokEmacs (`git pull`), always run `C-c gu` to check for differences and avoid surprises.
 
+---
+
 ## Keybinds
 
 ![discoverable](discoverable.jpg)
@@ -292,6 +304,8 @@ experience beyond scheme/lisp language families.
 ### Additional language-specific binds
 
 Language modes may add their own bindings as needed.
+
+---
 
 ## Assumptions
 
