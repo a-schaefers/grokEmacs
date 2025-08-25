@@ -43,14 +43,6 @@
 ;; Leaders (global M-m) — prefix + instant which-key via C-h injection hack
 (use-package general
   :if (not (memq 'general grok-packages-disabled))
-  :preface
-  (defun grok/recentf-vertico ()
-    "Pick a file from `recentf-list' using `completing-read'."
-    (interactive)
-    (unless (bound-and-true-p recentf-mode)
-      (user-error "recentf-mode is not enabled"))
-    (find-file
-     (completing-read "Recent file: " recentf-list nil t)))
   :ensure t
   :demand t
   :config

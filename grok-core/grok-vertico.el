@@ -1,6 +1,14 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
 (use-package vertico
+  :preface
+  (defun grok/recentf-vertico ()
+    "Pick a file from `recentf-list' using `completing-read'."
+    (interactive)
+    (unless (bound-and-true-p recentf-mode)
+      (user-error "recentf-mode is not enabled"))
+    (find-file
+     (completing-read "Recent file: " recentf-list nil t)))
   :if (not (memq 'vertico grok-packages-disabled))
   :ensure t
   :init (vertico-mode 1))
