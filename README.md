@@ -269,11 +269,10 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 
 ## Keybinds
 
-![discoverable](discoverable.jpg)
-
-**Space** leader (evil) / **M-m** (holy) discoverable menu shown above.
-
 ### Holy Mode (Emacs style)
+
+![which-key-holy](which-key-holy.jpg)
+<sup>M-m Holy Leader</sup>
 
 In **Holy mode** you keep Emacs' first-class defaults, plus a few helpers and a leader system:
 
@@ -284,6 +283,9 @@ In **Holy mode** you keep Emacs' first-class defaults, plus a few helpers and a 
 - **paredit** - structural Lisp editing, keeps parentheses balanced.
 
 ### Evil Mode (Vim style)
+
+![which-key-evil](which-key-evil.jpg)
+<sup>SPC Evil Leader</sup>
 
 If you enabled Evil during setup, you get Vim's modal editing plus a leader system:
 
