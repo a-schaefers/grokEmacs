@@ -86,11 +86,24 @@
   ;; Some global binds
 
   :bind (:map global-map
-              ("C-h C-b" . grok-show-keybinds)
-              ("C-c gi"  . grok-edit-init-file)
-              ("C-c gg"  . grok-edit-grok-file)
-              ("C-c go"  . grok-edit-grok-initial-setup-opts)
-              ("C-c gu"  . grok-update-config-with-ediff))
+              ;; Some buffer shortcuts
+              ("C-x k" . kill-this-buffer)
+              ("C-x K" . kill-buffer)
+
+              ;; Some window shortcuts
+              ("C-<tab>" . other-window)
+              ("C-1" . delete-other-windows) ; C-x 1
+              ("C-2" . split-window-below)   ; C-x 2
+              ("C-3" . split-window-right)   ; C-x 3
+              ("C-0" . delete-windows)       ; C-x 0
+              ;; Shift + arrow keys
+              ("S-<right>" . enlarge-window-horizontally)
+              ("S-<left>"  . shrink-window-horizontally)
+              ("S-<down>"  . shrink-window-vertically)
+              ("S-<up>"    . enlarge-window-vertically)
+
+              ;; Misc
+              ("<f5>"      . compile))
   :config
   ;; Start Emacs server
   (require 'server)
@@ -102,14 +115,25 @@
 
 ;; 'Overrides' - hack on some already provided package by core, just be sure to add :ensure nil
 
+(use-package crux
+  :if (and (not (memq 'crux grok-packages-disabled))
+           (not (bound-and-true-p grok-evil-mode))) ; no-op for evil-mode users
+  :ensure nil
+  :bind (("C-g"     . crux-keyboard-quit-dwim)
+         ("C-a"     . crux-move-beginning-of-line)
+         ("C-o"     . crux-smart-open-line)
+         ("C-c d"   . crux-duplicate-current-line-or-region)
+         ("C-c D"   . crux-duplicate-and-comment-current-line-or-region)
+         ("C-c k"   . crux-kill-whole-line)))
+
 (use-package eglot
   :if (not (memq 'eglot grok-packages-disabled))
   :ensure nil
   :bind (:map eglot-mode-map
               ("M-."   . xref-find-definitions)
-              ("M-m ."   . xref-find-definitions)
+              ("M-m ." . xref-find-definitions)
 
-              ("M-?" . xref-find-references)
+              ("M-?"   . xref-find-references)
               ("M-m ?" . xref-find-references)
 
               ("M-m r" . eglot-rename)

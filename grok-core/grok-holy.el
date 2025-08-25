@@ -2,15 +2,7 @@
 
 (use-package crux
   :if (not (memq 'crux grok-packages-disabled))
-  :ensure t
-  :bind (("C-g"     . crux-keyboard-quit-dwim)
-         ("C-<tab>" . crux-other-window-or-switch-buffer)
-         ("C-x C-o" . crux-other-window-or-switch-buffer)
-         ("C-a"     . crux-move-beginning-of-line)
-         ("C-o"     . crux-smart-open-line)
-         ("C-c l"   . crux-duplicate-current-line-or-region)
-         ("C-S-k"   . crux-kill-whole-line)
-         ("C-c C-;" . crux-duplicate-and-comment-current-line-or-region)))
+  :ensure t)
 
 (use-package paredit
    :if (not (memq 'paredit grok-packages-disabled))
@@ -74,11 +66,13 @@
   (define-prefix-command 'grok/leader-projectile-map)
   (define-prefix-command 'grok/leader-shells-map)
   (define-prefix-command 'grok/leader-buffers-map)
+  (define-prefix-command 'grok/leader-config-map)
   (define-prefix-command 'grok/leader-windows-map)
 
   ;; Attach submaps to section keys
   (define-key grok/leader-map (kbd "f") 'grok/leader-files-map)
   (define-key grok/leader-map (kbd "p") 'grok/leader-projectile-map)
+  (define-key grok/leader-map (kbd "c") 'grok/leader-config-map)
   (define-key grok/leader-map (kbd "s") 'grok/leader-shells-map)
   (define-key grok/leader-map (kbd "b") 'grok/leader-buffers-map)
   (define-key grok/leader-map (kbd "w") 'grok/leader-windows-map)
@@ -86,7 +80,7 @@
   ;; Labels for section keys in which-key
   (when (fboundp 'which-key-add-keymap-based-replacements)
     (which-key-add-keymap-based-replacements grok/leader-map
-      "f" "files" "s" "shells"  "b" "buffers" "p" "projectile"  "w" "windows" "x" "quit emacs"))
+      "f" "files" "s" "shells"  "b" "buffers" "c" "config" "p" "projectile"  "w" "windows"))
 
   ;; keep M-m a prefix in general-override-map - Emacs will merge it with mode maps,
   ;; e.g. eglot-mode-map in grok.el will also display - and which-key will show both sets.
@@ -109,8 +103,7 @@
 
   ;; Top-level leaves (M-m g/t/p/d)
   (grok/leader
-   "g"  '(magit-status             :which-key)
-   "x"  '(save-buffers-kill-emacs  :which-key))
+   "g"  '(magit-status             :which-key))
 
   (when (require 'treemacs nil 'noerror)
     (grok/leader
@@ -123,6 +116,13 @@
     "e" '(ediff-files        :which-key)
     "s" '(save-buffer        :which-key)
     "r" '(grok/recentf-vertico :which-key))
+
+  ;; Config submenu (M-m f)
+  (general-def :keymaps 'grok/leader-config-map
+    "g" '(grok-edit-grok-file               :which-key)
+    "i" '(grok-edit-init-file               :which-key)
+    "o" '(grok-edit-grok-initial-setup-opts :which-key)
+    "u" '(grok-update-config-with-ediff     :which-key))
 
   ;; Projectile submenu (M-m p)
   (general-def :keymaps 'grok/leader-projectile-map
@@ -142,7 +142,7 @@
     "e" '(eshell          :which-key))
   (when (require 'eat nil 'noerror)
     (general-def :keymaps 'grok/leader-shells-map
-      "RET" '(eat :which-key)))
+      "h" '(eat :which-key)))
   (when (require 'vterm nil 'noerror)
     (general-def :keymaps 'grok/leader-shells-map
       "v" '(vterm :which-key)))
