@@ -15,6 +15,7 @@
                 apropos-do-all t
                 require-final-newline t
                 ediff-window-setup-function 'ediff-setup-windows-plain
+                ediff-split-window-function 'split-window-horizontally
                 tramp-default-method "ssh"
                 tramp-copy-size-limit nil
                 vc-follow-symlinks t
