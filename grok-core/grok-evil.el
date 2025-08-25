@@ -92,8 +92,7 @@
   ;; Global leader: SPC
   (general-create-definer grok/leader
     :states '(normal visual motion)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
+    :prefix "SPC")
 
   ;; Global SPC bindings
   (grok/leader
@@ -112,16 +111,22 @@
     "pg" '(projectile-grep           :which-key "grep")
     "ps" '(projectile-switch-project :which-key "switch project")
 
+    "c"  '(:ignore t :which-key "config")
+    "cg" '(grok-edit-grok-file               :which-key "Edit grok.el")
+    "ci" '(grok-edit-init-file               :which-key "Edit init.el")
+    "co" '(grok-edit-grok-initial-setup-opts :which-key "Edit grok-opts.el")
+    "cu" '(grok-update-config-with-ediff     :which-key "grok-update-config-with-ediff")
+
     ;; shells
-    "s"   '(:ignore t :which-key "shells")
+    "s"   '(:ignore t  :which-key "shells")
     "ss"  '(shell      :which-key "shell")
     "sa"  '(ansi-term  :which-key "ansi-term")
     "se"  '(eshell     :which-key "eshell")
 
     ;; buffers
-    "b"  '(:ignore t :which-key "buffers")
+    "b"  '(:ignore t        :which-key "buffers")
     "bb" '(switch-to-buffer :which-key "switch buffer")
-    "bk" '(kill-buffer      :which-key "kill buffer")
+    "bk" '(kill-buffer :which-key "kill current buffer")
 
     ;; windows
     "w"  '(:ignore t :which-key "windows")
@@ -132,8 +137,7 @@
     "wo" '(delete-other-windows :which-key "only window")
 
     ;; top-level leaves
-    "g" '(magit-status            :which-key "magit")
-    "x" '(save-buffers-kill-emacs :which-key "quit emacs"))
+    "g" '(magit-status            :which-key "magit"))
 
   ;; Conditional leaves
   (when (require 'treemacs nil 'noerror)
@@ -143,7 +147,7 @@
     (grok/leader "pr" '(projectile-ripgrep :which-key "ripgrep")))
 
   (when (require 'eat nil 'noerror)
-    (grok/leader "s RET" '(eat :which-key "eat")))
+    (grok/leader "sh" '(eat :which-key "eat"))) ; h as in 'hungry', because 'e' belongs to eshell
 
   (when (require 'vterm nil 'noerror)
     (grok/leader "sv" '(vterm :which-key "vterm"))))

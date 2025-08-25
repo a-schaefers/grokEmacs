@@ -86,10 +86,6 @@
   ;; Some global binds
 
   :bind (:map global-map
-              ;; Some buffer shortcuts
-              ("C-x k" . kill-this-buffer)
-              ("C-x K" . kill-buffer)
-
               ;; Some window shortcuts
               ("C-<tab>" . other-window)
               ("C-1" . delete-other-windows) ; C-x 1

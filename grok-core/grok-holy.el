@@ -140,9 +140,11 @@
     "s" '(shell           :which-key)
     "a" '(ansi-term       :which-key)
     "e" '(eshell          :which-key))
+
   (when (require 'eat nil 'noerror)
     (general-def :keymaps 'grok/leader-shells-map
-      "h" '(eat :which-key)))
+      "h" '(eat :which-key))) ; h as in 'hungry', because 'e' belongs to eshell
+
   (when (require 'vterm nil 'noerror)
     (general-def :keymaps 'grok/leader-shells-map
       "v" '(vterm :which-key)))
