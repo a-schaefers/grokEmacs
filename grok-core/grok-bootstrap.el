@@ -214,8 +214,9 @@ Order:
           (insert "\n\n;; additional settings\n")
           (insert ";; (setq grok-core-disabled '())\n")
           (insert ";; (setq grok-packages-disabled '())\n")
-          (insert ";; (setq grok-window-pop-enabled t)\n")
-          (insert ";; (setq grok-window-pop-splash t)\n")
+          (insert ";; (setq grok-window-pop-enabled nil)\n")
+          (insert ";; (setq grok-window-pop-splash nil)\n")
+
           (append-to-file (point-min) (point-max) grok-opts-file)))
 
       (load opts-file t t)))
