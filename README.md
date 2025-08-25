@@ -196,11 +196,10 @@ Minimal mode skips the extra fancy bloat and gives you just enough polish. You'l
 
 #### Disable module files entirely
 
-Suppose you looked through `init.el` and `grok-core/`, and decided you don't want
-`grok-better-defaults` or `grok-better-scratch` to load at all. Just add this to `grok-opts.el`:
+Suppose you looked through `init.el` and `grok-core/`, and decided you don't want `grok-better-defaults` to load at all. Just add this to `grok-opts.el`:
 
 ```elisp
-(setq grok-core-disabled '(grok-better-defaults grok-better-scratch))
+(setq grok-core-disabled '(grok-better-defaults))
 ```
 
 #### Disable specific packages

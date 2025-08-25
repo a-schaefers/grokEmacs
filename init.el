@@ -43,7 +43,6 @@
 
 (dolist (f `(
              grok-better-defaults
-             grok-better-scratch
              grok-vertico
              ,@(unless grok-evil-mode '(grok-holy))
              ,@(when grok-evil-mode '(grok-evil))
