@@ -89,10 +89,12 @@
   :after evil
   :ensure t
   :init
-  ;; Global leader: SPC
+
   (general-create-definer grok/leader
     :states '(normal visual motion)
-    :prefix "SPC")
+    :keymaps 'override
+    :prefix "SPC"
+    :prefix-map 'grok/leader-map)
 
   ;; Global SPC bindings
   (grok/leader
@@ -128,6 +130,12 @@
     "bb" '(switch-to-buffer :which-key "switch buffer")
     "bk" '(kill-buffer :which-key "kill current buffer")
 
+    ;; utils
+    "u"  '(:ignore t        :which-key "utils")
+    "ub" '(eww :which-key "eww")
+    "ue" '(erc :which-key "erc")
+    "ui" '(rcirc :which-key "rcirc")
+
     ;; windows
     "w"  '(:ignore t :which-key "windows")
     "ww" '(other-window        :which-key "other window")
@@ -140,16 +148,26 @@
     "g" '(magit-status            :which-key "magit"))
 
   ;; Conditional leaves
-  (when (require 'treemacs nil 'noerror)
+
+  (when (locate-library "treemacs")
     (grok/leader "t" '(treemacs :which-key "treemacs")))
+
+  (when (locate-library "wanderlust")
+    (grok/leader "uw" '(wanderlust :which-key "wanderlust")))
+
+  (when (file-exists-p "~/.gnus.el")
+    (grok/leader "ug" '(gnus :which-key "gnus")))
+
+  (when (locate-library "mu4e")
+    (grok/leader "um" '(mu4e :which-key "mu4e")))
 
   (when (executable-find "rg")
     (grok/leader "pr" '(projectile-ripgrep :which-key "ripgrep")))
 
-  (when (require 'eat nil 'noerror)
+  (when (locate-library "eat")
     (grok/leader "sh" '(eat :which-key "eat"))) ; h as in 'hungry', because 'e' belongs to eshell
 
-  (when (require 'vterm nil 'noerror)
+  (when (locate-library "vterm")
     (grok/leader "sv" '(vterm :which-key "vterm"))))
 
 (provide 'grok-evil)

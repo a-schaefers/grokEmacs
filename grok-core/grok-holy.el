@@ -67,12 +67,14 @@
   (define-prefix-command 'grok/leader-shells-map)
   (define-prefix-command 'grok/leader-buffers-map)
   (define-prefix-command 'grok/leader-config-map)
+  (define-prefix-command 'grok/leader-utils-map)
   (define-prefix-command 'grok/leader-windows-map)
 
   ;; Attach submaps to section keys
   (define-key grok/leader-map (kbd "f") 'grok/leader-files-map)
   (define-key grok/leader-map (kbd "p") 'grok/leader-projectile-map)
   (define-key grok/leader-map (kbd "c") 'grok/leader-config-map)
+  (define-key grok/leader-map (kbd "u") 'grok/leader-utils-map)
   (define-key grok/leader-map (kbd "s") 'grok/leader-shells-map)
   (define-key grok/leader-map (kbd "b") 'grok/leader-buffers-map)
   (define-key grok/leader-map (kbd "w") 'grok/leader-windows-map)
@@ -80,7 +82,7 @@
   ;; Labels for section keys in which-key
   (when (fboundp 'which-key-add-keymap-based-replacements)
     (which-key-add-keymap-based-replacements grok/leader-map
-      "f" "files" "s" "shells"  "b" "buffers" "c" "config" "p" "projectile"  "w" "windows"))
+      "f" "files" "s" "shells"  "b" "buffers" "c" "config" "p" "projectile" "u" "utils"  "w" "windows"))
 
   ;; keep M-m a prefix in general-override-map - Emacs will merge it with mode maps,
   ;; e.g. eglot-mode-map in grok.el will also display - and which-key will show both sets.
@@ -117,7 +119,7 @@
     "s" '(save-buffer        :which-key)
     "r" '(grok/recentf-vertico :which-key))
 
-  ;; Config submenu (M-m f)
+  ;; Config submenu (M-m c)
   (general-def :keymaps 'grok/leader-config-map
     "g" '(grok-edit-grok-file               :which-key)
     "i" '(grok-edit-init-file               :which-key)
@@ -141,11 +143,11 @@
     "a" '(ansi-term       :which-key)
     "e" '(eshell          :which-key))
 
-  (when (require 'eat nil 'noerror)
+  (when (locate-library "eat")
     (general-def :keymaps 'grok/leader-shells-map
       "h" '(eat :which-key))) ; h as in 'hungry', because 'e' belongs to eshell
 
-  (when (require 'vterm nil 'noerror)
+  (when (locate-library "vterm")
     (general-def :keymaps 'grok/leader-shells-map
       "v" '(vterm :which-key)))
 
@@ -153,6 +155,28 @@
   (general-def :keymaps 'grok/leader-buffers-map
     "b" '(switch-to-buffer   :which-key)
     "k" '(kill-buffer        :which-key))
+
+  ;; Utils submenu (M-m u)
+  (general-def :keymaps 'grok/leader-utils-map
+    "i" '(rcirc :which-key)) ; fallback if no erc
+
+  (general-def :keymaps 'grok/leader-utils-map
+    "e" '(erc   :which-key))
+
+  (general-def :keymaps 'grok/leader-utils-map
+    "b" '(eww   :which-key))
+  ;; Wanderlust
+  (when (locate-library "wanderlust")
+    (general-def :keymaps 'grok/leader-utils-map
+      "w" '(wanderlust :which-key "wanderlust")))
+  ;; Gnus
+  (when (file-exists-p "~/.gnus.el")
+    (general-def :keymaps 'grok/leader-utils-map
+      "g" '(gnus :which-key "gnus")))
+  ;; mu4e
+  (when (locate-library "mu4e")
+    (general-def :keymaps 'grok/leader-utils-map
+      "m" '(mu4e :which-key "mu4e")))
 
   ;; Windows submenu (M-m w)
   (general-def :keymaps 'grok/leader-windows-map
