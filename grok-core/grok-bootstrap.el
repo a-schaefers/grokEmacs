@@ -106,7 +106,7 @@
   (defvar grok-opts-file (expand-file-name "grok-opts.el" user-emacs-directory)
     "Path to the persisted Grok options file.")
 
-  (defvar grok-window-pop-enabled t
+  (defvar grok-window-pop-enabled nil
     "Fancy option only. If non-nil, enable window resize and auto treemacs pop on startup.")
 
   (defvar grok-window-pop-splash nil

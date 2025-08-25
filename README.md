@@ -89,7 +89,7 @@ The prompts appear one by one in the minibuffer:
 With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your selected theme, and wires up extras:
 - Dashboard on startup
 - Custom modeline (Doom/Spaceline/Moody)
-- Window auto-resizing + Treemacs sidebar + splash (disable with `(setq grok-window-pop-enabled nil)` and `(setq grok-window-pop-splash nil)`)
+- Treemacs, and associated treemacs-foo packages for magit|projectile|magit|dired + icons|[evil]
 
 > **The following examples are just what the wizard writes into grok-opts.el, you don't have to do it manually.**
 
@@ -112,7 +112,7 @@ doom-themes, doom-one, doom-modeline, splash:
 (setq grok-relative-line-numbers nil)
 (setq grok-core-disabled '())
 (setq grok-packages-disabled '())
-(setq grok-window-pop-enabled t)
+(setq grok-window-pop-enabled nil)
 (setq grok-window-pop-splash nil)
 ```
 
@@ -137,7 +137,7 @@ spacemacs-theme, spacemacs-dark, spaceline `grok-opts.el`:
 (setq grok-relative-line-numbers nil)
 (setq grok-core-disabled '())
 (setq grok-packages-disabled '())
-(setq grok-window-pop-enabled t)
+(setq grok-window-pop-enabled nil)
 (setq grok-window-pop-splash nil)
 ```
 
@@ -162,7 +162,7 @@ tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
 (setq grok-relative-line-numbers nil)
 (setq grok-core-disabled '())
 (setq grok-packages-disabled '())
-(setq grok-window-pop-enabled t)
+(setq grok-window-pop-enabled nil)
 (setq grok-window-pop-splash nil)
 ```
 
