@@ -277,7 +277,7 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 In **Holy mode** you keep Emacs' first-class defaults, plus a few helpers and a leader system:
 
 - **Emacs defaults** - all the standard `C-x ...` / `M-x ...` bindings.
-- **M-m leader** - powered by `which-key` + `general.el`. Press **M-m** to explore menus.
+- **M-m leader** - powered by `which-key` + `general.el`. Press **M-m** to explore menus. Eglot (LSP) bindings are here, too - configured in grok.el.
 - **Language extras** - when editing code, **M-m** includes `eglot` bindings.
 - **crux** - smarter line movement, duplicate lines, kill whole line, etc.
 - **paredit** - structural Lisp editing, keeps parentheses balanced.
@@ -291,7 +291,7 @@ If you enabled Evil during setup, you get Vim's modal editing plus a leader syst
 
 - **Evil defaults** - normal/insert/visual modes and Vim-style motions.
 - **SPACE leader** - powered by `which-key` + `general.el`. Press **Space** to explore menus.
-- **Language extras** - when editing code, **M-m** is available for `eglot` bindings.
+- **Language extras** - when editing code, **M-m** is set in grok.el for additional `eglot` (LSP) bindings, but can be customized.
 - **evil-collection** - makes Magit, Dired, and other modes feel natural in Vim.
 - **evil-commentary** - toggle comments with `gc`.
 - **evil-surround** - add/change/delete surrounding quotes, parens, tags.
