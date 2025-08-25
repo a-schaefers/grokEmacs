@@ -13,7 +13,7 @@
   :if (not (memq 'evil-collection grok-packages-disabled))
   :after evil
   :ensure t
-  :config
+  :init
   (evil-collection-init))
 
 (use-package evil-commentary
@@ -21,14 +21,14 @@
   :if (not (memq 'evil-commentary grok-packages-disabled))
   :ensure t
   :after evil
-  :config (evil-commentary-mode 1))
+  :init (evil-commentary-mode 1))
 
 (use-package evil-surround
   ;; surround editing
   :if (not (memq 'evil-surround grok-packages-disabled))
   :ensure t
   :after evil
-  :config
+  :init
   (global-evil-surround-mode 1))
 
 (use-package evil-matchit
@@ -36,35 +36,35 @@
   :if (not (memq 'evil-matchit grok-packages-disabled))
   :ensure t
   :after evil
-  :config
+  :init
   (global-evil-matchit-mode 1))
 
 (use-package smartparens
   ;; dep for evil-cleverparens
-  :if (not (memq 'smartparens grok-packages-disabled))
+  :if (not (or (memq 'evil-cleverparens grok-packages-disabled)
+               (memq 'smartparens grok-packages-disabled)))
   :after evil
-  :ensure t)
+  :ensure t
+
+  :init
+  (when (not (memq 'evil-cleverparens grok-packages-disabled))
+    (add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
+    (add-hook 'eval-expression-minibuffer-setup-hook #'evil-cleverparens-mode)
+    (add-hook 'ielm-mode-hook               #'evil-cleverparens-mode)
+    (add-hook 'lisp-interaction-mode-hook   #'evil-cleverparens-mode)
+    (add-hook 'lisp-mode-hook               #'evil-cleverparens-mode)
+    (add-hook 'scheme-mode-hook             #'evil-cleverparens-mode)
+    (with-eval-after-load 'clojure-mode
+      (add-hook 'clojure-mode-hook #'evil-cleverparens-mode))
+    (with-eval-after-load 'racket-mode
+      (add-hook 'racket-mode-hook  #'evil-cleverparens-mode))))
 
 (use-package evil-cleverparens
   ;; evil mode's cousin to paredit
-  :if (not (memq 'evil-cleverparens grok-packages-disabled))
+  :if (not (or (memq 'evil-cleverparens grok-packages-disabled)
+               (memq 'smartparens grok-packages-disabled)))
   :ensure t
   :after (evil smartparens))
-
-;; for reasons unknown, these do not get registered within the above evil-cleverparens use-package declaration
-;; tried :command, :hook: :init :config
-;; paredit does not have this issue.
-(when (not (memq 'evil-cleverparens grok-packages-disabled))
-  (add-hook 'emacs-lisp-mode-hook        #'evil-cleverparens-mode)
-  (add-hook 'eval-expression-minibuffer-setup-hook #'evil-cleverparens-mode)
-  (add-hook 'ielm-mode-hook               #'evil-cleverparens-mode)
-  (add-hook 'lisp-interaction-mode-hook   #'evil-cleverparens-mode)
-  (add-hook 'lisp-mode-hook               #'evil-cleverparens-mode)
-  (add-hook 'scheme-mode-hook             #'evil-cleverparens-mode)
-  (with-eval-after-load 'clojure-mode
-    (add-hook 'clojure-mode-hook #'evil-cleverparens-mode))
-  (with-eval-after-load 'racket-mode
-    (add-hook 'racket-mode-hook  #'evil-cleverparens-mode)))
 
 (use-package treemacs-evil
   :if (and (bound-and-true-p grok-evil-mode)
