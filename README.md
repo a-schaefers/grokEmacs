@@ -228,11 +228,7 @@ This file is **yours to edit** - it's `.gitignore`d so updates to grokEmacs won'
 If you delete it, a fresh copy will be regenerated on the next restart.
 
 Whenever you pull new versions of grokEmacs, it's recommended to compare your `grok.el` against
-`grok-defaults.el` using the built-in diff helper:
-
-```
-C-c gu   (grok-update-config-with-ediff)
-```
+`grok-defaults.el` using the built-in diff helper: `(grok-update-config-with-ediff)`
 
 Run this after a `git pull` to ensure nothing important has changed or broken.
 
@@ -250,11 +246,7 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 - **General Defaults**
   - Tabs disabled globally, fill-column set to 79 (Python style).
   - Default compile command: `make -k`.
-  - Some optional global keybinds:
-    - `C-c gi` → Edit init.el
-    - `C-c gg` → Edit grok.el
-    - `C-c go` → Edit setup options (`grok-opts.el`)
-    - `C-c gu` → Compare config with defaults (ediff)
+  - Some optional global keybinds.
   - Starts an Emacs server automatically.
 
 - **Package Overrides**
@@ -271,7 +263,7 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 - Keep your personal tweaks here - grokEmacs core modules won't touch this file.
 - Use it for small overrides, keybinds, or enabling extra packages.
 - For larger or experimental changes, consider using separate files under `grok.d/` and keeping them in version control. *(Note: only `grok.el` is gitignored by default - everything else in `grok.d/` is tracked if you want it to be.)*
-- After updating grokEmacs (`git pull`), always run `C-c gu` to check for differences and avoid surprises.
+- After updating grokEmacs (`git pull`), always run `grok-update-config-with-ediff` to check for differences and avoid surprises.
 
 ---
 
