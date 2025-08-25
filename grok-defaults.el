@@ -67,8 +67,8 @@
           ;; (racket-mode-hook . true)       ; workaround, racket lang server is not available on PATH but via required lib
           ;; (clojure-mode-hook . clojure-lsp)
           ))
-          :init
-          (grok-apply-eglot-autostart))
+  :init
+  (grok-apply-eglot-autostart))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 'General'
