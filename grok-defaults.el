@@ -91,7 +91,7 @@
               ("C-1" . delete-other-windows) ; C-x 1
               ("C-2" . split-window-below)   ; C-x 2
               ("C-3" . split-window-right)   ; C-x 3
-              ("C-0" . delete-windows)       ; C-x 0
+              ("C-0" . delete-window)       ; C-x 0
               ;; Shift + arrow keys
               ("S-<right>" . enlarge-window-horizontally)
               ("S-<left>"  . shrink-window-horizontally)
@@ -117,10 +117,18 @@
   :ensure nil
   :bind (("C-g"     . crux-keyboard-quit-dwim)
          ("C-a"     . crux-move-beginning-of-line)
+
          ("C-o"     . crux-smart-open-line)
+
+         ("C-<tab>" . crux-other-window-or-switch-buffer)
+         ("C-x C-o" . crux-other-window-or-switch-buffer)
+         ("C-c C-o" . crux-other-window-or-switch-buffer)
+
          ("C-c d"   . crux-duplicate-current-line-or-region)
          ("C-c D"   . crux-duplicate-and-comment-current-line-or-region)
-         ("C-c k"   . crux-kill-whole-line)))
+
+         ("C-c k"   . crux-kill-whole-line)
+         ("C-c C-k" . crux-kill-whole-line)))
 
 (use-package eglot
   :if (not (memq 'eglot grok-packages-disabled))
