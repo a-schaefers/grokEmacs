@@ -12,6 +12,8 @@ grokEmacs isn't meant to be the perfect config for everyone. It favors simplicit
 
 ## Features
 
+Core comes pre-wired with add-ons that deliver a modern, IDE-like experience.
+
 - **Setup wizard** to look-good out of the box
 - **Optional evil-mode** and supportive packages, with Space bound as a discoverable leader key
 - **Simple module system** that you can completely override
