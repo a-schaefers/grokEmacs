@@ -97,7 +97,7 @@ With Fancy enabled, grokEmacs pulls in your chosen theme package, applies your s
 
 ---
 
-doom-themes, doom-one, doom-modeline, splash:
+doom-themes, doom-one, doom-modeline `grok-opts.el`:
 
 ```elisp
 (setq grok-projects "~/repos/")
@@ -147,7 +147,7 @@ spacemacs-theme, spacemacs-dark, spaceline `grok-opts.el`:
 
 ---
 
-tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
+tao-theme, tao-yang, moody `grok-opts.el`:
 
 ```elisp
 (setq grok-projects "~/repos/")
@@ -158,6 +158,31 @@ tao-theme, tao-yang, moody `grok-opts.el`, no-splash:
 (setq grok-custom-theme 'tao-yang)
 (setq grok-use-modeline "moody")
 (setq grok-alpha-background "100")
+(setq grok-font "Go Mono")
+(setq grok-font-size "11")
+(setq grok-line-numbers t)
+(setq grok-relative-line-numbers nil)
+(setq grok-core-disabled '())
+(setq grok-packages-disabled '())
+(setq grok-window-pop-enabled nil)
+(setq grok-window-pop-splash nil)
+```
+
+![fancy](screen3.jpg)
+
+---
+
+cyberpunk-theme, cyberpunk, moody `grok-opts.el`, 75% transparency, i3-wm ... grokEmacs can look like anything you want.
+
+```elisp
+(setq grok-projects "~/repos/")
+(setq grok-evil-mode nil)
+(setq grok-theme t)
+(setq grok-theme-style "fancy")
+(setq grok-custom-theme-pkg 'cyberpunk-theme)
+(setq grok-custom-theme 'cyberpunk)
+(setq grok-use-modeline "moody")
+(setq grok-alpha-background "75")
 (setq grok-font "Go Mono")
 (setq grok-font-size "11")
 (setq grok-line-numbers t)
