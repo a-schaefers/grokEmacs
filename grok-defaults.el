@@ -145,18 +145,6 @@
               ("M-m h" . eldoc-box-help-at-point)
               ("M-m =" . eglot-format)))
 
-(use-package company
-  :if (not (memq 'company grok-packages-disabled))
-  :ensure nil
-  :bind (:map
-         company-active-map
-         ("C-n" . company-select-next)
-         ("C-p" . company-select-previous)
-         :map
-         company-search-map
-         ("C-n" . company-select-next)
-         ("C-p" . company-select-previous)))
-
 ;; `Additional' - add some new package
 
 ;; (use-package vterm ; requires libvterm be installed on system
@@ -174,8 +162,8 @@
   (defun grok-c-ts-style ()
     ;; Use Linux kernel coding style in C (Tree-sitter)
     ;; https://www.kernel.org/doc/html/v4.10/process/coding-style.html
-    (setq-local indent-tabs-mode t)       ; Use tabs
-    (setq-local tab-width 8)              ; Display width of tab
+    (setq-local indent-tabs-mode t)     ; Use tabs
+    (setq-local tab-width 8)            ; Display width of tab
     (setq-local c-ts-mode-indent-style 'linux)
     (setq-local c-ts-mode-indent-offset 8))
   :hook (c-ts-mode . grok-c-ts-style))
