@@ -193,7 +193,7 @@ cyberpunk-theme, cyberpunk, moody `grok-opts.el`, 75% transparency, i3-wm ... gr
 (setq grok-window-pop-splash nil)
 ```
 
-![fancy](screen3.jpg)
+![fancy](screen4.jpg)
 
 ---
 
