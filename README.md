@@ -17,7 +17,7 @@ grokEmacs isn't meant to be the perfect config for everyone. It favors simplicit
 - **Simple module system** that you can completely override
 - **elpaca** package manager + **use-package**
 - **gccemacs** native compilation
-- **eglot lsp ** language server protocol support
+- **eglot lsp** language server protocol support
 - **vertico, corfu, orderless** completion enhancements
 - **magit+projectile** for VC & project awareness
 - **flymake** linting (sideline, eldoc-box)
