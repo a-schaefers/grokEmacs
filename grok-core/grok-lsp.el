@@ -42,12 +42,37 @@
   :if (not (memq 'sideline-flymake grok-packages-disabled))
   :ensure t :after sideline)
 
-(use-package company
-  :if (not (memq 'company grok-packages-disabled))
+(use-package corfu
+  :if (not (memq 'corfu grok-packages-disabled))
   :ensure t
-  :hook ((prog-mode . company-mode)
-         (html-ts-mode . company-mode))
-  :config
-  (setq company-idle-delay 0))
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)          ;; auto-show popup
+  (corfu-auto-delay 0)    ;; no delay
+  (corfu-auto-prefix 3)   ;; start after 3 chars
+  (corfu-quit-no-match 'separator)
+  (corfu-quit-at-boundary 'separator))
+
+;; A few more useful configurations...
+(use-package emacs
+  :if (not (memq 'corfu-mode-grok-config grok-packages-disabled))
+  :ensure nil
+  :custom
+  ;; TAB cycle if there are only few candidates
+  ;; (completion-cycle-threshold 3)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete)
+
+  ;; Emacs 30 and newer: Disable Ispell completion function.
+  ;; Try `cape-dict' as an alternative.
+  (text-mode-ispell-word-completion nil)
+
+  ;; Hide commands in M-x which do not apply to the current mode.  Corfu
+  ;; commands are hidden, since they are not used via M-x. This setting is
+  ;; useful beyond Corfu.
+  (read-extended-command-predicate #'command-completion-default-include-p))
 
 (provide 'grok-lsp)

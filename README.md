@@ -17,11 +17,11 @@ grokEmacs isn't meant to be the perfect config for everyone. It favors simplicit
 - **Simple module system** that you can completely override
 - **elpaca** package manager + **use-package**
 - **gccemacs** native compilation
-- **eglot lsp + company** autocompletion
+- **eglot lsp ** language server protocol support
+- **vertico, corfu, orderless** completion enhancements
 - **magit+projectile** for VC & project awareness
 - **flymake** linting (sideline, eldoc-box)
 - **treesitter** everywhere as much as possible
-- **vertico** fuzzy completion
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
 ---
@@ -250,7 +250,6 @@ Run this after a `git pull` to ensure nothing important has changed or broken.
 
 - **Package Overrides**
   - `eglot` gets remapped keys on `M-m` (rename, imports, format, etc.).
-  - `company` completion uses `C-n` / `C-p` for navigation.
   - Optional extras (like `vterm`) can be enabled by uncommenting.
 
 - **Language-specific override examples**
