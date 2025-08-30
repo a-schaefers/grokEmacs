@@ -1,11 +1,18 @@
 # grokEmacs
 
+## Quick Start
+
+```sh
+git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs
+```
+
+![img](bootstrap.gif)
+
 ## Announcement
 
 This project does not use GitHub Issues. Instead, please submit your improvements via Pull Request.
 
 grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many of the same goals in a better way. To find Spartan Emacs, see the [archived branch](https://github.com/a-schaefers/spartan-emacs/tree/spartan-emacs-archive).
-
 
 ## Features
 
@@ -16,12 +23,6 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 - **Magit/projectile**, **flymake**, **treesitter**
 - Native compilation
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
-
-## Quick Start
-
-```sh
-git clone https://github.com/a-schaefers/grokEmacs.git ~/.config/emacs
-```
 
 ## Customization
 
