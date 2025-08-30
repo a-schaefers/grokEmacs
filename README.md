@@ -26,6 +26,8 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 
 ## Customization
 
+> When asked “🧙 Continue to theme customization wizard?”, choosing Skip leaves you with bare vanilla Emacs appearance and no polish. If you continue, the next prompt “🎨 Theme style (✨ fancy | 📦 minimal)” lets you pick: Minimal, which applies a built-in theme and simple modeline for a clean setup, or Fancy, which installs an external theme (of your choice), custom modelines, dashboard, and Treemacs.
+
 - Initial Setup Wizard writes answers to `~/.config/emacs/grok-opts.el`.
 - Optionally Disable modules/packages in grok-opts.el with `grok-core-disabled` or `grok-packages-disabled`.
 - Personal overrides live in `grok.d/grok.el` (gitignored).
