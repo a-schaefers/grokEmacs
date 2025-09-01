@@ -1,13 +1,7 @@
 ;;; -*- lexical-binding: t; no-byte-compile: t; -*-
 
-(use-package yasnippet
-  :if (not (memq 'yasnippet grok-packages-disabled))
-  :ensure t
-  :hook (prog-mode . yas-minor-mode))
-
 (use-package eglot
   :if (not (memq 'eglot grok-packages-disabled))
-  :after yasnippet
   :ensure nil) ; prefer builtin
 
 (use-package flymake
