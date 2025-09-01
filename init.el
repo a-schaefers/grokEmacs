@@ -41,8 +41,7 @@
 (defvar grok-packages-disabled '()
   "List of specific packages to skip loading.")
 
-(dolist (f `(
-             grok-better-defaults
+(dolist (f `(grok-better-defaults
              grok-vertico
              ,@(unless grok-evil-mode '(grok-holy))
              ,@(when grok-evil-mode '(grok-evil))
@@ -53,8 +52,7 @@
              grok-treesit
              ,@(when (and grok-theme (member grok-theme-style '("minimal" "fancy"))) '(grok-theme-shared))
              ,@(when (and grok-theme (member grok-theme-style '("minimal"))) '(grok-theme-minimal))
-             ,@(when (and grok-theme (member grok-theme-style '("fancy"))) '(grok-theme-fancy))
-             ))
+             ,@(when (and grok-theme (member grok-theme-style '("fancy"))) '(grok-theme-fancy))))
   (unless (memq f grok-core-disabled)
     (require f)))
 
