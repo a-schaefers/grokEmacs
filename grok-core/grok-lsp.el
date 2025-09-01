@@ -45,8 +45,8 @@
 (use-package corfu
   :if (not (memq 'corfu grok-packages-disabled))
   :ensure t
-  :init
-  (global-corfu-mode)
+  :hook ((prog-mode . corfu-mode)
+         (html-ts-mode . corfu-mode))
   :custom
   (corfu-auto t)          ;; auto-show popup
   (corfu-auto-delay 0)    ;; no delay
