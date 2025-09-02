@@ -32,6 +32,7 @@
          (after-save  . executable-make-buffer-file-executable-if-script-p))
   :config
   (when (file-exists-p custom-file) (load-file custom-file))
+  (save-place-mode 1)
   (electric-pair-mode 1)
   (delete-selection-mode 1)
   (global-goto-address-mode 1))
