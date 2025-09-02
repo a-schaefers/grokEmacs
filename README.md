@@ -17,7 +17,7 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 ## Features
 
 - Setup wizard for themes, fonts, and evil/holy mode
-- Optional **Evil mode** with leader key (Space), or Emacs defaults with **M-m**
+- Optional **Evil mode** with leader key (Space) via **which-key** + **General.el**, or Emacs defaults with **M-m**
 - **elpaca** + **use-package** for packages
 - **Eglot** for LSP, **vertico/corfu/orderless** for completion
 - **Flymake** with **sideline/sideline-flymake** for linting
