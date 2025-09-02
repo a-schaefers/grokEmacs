@@ -20,8 +20,10 @@ grokEmacs is a new rewrite, different from Spartan Emacs, but it achieves many o
 - Optional **Evil mode** with leader key (Space), or Emacs defaults with **M-m**
 - **elpaca** + **use-package** for packages
 - **Eglot** for LSP, **vertico/corfu/orderless** for completion
-- **Magit/projectile**, **flymake**, **treesitter**
-- Native compilation
+- **Flymake** with **sideline/sideline-flymake** for linting
+- **Magit/projectile**
+- **Treesitter** first approach to modes: if a treesitter mode exists (and for most common languages it does now), it’s used via **treesit-auto**
+- Native compilation "just works"
 - *[dape](https://github.com/svaante/dape) (debug adapter protocol support) is planned, coming soon*
 
 ## Customization
