@@ -34,7 +34,11 @@
 
 (use-package sideline-flymake
   :if (not (memq 'sideline-flymake grok-packages-disabled))
-  :ensure t :after sideline)
+  :ensure t
+  :after sideline
+  :custom
+  (sideline-flymake-display-mode 'line)
+  (sideline-flymake-max-lines 1))
 
 (use-package corfu
   :if (not (memq 'corfu grok-packages-disabled))
