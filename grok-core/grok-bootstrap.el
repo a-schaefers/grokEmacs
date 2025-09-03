@@ -233,7 +233,6 @@ Order:
   (setq native-comp-async-report-warnings-errors nil
         comp-async-report-warnings-errors nil)
   (add-to-list 'warning-suppress-types '(native-compiler))
-  (add-to-list 'warning-suppress-types '(native-compiler))
   (add-to-list 'display-buffer-alist '("\\*Warnings\\*" (display-buffer-no-window) (allow-no-window . t)))
 
   :config
