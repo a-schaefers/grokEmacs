@@ -22,8 +22,6 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
 
-  (setq-default frame-title-format '("GNU Emacs"))
-
   (when (and (boundp 'grok-alpha-background)
              (stringp grok-alpha-background)
              (not (or
