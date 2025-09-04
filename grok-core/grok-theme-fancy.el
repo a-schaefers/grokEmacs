@@ -101,6 +101,12 @@
   :hook (elpaca-after-init . grok/enable-spaceline))
 
 (use-package moody
+  ;; note to reader, you may want to customize the color of moody also, possibly by throwing something like this in grok.el:
+  ;; (defun my/theme-mods ()
+  ;;   (set-face-attribute 'mode-line nil :background "#285577")
+  ;;   (set-face-attribute 'mode-line-inactive nil :background "#333333"))
+  ;; (add-hook 'window-setup-hook #'my/theme-mods)
+
   :if (and (string= grok-use-modeline "moody")
            (not (memq 'moody grok-packages-disabled)))
   :ensure t
