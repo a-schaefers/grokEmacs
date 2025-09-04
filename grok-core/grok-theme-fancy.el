@@ -104,6 +104,11 @@
   :if (and (string= grok-use-modeline "moody")
            (not (memq 'moody grok-packages-disabled)))
   :ensure t
+  :preface
+  (defun grok/moody-disable-box ()
+    (set-face-attribute 'mode-line nil :box nil)
+    (set-face-attribute 'mode-line-inactive nil :box nil))
+  :hook (window-setup . grok/moody-disable-box)
   :init
   (moody-replace-mode-line-front-space)
   (moody-replace-mode-line-buffer-identification)
