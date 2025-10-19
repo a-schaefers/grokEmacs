@@ -20,9 +20,9 @@
                    (VISUAL . "$EDITOR")
                    (PAGER  . "cat")))
 
-  (setq grok-path-insert '(""))
+  (setq grok-path-insert '())
 
-  (setq grok-path-append '(""))
+  (setq grok-path-append '())
   :init
   (grok-apply-env-and-path))
 
