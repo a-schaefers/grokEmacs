@@ -1,3 +1,7 @@
+I'm calling this project complete and "done."
+Fork it, hack it and make it your own, or don't.
+Cheers.
+
 # grokEmacs
 
 ## Quick Start
